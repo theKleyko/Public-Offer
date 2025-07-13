@@ -243,7 +243,7 @@
   --dark-bg: #0a0a0a;
   --darker-bg: #080808;
   --purple-bg: #0d0818;
-  --divider-offset: 0px; /* Adjustable divider position offset */
+  --divider-offset: 13px; /* Adjustable divider position offset */
 }
 
 /* Base styles */
@@ -801,6 +801,7 @@
 .nonduality-wrapper .section-with-noise {
   position: relative;
   overflow: hidden;
+  background: #909090; /* <-- Set your desired background color here */
 }
 
 .nonduality-wrapper .section-with-noise::before {
