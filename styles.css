@@ -1,19 +1,19 @@
 /* ============================================
-   NONDUALITY THEME - CLEANED CSS
+   NONDUALITY THEME - COMPACT CSS
    ============================================ */
 
 /* ============================================
    1. CSS VARIABLES & CUSTOM PROPERTIES
    ============================================ */
 :root {
-  /* Spacing System */
-  --spacing-unit: 16px;
-  --grid-gap: 24px;
-  --card-padding: 24px;
+  /* Spacing System - More Compact */
+  --spacing-unit: 12px;
+  --grid-gap: 20px;
+  --card-padding: 20px;
   
-  /* Typography Scale */
-  --paragraph-lg: 20px;
-  --paragraph-md: 18px;
+  /* Typography Scale - Smaller */
+  --paragraph-lg: 18px;
+  --paragraph-md: 16px;
   
   /* Color Palette */
   --bg-primary: #0A0A0A;
@@ -84,63 +84,78 @@
    4. TYPOGRAPHY
    ============================================ */
 
-/* Headings */
-.nonduality-wrapper h1, 
-.nonduality-wrapper h2, 
-.nonduality-wrapper h3 {
-  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-weight: 300;
-  line-height: 1.8;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-
-.nonduality-wrapper h1 {
-  font-size: clamp(50px, 5.5vw, 42px);
-  margin-bottom: calc(var(--spacing-unit) * 1.5);
-  color: var(--text-primary);
-  line-height: 1.1;
-}
-
+/* Main Headers (h2) - Thin and smaller */
 .nonduality-wrapper h2 {
-  font-size: clamp(36px, 4.5vw, 48px);
-  margin-bottom: calc(var(--spacing-unit) * 1.25);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 200;
+  font-size: clamp(28px, 3.5vw, 36px);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
+/* Subheaders - Larger with more weight and different font */
+.nonduality-wrapper h2 + h2,
+.nonduality-wrapper h2[style*="font-size: 24px"],
+.nonduality-wrapper h2[style*="opacity: 0.8"] {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 42px) !important;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-top: -8px !important;
+  margin-bottom: calc(var(--spacing-unit) * 1.5) !important;
+  opacity: 0.95 !important;
+}
+
+/* Hero h1 - Keep original size */
+.nonduality-wrapper .hero-content h1 {
+  font-size: clamp(50px, 5.5vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+/* Headings h3 */
 .nonduality-wrapper h3 {
-  font-size: clamp(24px, 3.5vw, 32px);
-  margin-bottom: var(--spacing-unit);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  font-size: clamp(20px, 3vw, 26px);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
-/* Paragraphs */
+/* Paragraphs - More compact */
 .nonduality-wrapper .paragraph {
-  font-size: var(--paragraph-lg);
-  line-height: 1.9;
+  font-size: 18px;
+  line-height: 1.7;
   color: rgba(255, 255, 255, 0.85);
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   font-weight: 300;
 }
 
-/* Sentence-by-sentence text */
+/* Sentence-by-sentence text - More compact */
 .nonduality-wrapper .sentence-text {
   max-width: 800px;
   margin-left: 0;
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing-unit) * 0.5);
+  gap: calc(var(--spacing-unit) * 0.25);
 }
 
 .nonduality-wrapper .sentence-line {
   display: block;
   margin-bottom: 0;
-  line-height: 1.6;
-  font-size: var(--paragraph-lg);
+  line-height: 1.5;
+  font-size: 18px;
   color: rgba(255, 255, 255, 0.95);
   font-weight: 400;
-  padding: 2px 0;
+  padding: 1px 0;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
@@ -150,12 +165,12 @@
 /* Custom header styles */
 .grown-so-much-header,
 .feels-wrong-header {
-  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.01em;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.02em;
   display: block;
   margin-top: 0 !important;
-  font-size: clamp(36px, 4.5vw, 48px) !important;
+  font-size: clamp(28px, 3.5vw, 36px) !important;
   line-height: 1.2 !important;
 }
 
@@ -164,6 +179,9 @@
 }
 
 .feels-wrong-header {
+  font-family: 'Georgia', 'Times New Roman', serif !important;
+  font-weight: 400 !important;
+  font-size: clamp(32px, 4vw, 42px) !important;
   margin-bottom: calc(var(--spacing-unit) * 1.25) !important;
 }
 
@@ -171,12 +189,12 @@
    5. UTILITY CLASSES
    ============================================ */
 
-/* Spacing utilities */
-.nonduality-wrapper .spacing-xs { margin-bottom: calc(var(--spacing-unit) * 0.5); }
-.nonduality-wrapper .spacing-sm { margin-bottom: var(--spacing-unit); }
-.nonduality-wrapper .spacing-md { margin-bottom: calc(var(--spacing-unit) * 1.5); }
-.nonduality-wrapper .spacing-lg { margin-bottom: calc(var(--spacing-unit) * 2); }
-.nonduality-wrapper .spacing-xl { margin-bottom: calc(var(--spacing-unit) * 3); }
+/* Spacing utilities - Reduced */
+.nonduality-wrapper .spacing-xs { margin-bottom: calc(var(--spacing-unit) * 0.25); }
+.nonduality-wrapper .spacing-sm { margin-bottom: calc(var(--spacing-unit) * 0.5); }
+.nonduality-wrapper .spacing-md { margin-bottom: calc(var(--spacing-unit) * 0.75); }
+.nonduality-wrapper .spacing-lg { margin-bottom: var(--spacing-unit); }
+.nonduality-wrapper .spacing-xl { margin-bottom: calc(var(--spacing-unit) * 1.5); }
 
 /* Text alignment */
 .nonduality-wrapper .text-center { text-align: center; }
@@ -197,15 +215,15 @@
    6. NAVIGATION
    ============================================ */
 .nonduality-wrapper .navigation {
-  padding: 30px 0;
+  padding: 20px 0;
   text-align: center;
   position: relative;
   z-index: 2;
 }
 
 .nonduality-wrapper .nav-logo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 65%;
   object-fit: cover;
   border: 5px solid rgba(255, 215, 0, 0.12);
@@ -218,10 +236,10 @@
    ============================================ */
 .nonduality-wrapper .hero-section {
   background: #000;
-  padding: 40px 0;
+  padding: 30px 0;
   position: relative;
   overflow: hidden;
-  margin-top: -50px;
+  margin-top: -40px;
 }
 
 .nonduality-wrapper .hero-content {
@@ -238,21 +256,21 @@
   background: rgba(255, 215, 0, 0.05);
   border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: 40px;
-  padding: 5px 28px;
-  margin-bottom: calc(var(--spacing-unit) * 1.25);
-  font-size: 13px;
+  padding: 4px 24px;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  font-size: 12px;
   color: rgba(255, 215, 0, 0.9);
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
   font-weight: 600;
 }
 
 .nonduality-wrapper .green-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: #00ff00;
   border-radius: 50%;
-  margin-right: 12px;
+  margin-right: 10px;
   animation: pulse 3s ease-in-out infinite;
 }
 
@@ -264,10 +282,10 @@
 /* Video wrapper */
 .nonduality-wrapper .video-wrapper {
   max-width: 500px;
-  margin: calc(var(--spacing-unit) * 1.5) auto;
+  margin: calc(var(--spacing-unit) * 1.25) auto;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   background: #000;
 }
 
@@ -284,21 +302,21 @@
 .nonduality-wrapper .features-grid {
   display: flex;
   justify-content: center;
-  gap: var(--grid-gap);
-  margin: calc(var(--spacing-unit) * 2) 0;
-  margin-top: -2%;
+  gap: calc(var(--grid-gap) * 0.8);
+  margin: calc(var(--spacing-unit) * 1.5) 0;
+  margin-top: -1%;
   flex-wrap: wrap;
 }
 
 .nonduality-wrapper .feature-item {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .nonduality-wrapper .feature-icon {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   background: rgba(255, 215, 0, 0.1);
   border-radius: 50%;
   display: flex;
@@ -307,11 +325,11 @@
   flex-shrink: 0;
   color: var(--accent-gold);
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .nonduality-wrapper .feature-text {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -320,7 +338,7 @@
    9. SECTIONS & BACKGROUNDS
    ============================================ */
 .nonduality-wrapper .section {
-  padding: 60px 0;
+  padding: 40px 0;
   position: relative;
 }
 
@@ -408,22 +426,21 @@
    10. PROBLEM SECTION
    ============================================ */
 .nonduality-wrapper .section-problem {
-  padding: 60px 0;
+  padding: 40px 0;
   position: relative;
   z-index: 1;
 }
 
 .nonduality-wrapper .section-problem h2 {
-  margin-bottom: calc(var(--spacing-unit) * 0.8);
-  font-size: clamp(28px, 3.5vw, 36px);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
 .nonduality-wrapper .section-problem .sentence-text {
-  margin-bottom: calc(var(--spacing-unit) * 0.6);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
 .nonduality-wrapper .section-problem .sentence-line {
-  margin-bottom: calc(var(--spacing-unit) * 0.0);
+  margin-bottom: 0;
   font-size: 18px;
   line-height: 1.5;
 }
@@ -432,8 +449,8 @@
 .nonduality-wrapper .problem-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--grid-gap);
-  margin-top: calc(var(--spacing-unit) * 1.5);
+  gap: calc(var(--grid-gap) * 0.8);
+  margin-top: calc(var(--spacing-unit) * 1.25);
   max-width: 1000px;
   margin-left: 0;
   margin-right: auto;
@@ -443,7 +460,7 @@
 .nonduality-wrapper .problem-card {
   background: var(--bg-elevated);
   border-radius: 16px;
-  padding: var(--card-padding);
+  padding: calc(var(--card-padding) * 0.9);
   position: relative;
   overflow: hidden;
 }
@@ -483,7 +500,7 @@
 
 /* Problem card content */
 .nonduality-wrapper .problem-icon {
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   filter: grayscale(20%);
   display: flex;
   align-items: left;
@@ -498,15 +515,15 @@
 }
 
 .nonduality-wrapper .problem-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
   color: var(--text-primary);
 }
 
 .nonduality-wrapper .problem-text {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -514,16 +531,16 @@
 .nonduality-wrapper .problem-list {
   list-style: none;
   padding-left: 0;
-  margin: calc(var(--spacing-unit) * 1.5) 0;
+  margin: calc(var(--spacing-unit) * 1) 0;
 }
 
 .nonduality-wrapper .problem-list li {
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   color: rgba(255, 255, 255, 0.85);
   position: relative;
-  padding-left: 36px;
-  font-size: 20px;
-  line-height: 1.6;
+  padding-left: 30px;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .nonduality-wrapper .problem-list li::before {
@@ -532,7 +549,7 @@
   left: 0;
   color: var(--accent-gold);
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   opacity: 0.7;
 }
 
@@ -542,16 +559,16 @@
 .nonduality-wrapper .benefits-list {
   list-style: none;
   padding-left: 0;
-  margin: calc(var(--spacing-unit) * 1.5) 0;
+  margin: calc(var(--spacing-unit) * 1) 0;
 }
 
 .nonduality-wrapper .benefits-list li {
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   color: rgba(255, 255, 255, 0.9);
   position: relative;
-  padding-left: 36px;
-  font-size: 20px;
-  line-height: 1.7;
+  padding-left: 30px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .nonduality-wrapper .benefits-list li::before {
@@ -560,7 +577,7 @@
   left: 0;
   color: var(--accent-gold);
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   opacity: 0.9;
 }
 
@@ -569,15 +586,15 @@
    ============================================ */
 .nonduality-wrapper .first-testimonials {
   background: #080808;
-  padding: 60px 0;
+  padding: 40px 0;
   position: relative;
 }
 
 .nonduality-wrapper .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--grid-gap);
-  margin-top: 40px;
+  gap: calc(var(--grid-gap) * 0.8);
+  margin-top: 30px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -587,7 +604,7 @@
   background: var(--bg-elevated);
   border: none;
   border-radius: 16px;
-  padding: var(--card-padding);
+  padding: calc(var(--card-padding) * 0.9);
   text-align: center;
 }
 
@@ -595,9 +612,9 @@
   background: #222;
   border: none;
   width: 100%;
-  height: 280px;
+  height: 240px;
   border-radius: 12px;
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -608,57 +625,51 @@
 .nonduality-wrapper .testimonial-name {
   color: var(--accent-gold);
   font-weight: 600;
-  font-size: 18px;
-  margin-top: var(--spacing-unit);
+  font-size: 16px;
+  margin-top: calc(var(--spacing-unit) * 0.5);
 }
 
 /* ============================================
-   13. QUOTE BLOCK
+   13. QUOTE BLOCK - Simplified
    ============================================ */
 .nonduality-wrapper .quote-block {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 215, 0, 0.01) 100%);
-  border-left: 3px solid rgba(255, 215, 0, 0.3);
-  padding: var(--card-padding);
-  margin: calc(var(--spacing-unit) * 2) 0;
-  font-size: 22px;
+  background: none;
+  border-left: none;
+  padding: calc(var(--spacing-unit) * 1.5) 0;
+  margin: calc(var(--spacing-unit) * 1.5) 0;
+  font-size: 20px;
   font-style: normal;
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 0 12px 12px 0;
+  color: rgba(255, 255, 255, 0.95);
   text-align: left;
   font-weight: 400;
   position: relative;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 /* ============================================
    14. CTA BUTTON
    ============================================ */
 .nonduality-wrapper .cta-button {
-  --cta-scale: 0.8;
+  --cta-scale: 0.75;
   display: inline-block;
   background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
   color: #000;
-  padding: calc(22px * var(--cta-scale)) calc(56px * var(--cta-scale));
+  padding: calc(18px * var(--cta-scale)) calc(48px * var(--cta-scale));
   border-radius: calc(60px * var(--cta-scale));
-  font-size: calc(16px * var(--cta-scale));
+  font-size: calc(15px * var(--cta-scale));
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-decoration: none;
-  margin: calc(var(--spacing-unit) * 1) 0;
-  margin-top: -20%;
-  transition: all 0.3s ease;
-  box-shadow: 0 calc(20px * var(--cta-scale)) calc(60px * var(--cta-scale)) rgba(255, 215, 0, 0.25);
-}
-
-.nonduality-wrapper .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 calc(25px * var(--cta-scale)) calc(70px * var(--cta-scale)) rgba(255, 215, 0, 0.35);
+  margin: calc(var(--spacing-unit) * 0.75) 0;
+  margin-top: -10%;
+  transition: none;
+  box-shadow: 0 calc(15px * var(--cta-scale)) calc(40px * var(--cta-scale)) rgba(255, 215, 0, 0.2);
 }
 
 .nonduality-wrapper .final-cta {
   text-align: center;
-  margin-top: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 1.5);
 }
 
 /* ============================================
@@ -667,7 +678,7 @@
 .nonduality-wrapper .faq-section {
   background: linear-gradient(180deg, #f5e6d3 0%, #e8d7c3 100%);
   color: #333333;
-  padding: 40px 0;
+  padding: 30px 0;
   position: relative;
   margin: 0;
 }
@@ -675,7 +686,7 @@
 .nonduality-wrapper .faq-section h2 {
   color: #333333;
   text-align: center;
-  margin-bottom: calc(var(--spacing-unit) * 2.5);
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
 .nonduality-wrapper .faq-container {
@@ -694,30 +705,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-unit) 0;
-  transition: all 0.3s ease;
+  padding: calc(var(--spacing-unit) * 0.75) 0;
+  transition: none;
 }
 
 .nonduality-wrapper .faq-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
   color: #333333;
   flex: 1;
-  line-height: 1.4;
+  line-height: 1.3;
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.01em;
 }
 
 .nonduality-wrapper .faq-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   color: #333333;
-  transition: all 0.3s ease;
+  transition: none;
 }
 
 .nonduality-wrapper .faq-item.active .faq-icon {
@@ -733,14 +744,27 @@
 
 .nonduality-wrapper .faq-answer.active {
   max-height: 500px;
-  padding-bottom: var(--spacing-unit);
+  padding-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
 .nonduality-wrapper .faq-answer p {
   color: #333333;
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: var(--spacing-unit);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+/* Call details box */
+.nonduality-wrapper .call-details {
+  margin: 30px 0;
+  background: rgba(0,0,0,0.2);
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.nonduality-wrapper .call-details h3 {
+  text-align: center;
+  margin-bottom: 16px;
 }
 
 /* ============================================
@@ -748,63 +772,69 @@
    ============================================ */
 @media (max-width: 768px) {
   :root {
-    --spacing-unit: 16px;
-    --paragraph-lg: 18px;
-    --grid-gap: 16px;
-    --card-padding: 20px;
+    --spacing-unit: 10px;
+    --paragraph-lg: 16px;
+    --grid-gap: 14px;
+    --card-padding: 16px;
   }
   
   /* Layout adjustments */
   .nonduality-wrapper .section {
-    padding: 30px 0;
+    padding: 25px 0;
   }
   
   .nonduality-wrapper .container,
   .nonduality-wrapper .aligned-container {
-    padding: 0 30px;
+    padding: 0 25px;
   }
   
   .nonduality-wrapper .faq-container {
-    padding: 0 30px;
+    padding: 0 25px;
   }
   
   /* Navigation */
   .nonduality-wrapper .navigation {
-    padding: 24px 0;
+    padding: 18px 0;
   }
   
   .nonduality-wrapper .nav-logo {
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
   }
   
   /* Hero */
   .nonduality-wrapper .hero-content {
-    padding: 40px 0;
+    padding: 30px 0;
   }
   
   /* Typography scale */
-  .nonduality-wrapper h1 {
+  .nonduality-wrapper .hero-content h1 {
     font-size: 36px;
   }
   
   .nonduality-wrapper h2 {
-    font-size: 32px;
+    font-size: 26px;
+  }
+  
+  .nonduality-wrapper h2 + h2,
+  .nonduality-wrapper h2[style*="font-size: 24px"],
+  .nonduality-wrapper h2[style*="opacity: 0.8"] {
+    font-size: 30px !important;
   }
   
   .nonduality-wrapper .paragraph {
-    font-size: 17px;
+    font-size: 16px;
   }
   
   .nonduality-wrapper .sentence-line {
-    font-size: 17px;
-    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    font-size: 16px;
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
   }
   
   /* Grid layouts to single column */
   .nonduality-wrapper .features-grid {
     flex-direction: column;
-    gap: var(--grid-gap);
+    gap: calc(var(--grid-gap) * 0.8);
   }
   
   .nonduality-wrapper .problem-grid {
@@ -817,22 +847,22 @@
   
   /* CTA button scale */
   .nonduality-wrapper .cta-button {
-    --cta-scale: 0.8;
-    padding: calc(18px * var(--cta-scale)) calc(40px * var(--cta-scale));
-    font-size: calc(14px * var(--cta-scale));
+    --cta-scale: 0.7;
+    padding: calc(16px * var(--cta-scale)) calc(36px * var(--cta-scale));
+    font-size: calc(13px * var(--cta-scale));
   }
   
   /* Problem section specific */
   .nonduality-wrapper .section-problem {
-    padding: 30px 0;
+    padding: 25px 0;
   }
   
   .nonduality-wrapper .section-problem .problem-grid {
     grid-template-columns: 1fr;
-    gap: var(--grid-gap);
+    gap: calc(var(--grid-gap) * 0.8);
   }
   
   .nonduality-wrapper .section-problem .problem-card {
-    padding: var(--card-padding);
+    padding: calc(var(--card-padding) * 0.9);
   }
 }
