@@ -1,11 +1,54 @@
-/* Reset */
+/* ============================================
+   NONDUALITY THEME - CLEANED CSS
+   ============================================ */
+
+/* ============================================
+   1. CSS VARIABLES & CUSTOM PROPERTIES
+   ============================================ */
+:root {
+  /* Spacing System */
+  --spacing-unit: 16px;
+  --grid-gap: 24px;
+  --card-padding: 24px;
+  
+  /* Typography Scale */
+  --paragraph-lg: 20px;
+  --paragraph-md: 18px;
+  
+  /* Color Palette */
+  --bg-primary: #0A0A0A;
+  --bg-elevated: #0F0F0F;
+  --text-primary: #FFFFFF;
+  --accent-gold: #FFD700;
+  
+  /* Component Sizes */
+  --problem-icon-size: 24px;
+}
+
+/* ============================================
+   2. RESET & BASE STYLES
+   ============================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Unified container for all sections */
+.nonduality-wrapper {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ============================================
+   3. LAYOUT CONTAINERS
+   ============================================ */
 .nonduality-wrapper .container,
 .nonduality-wrapper .aligned-container {
   max-width: 1200px;
@@ -21,135 +64,31 @@
   margin-right: auto;
 }
 
-/* Spacing utilities */
-.nonduality-wrapper .spacing-xs { margin-bottom: calc(var(--spacing-unit) * 0.5); }
-.nonduality-wrapper .spacing-sm { margin-bottom: var(--spacing-unit); }
-.nonduality-wrapper .spacing-md { margin-bottom: calc(var(--spacing-unit) * 1.5); }
-.nonduality-wrapper .spacing-lg { margin-bottom: calc(var(--spacing-unit) * 2); }
-.nonduality-wrapper .spacing-xl { margin-bottom: calc(var(--spacing-unit) * 3); }
-
-/* Hero section */
-.nonduality-wrapper .hero-section {
-  background: #000;
-  padding: 40px 0;
-  position: relative;
-  overflow: hidden;
-  margin-top: -50px;
+/* Force left alignment for all content in aligned sections */
+.nonduality-wrapper .aligned-content p,
+.nonduality-wrapper .aligned-content h1,
+.nonduality-wrapper .aligned-content h2,
+.nonduality-wrapper .aligned-content h3,
+.nonduality-wrapper .aligned-content .paragraph,
+.nonduality-wrapper .aligned-content .quote-block,
+.nonduality-wrapper .aligned-content ul,
+.nonduality-wrapper .aligned-content ol,
+.nonduality-wrapper .aligned-content .sentence-text,
+.nonduality-wrapper .aligned-content .sentence-line {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
-/* Problem grid and cards */
-.nonduality-wrapper .problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--grid-gap);
-  margin-top: calc(var(--spacing-unit) * 1.5);
-  max-width: 1000px;
-  margin-left: 0;
-  margin-right: auto;
-}
+/* ============================================
+   4. TYPOGRAPHY
+   ============================================ */
 
-.nonduality-wrapper .problem-card {
-  background: var(--bg-elevated);
-  border-radius: 16px;
-  padding: var(--card-padding);
-  position: relative;
-  overflow: hidden;
-}
-
-.nonduality-wrapper .problem-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    transparent 100%
-  );
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.nonduality-wrapper .problem-card > * {
-  position: relative;
-  z-index: 3;
-}
-
-
-/* Problem icon image with uniform size control */
-.nonduality-wrapper .problem-icon {
-  margin-bottom: var(--spacing-unit);
-  filter: grayscale(20%);
-  display: flex;
-  align-items: left;
-  justify-content: left;
-}
-
-.problem-icon-img {
-  width: var(--problem-icon-size) !important;
-  height: var(--problem-icon-size) !important;
-  display: block;
-  object-fit: contain;
-}
-
-.nonduality-wrapper .problem-title {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: var(--spacing-unit);
-  color: var(--text-primary);
-}
-
-.nonduality-wrapper .problem-text {
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* CSS Variables - simplified palette */
-:root {
-  --spacing-unit: 16px;
-  --paragraph-lg: 20px;
-  --paragraph-md: 18px;
-  --bg-primary: #0A0A0A;
-  --bg-elevated: #0F0F0F;
-  --text-primary: #FFFFFF;
-  --accent-gold: #FFD700;
-  --grid-gap: 24px;
-  --card-padding: 24px;
-  --problem-icon-size: 24px;
-}
-
-/* Base styles */
-.nonduality-wrapper {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background: var(--bg-primary);
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* Typography */
+/* Headings */
 .nonduality-wrapper h1, 
 .nonduality-wrapper h2, 
 .nonduality-wrapper h3 {
-  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 300;
   line-height: 1.8;
   letter-spacing: -0.02em;
@@ -175,7 +114,7 @@
   color: var(--text-primary);
 }
 
-/* Paragraph styles */
+/* Paragraphs */
 .nonduality-wrapper .paragraph {
   font-size: var(--paragraph-lg);
   line-height: 1.9;
@@ -184,19 +123,19 @@
   font-weight: 300;
 }
 
-/* Sentence-by-sentence text styles */
+/* Sentence-by-sentence text */
 .nonduality-wrapper .sentence-text {
   max-width: 800px;
   margin-left: 0;
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing-unit) * 0.5); /* space between sentences */
+  gap: calc(var(--spacing-unit) * 0.5);
 }
 
 .nonduality-wrapper .sentence-line {
   display: block;
-  margin-bottom: 0; /* gap handled by parent */
+  margin-bottom: 0;
   line-height: 1.6;
   font-size: var(--paragraph-lg);
   color: rgba(255, 255, 255, 0.95);
@@ -208,42 +147,55 @@
   hyphens: none;
 }
 
-/* Perfect section divider */
-.nonduality-wrapper .section-divider {
-  height: 1px;
-  width: 100vw;
-  margin: 0;
-  position: relative;
+/* Custom header styles */
+.grown-so-much-header,
+.feels-wrong-header {
+  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
   display: block;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 215, 0, 0.2) 20%,
-    rgba(255, 215, 0, 0.4) 35%,
-    rgba(255, 215, 0, 0.5) 50%,
-    rgba(255, 215, 0, 0.4) 65%,
-    rgba(255, 215, 0, 0.2) 80%,
-    transparent 100%
-  );
+  margin-top: 0 !important;
+  font-size: clamp(36px, 4.5vw, 48px) !important;
+  line-height: 1.2 !important;
 }
 
-.nonduality-wrapper .section-divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 15px;
-  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
-  filter: blur(8px);
-  pointer-events: none;
-  z-index: -1;
+.grown-so-much-header {
+  margin-bottom: 2px !important;
 }
 
-/* Navigation */
+.feels-wrong-header {
+  margin-bottom: calc(var(--spacing-unit) * 1.25) !important;
+}
+
+/* ============================================
+   5. UTILITY CLASSES
+   ============================================ */
+
+/* Spacing utilities */
+.nonduality-wrapper .spacing-xs { margin-bottom: calc(var(--spacing-unit) * 0.5); }
+.nonduality-wrapper .spacing-sm { margin-bottom: var(--spacing-unit); }
+.nonduality-wrapper .spacing-md { margin-bottom: calc(var(--spacing-unit) * 1.5); }
+.nonduality-wrapper .spacing-lg { margin-bottom: calc(var(--spacing-unit) * 2); }
+.nonduality-wrapper .spacing-xl { margin-bottom: calc(var(--spacing-unit) * 3); }
+
+/* Text alignment */
+.nonduality-wrapper .text-center { text-align: center; }
+.nonduality-wrapper .text-left { text-align: left; }
+
+/* Highlight (minimal style) */
+.nonduality-wrapper .highlight {
+  background: none !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+  border: none !important;
+  text-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   6. NAVIGATION
+   ============================================ */
 .nonduality-wrapper .navigation {
   padding: 30px 0;
   text-align: center;
@@ -261,7 +213,17 @@
   filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.08));
 }
 
-/* Hero content */
+/* ============================================
+   7. HERO SECTION
+   ============================================ */
+.nonduality-wrapper .hero-section {
+  background: #000;
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+  margin-top: -50px;
+}
+
 .nonduality-wrapper .hero-content {
   padding: 0px 0;
   text-align: center;
@@ -269,7 +231,7 @@
   z-index: 1;
 }
 
-/* Eyebrow */
+/* Eyebrow badge */
 .nonduality-wrapper .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -299,17 +261,6 @@
   50% { opacity: 1; }
 }
 
-/* Highlight style */
-.nonduality-wrapper .highlight {
-  background: none !important;
-  color: inherit !important;
-  font-weight: inherit !important;
-  border: none !important;
-  text-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-}
-
 /* Video wrapper */
 .nonduality-wrapper .video-wrapper {
   max-width: 500px;
@@ -327,7 +278,9 @@
   background: #000;
 }
 
-/* Features grid */
+/* ============================================
+   8. FEATURES SECTION
+   ============================================ */
 .nonduality-wrapper .features-grid {
   display: flex;
   justify-content: center;
@@ -363,37 +316,15 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* CTA Button */
-.nonduality-wrapper .cta-button {
-  --cta-scale: 0.8;
-  display: inline-block;
-  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
-  color: #000;
-  padding: calc(22px * var(--cta-scale)) calc(56px * var(--cta-scale));
-  border-radius: calc(60px * var(--cta-scale));
-  font-size: calc(16px * var(--cta-scale));
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  text-decoration: none;
-  margin: calc(var(--spacing-unit) * 1) 0;
-  margin-top: -20%;
-  transition: all 0.3s ease;
-  box-shadow: 0 calc(20px * var(--cta-scale)) calc(60px * var(--cta-scale)) rgba(255, 215, 0, 0.25);
-}
-
-.nonduality-wrapper .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 calc(25px * var(--cta-scale)) calc(70px * var(--cta-scale)) rgba(255, 215, 0, 0.35);
-}
-
-/* Sections - unified padding and consistent spacing */
+/* ============================================
+   9. SECTIONS & BACKGROUNDS
+   ============================================ */
 .nonduality-wrapper .section {
   padding: 60px 0;
   position: relative;
 }
 
-/* Section backgrounds - alternating for clear distinction */
+/* Background variations */
 .nonduality-wrapper .section-dark,
 .nonduality-wrapper .section-darker {
   background: #080808;
@@ -404,13 +335,244 @@
   background: #121212;
 }
 
+/* Noise background overlay */
+.nonduality-wrapper .section-with-noise {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.nonduality-wrapper .section-with-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('images/noise-black1.png');
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Special background for problem section */
+.nonduality-wrapper .section-problem.section-with-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/gray-glow.png') no-repeat center center;
+  background-size: cover;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Section divider */
+.nonduality-wrapper .section-divider {
+  height: 1px;
+  width: 100vw;
+  margin: 0;
+  position: relative;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.2) 20%,
+    rgba(255, 215, 0, 0.4) 35%,
+    rgba(255, 215, 0, 0.5) 50%,
+    rgba(255, 215, 0, 0.4) 65%,
+    rgba(255, 215, 0, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.nonduality-wrapper .section-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 15px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================
+   10. PROBLEM SECTION
+   ============================================ */
+.nonduality-wrapper .section-problem {
+  padding: 60px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.nonduality-wrapper .section-problem h2 {
+  margin-bottom: calc(var(--spacing-unit) * 0.8);
+  font-size: clamp(28px, 3.5vw, 36px);
+}
+
+.nonduality-wrapper .section-problem .sentence-text {
+  margin-bottom: calc(var(--spacing-unit) * 0.6);
+}
+
+.nonduality-wrapper .section-problem .sentence-line {
+  margin-bottom: calc(var(--spacing-unit) * 0.0);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Problem grid */
+.nonduality-wrapper .problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+  margin-top: calc(var(--spacing-unit) * 1.5);
+  max-width: 1000px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Problem cards */
+.nonduality-wrapper .problem-card {
+  background: var(--bg-elevated);
+  border-radius: 16px;
+  padding: var(--card-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Problem card border effect */
+.nonduality-wrapper .problem-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.nonduality-wrapper .problem-card > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Problem card content */
+.nonduality-wrapper .problem-icon {
+  margin-bottom: var(--spacing-unit);
+  filter: grayscale(20%);
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.problem-icon-img {
+  width: var(--problem-icon-size) !important;
+  height: var(--problem-icon-size) !important;
+  display: block;
+  object-fit: contain;
+}
+
+.nonduality-wrapper .problem-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-unit);
+  color: var(--text-primary);
+}
+
+.nonduality-wrapper .problem-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Problem list */
+.nonduality-wrapper .problem-list {
+  list-style: none;
+  padding-left: 0;
+  margin: calc(var(--spacing-unit) * 1.5) 0;
+}
+
+.nonduality-wrapper .problem-list li {
+  margin-bottom: var(--spacing-unit);
+  color: rgba(255, 255, 255, 0.85);
+  position: relative;
+  padding-left: 36px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.nonduality-wrapper .problem-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-weight: bold;
+  font-size: 24px;
+  opacity: 0.7;
+}
+
+/* ============================================
+   11. BENEFITS SECTION
+   ============================================ */
+.nonduality-wrapper .benefits-list {
+  list-style: none;
+  padding-left: 0;
+  margin: calc(var(--spacing-unit) * 1.5) 0;
+}
+
+.nonduality-wrapper .benefits-list li {
+  margin-bottom: var(--spacing-unit);
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding-left: 36px;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.nonduality-wrapper .benefits-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-weight: bold;
+  font-size: 24px;
+  opacity: 0.9;
+}
+
+/* ============================================
+   12. TESTIMONIALS
+   ============================================ */
 .nonduality-wrapper .first-testimonials {
   background: #080808;
   padding: 60px 0;
   position: relative;
 }
 
-/* Testimonials */
 .nonduality-wrapper .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -450,7 +612,9 @@
   margin-top: var(--spacing-unit);
 }
 
-/* Quote block */
+/* ============================================
+   13. QUOTE BLOCK
+   ============================================ */
 .nonduality-wrapper .quote-block {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 215, 0, 0.01) 100%);
   border-left: 3px solid rgba(255, 215, 0, 0.3);
@@ -466,84 +630,40 @@
   line-height: 1.8;
 }
 
-/* Problem list */
-.nonduality-wrapper .problem-list {
-  list-style: none;
-  padding-left: 0;
-  margin: calc(var(--spacing-unit) * 1.5) 0;
+/* ============================================
+   14. CTA BUTTON
+   ============================================ */
+.nonduality-wrapper .cta-button {
+  --cta-scale: 0.8;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
+  color: #000;
+  padding: calc(22px * var(--cta-scale)) calc(56px * var(--cta-scale));
+  border-radius: calc(60px * var(--cta-scale));
+  font-size: calc(16px * var(--cta-scale));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  text-decoration: none;
+  margin: calc(var(--spacing-unit) * 1) 0;
+  margin-top: -20%;
+  transition: all 0.3s ease;
+  box-shadow: 0 calc(20px * var(--cta-scale)) calc(60px * var(--cta-scale)) rgba(255, 215, 0, 0.25);
 }
 
-.nonduality-wrapper .problem-list li {
-  margin-bottom: var(--spacing-unit);
-  color: rgba(255, 255, 255, 0.85);
-  position: relative;
-  padding-left: 36px;
-  font-size: 20px;
-  line-height: 1.6;
+.nonduality-wrapper .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 calc(25px * var(--cta-scale)) calc(70px * var(--cta-scale)) rgba(255, 215, 0, 0.35);
 }
 
-.nonduality-wrapper .problem-list li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--accent-gold);
-  font-weight: bold;
-  font-size: 24px;
-  opacity: 0.7;
-}
-
-/* Benefits list */
-.nonduality-wrapper .benefits-list {
-  list-style: none;
-  padding-left: 0;
-  margin: calc(var(--spacing-unit) * 1.5) 0;
-}
-
-.nonduality-wrapper .benefits-list li {
-  margin-bottom: var(--spacing-unit);
-  color: rgba(255, 255, 255, 0.9);
-  position: relative;
-  padding-left: 36px;
-  font-size: 20px;
-  line-height: 1.7;
-}
-
-.nonduality-wrapper .benefits-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--accent-gold);
-  font-weight: bold;
-  font-size: 24px;
-  opacity: 0.9;
-}
-
-/* Force left alignment for all content in aligned sections */
-.nonduality-wrapper .aligned-content p,
-.nonduality-wrapper .aligned-content h1,
-.nonduality-wrapper .aligned-content h2,
-.nonduality-wrapper .aligned-content h3,
-.nonduality-wrapper .aligned-content .paragraph,
-.nonduality-wrapper .aligned-content .quote-block,
-.nonduality-wrapper .aligned-content ul,
-.nonduality-wrapper .aligned-content ol,
-.nonduality-wrapper .aligned-content .sentence-text,
-.nonduality-wrapper .aligned-content .sentence-line {
-  text-align: left !important;
-  margin-left: 0 !important;
-  margin-right: auto !important;
-}
-
-/* Text utilities */
-.nonduality-wrapper .text-center {
+.nonduality-wrapper .final-cta {
   text-align: center;
+  margin-top: calc(var(--spacing-unit) * 2);
 }
 
-.nonduality-wrapper .text-left {
-  text-align: left;
-}
-
-/* FAQ Section */
+/* ============================================
+   15. FAQ SECTION
+   ============================================ */
 .nonduality-wrapper .faq-section {
   background: linear-gradient(180deg, #f5e6d3 0%, #e8d7c3 100%);
   color: #333333;
@@ -623,116 +743,9 @@
   margin-bottom: var(--spacing-unit);
 }
 
-/* Final CTA Section */
-.nonduality-wrapper .final-cta {
-  text-align: center;
-  margin-top: calc(var(--spacing-unit) * 2);
-}
-
-/* Section with noise background - simplified */
-.nonduality-wrapper .section-with-noise {
-  position: relative;
-  overflow: hidden;
-  background: #000;
-}
-
-.nonduality-wrapper .section-with-noise::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('images/noise-black1.png');
-  background-repeat: repeat;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Override noise background for sections that also have gray glow */
-.nonduality-wrapper .section-problem.section-with-noise::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('images/gray-glow.png') no-repeat center center;
-  background-size: cover;
-  pointer-events: none;
-  z-index: 20;
-}
-
-/* Custom styles for problem section headers */
-.grown-so-much-header {
-  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-  display: block;
-  margin-bottom: 2px !important;
-  margin-top: 0 !important;
-  font-size: clamp(36px, 4.5vw, 48px) !important;
-  line-height: 1.2 !important;
-}
-
-.feels-wrong-header {
-  font-family: 'inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-  display: block;
-  margin-bottom: calc(var(--spacing-unit) * 1.25) !important;
-  margin-top: 0 !important;
-  font-size: clamp(36px, 4.5vw, 48px) !important;
-  line-height: 1.2 !important;
-}
-
-/* Compact problem section */
-.nonduality-wrapper .section-problem {
-  padding: 60px 0;
-  position: relative;
-  z-index: 1;
-}
-
-.nonduality-wrapper .section-problem h2 {
-  margin-bottom: calc(var(--spacing-unit) * 0.8);
-  font-size: clamp(28px, 3.5vw, 36px);
-}
-
-.nonduality-wrapper .section-problem .sentence-text {
-  margin-bottom: calc(var(--spacing-unit) * 0.6);
-}
-
-.nonduality-wrapper .section-problem .sentence-line {
-  margin-bottom: calc(var(--spacing-unit) * 0.0);
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.nonduality-wrapper .section-problem .problem-grid {
-  margin-top: calc(var(--spacing-unit) * 0.8);
-  gap: var(--grid-gap);
-}
-
-.nonduality-wrapper .section-problem .problem-card {
-  padding: var(--card-padding);
-}
-
-.nonduality-wrapper .section-problem .problem-icon {
-  font-size: 32px;
-  margin-bottom: var(--spacing-unit);
-}
-
-.nonduality-wrapper .section-problem .problem-title {
-  font-size: 18px;
-  margin-bottom: var(--spacing-unit);
-}
-
-.nonduality-wrapper .section-problem .problem-text {
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-/* Responsive */
+/* ============================================
+   16. RESPONSIVE DESIGN
+   ============================================ */
 @media (max-width: 768px) {
   :root {
     --spacing-unit: 16px;
@@ -741,6 +754,7 @@
     --card-padding: 20px;
   }
   
+  /* Layout adjustments */
   .nonduality-wrapper .section {
     padding: 30px 0;
   }
@@ -754,6 +768,7 @@
     padding: 0 30px;
   }
   
+  /* Navigation */
   .nonduality-wrapper .navigation {
     padding: 24px 0;
   }
@@ -763,10 +778,12 @@
     height: 75px;
   }
   
+  /* Hero */
   .nonduality-wrapper .hero-content {
     padding: 40px 0;
   }
   
+  /* Typography scale */
   .nonduality-wrapper h1 {
     font-size: 36px;
   }
@@ -779,6 +796,12 @@
     font-size: 17px;
   }
   
+  .nonduality-wrapper .sentence-line {
+    font-size: 17px;
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+  }
+  
+  /* Grid layouts to single column */
   .nonduality-wrapper .features-grid {
     flex-direction: column;
     gap: var(--grid-gap);
@@ -792,17 +815,14 @@
     grid-template-columns: 1fr;
   }
   
+  /* CTA button scale */
   .nonduality-wrapper .cta-button {
     --cta-scale: 0.8;
     padding: calc(18px * var(--cta-scale)) calc(40px * var(--cta-scale));
     font-size: calc(14px * var(--cta-scale));
   }
   
-  .nonduality-wrapper .sentence-line {
-    font-size: 17px;
-    margin-bottom: calc(var(--spacing-unit) * 0.75);
-  }
-  
+  /* Problem section specific */
   .nonduality-wrapper .section-problem {
     padding: 30px 0;
   }
