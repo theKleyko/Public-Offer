@@ -200,10 +200,11 @@
 .nonduality-wrapper .section-divider {
   height: 1px;
   width: 100vw;
-  max-width: 1200px;
-  margin: 0px auto;
+  margin: 0;
   position: relative;
   display: block;
+  left: 50%;
+  transform: translateX(-50%);
   background: linear-gradient(
     90deg,
     transparent 0%,
