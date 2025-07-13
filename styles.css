@@ -243,6 +243,7 @@
   --dark-bg: #0a0a0a;
   --darker-bg: #080808;
   --purple-bg: #0d0818;
+  --divider-offset: 0px; /* Adjustable divider position offset */
 }
 
 /* Base styles */
@@ -324,6 +325,7 @@
   );
   margin: calc(var(--spacing-unit) * 0.5) 0;
   position: relative;
+  transform: translateY(var(--divider-offset));
 }
 
 .nonduality-wrapper .section-divider::after {
@@ -795,6 +797,86 @@
   margin-top: calc(var(--spacing-unit) * 2);
 }
 
+/* Section with noise background */
+.nonduality-wrapper .section-with-noise {
+  position: relative;
+  overflow: hidden;
+}
+
+.nonduality-wrapper .section-with-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('images/noise-black1.png');
+  background-repeat: repeat;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Compact problem section */
+.nonduality-wrapper .section-problem {
+  padding: calc(var(--spacing-unit) * 1.5) 40px;
+}
+
+.nonduality-wrapper .section-problem h2 {
+  margin-bottom: calc(var(--spacing-unit) * 0.8);
+  font-size: clamp(28px, 3.5vw, 36px);
+}
+
+.nonduality-wrapper .section-problem .sentence-text {
+  margin-bottom: calc(var(--spacing-unit) * 0.6);
+}
+
+.nonduality-wrapper .section-problem .sentence-line {
+  margin-bottom: calc(var(--spacing-unit) * 0.4);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.nonduality-wrapper .section-problem .problem-grid {
+  margin-top: calc(var(--spacing-unit) * 0.8);
+  gap: calc(var(--spacing-unit) * 0.5);
+}
+
+.nonduality-wrapper .section-problem .problem-card {
+  padding: calc(var(--spacing-unit) * 0.6);
+}
+
+.nonduality-wrapper .section-problem .problem-icon {
+  font-size: 32px;
+  margin-bottom: calc(var(--spacing-unit) * 0.4);
+}
+
+.nonduality-wrapper .section-problem .problem-title {
+  font-size: 18px;
+  margin-bottom: calc(var(--spacing-unit) * 0.3);
+}
+
+.nonduality-wrapper .section-problem .problem-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/*
+  DIVIDER POSITION ADJUSTMENT FUNCTION:
+  
+  To adjust the yellow section divider position, change the --divider-offset value in :root.
+  
+  Examples:
+  --divider-offset: -5px;  // Moves divider up by 5px
+  --divider-offset: 10px;  // Moves divider down by 10px
+  --divider-offset: 0px;   // Default position
+  
+  You can also target specific dividers:
+  .section-divider.adjust-up { transform: translateY(-5px); }
+  .section-divider.adjust-down { transform: translateY(10px); }
+*/
+
+
 /* Responsive */
 @media (max-width: 768px) {
   :root {
@@ -858,5 +940,19 @@
   .nonduality-wrapper .sentence-line {
     font-size: 17px;
     margin-bottom: calc(var(--spacing-unit) * 0.75);
+  }
+  
+  /* Compact problem section mobile adjustments */
+  .nonduality-wrapper .section-problem {
+    padding: calc(var(--spacing-unit) * 1.2) 30px;
+  }
+  
+  .nonduality-wrapper .section-problem .problem-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 0.4);
+  }
+  
+  .nonduality-wrapper .section-problem .problem-card {
+    padding: calc(var(--spacing-unit) * 0.5);
   }
 }
