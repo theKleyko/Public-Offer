@@ -5,16 +5,8 @@
   box-sizing: border-box;
 }
 
-/* Container */
-.nonduality-wrapper .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Aligned container for consistent left alignment */
+/* Unified container for all sections */
+.nonduality-wrapper .container,
 .nonduality-wrapper .aligned-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -36,26 +28,35 @@
 .nonduality-wrapper .spacing-lg { margin-bottom: calc(var(--spacing-unit) * 2); }
 .nonduality-wrapper .spacing-xl { margin-bottom: calc(var(--spacing-unit) * 3); }
 
-/* Hero section should be pitch black without noise */
+/* Hero section */
 .nonduality-wrapper .hero-section {
-  background: #000; /* Pitch black background */
-  padding: 40px 0 40px 0;
+  background: var(--bg-primary);
+  padding: 40px 0;
   position: relative;
   overflow: hidden;
   margin-top: -50px;
 }
 
-/* Base card styles */
-.nonduality-wrapper .problem-grid .problem-card {
-  background: rgba(15, 15, 25, 0.9);
+/* Problem grid and cards */
+.nonduality-wrapper .problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+  margin-top: calc(var(--spacing-unit) * 1.5);
+  max-width: 1000px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .problem-card {
+  background: var(--bg-elevated);
   border-radius: 16px;
-  padding: calc(var(--spacing-unit) * 0.9);
+  padding: var(--card-padding);
   position: relative;
   overflow: hidden;
 }
 
-/* Gradient border using ::after */
-.nonduality-wrapper .problem-grid .problem-card::after {
+.nonduality-wrapper .problem-card::after {
   content: '';
   position: absolute;
   top: 0;
@@ -74,184 +75,57 @@
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Target cards specifically within the problem grid */
-.nonduality-wrapper .problem-grid .problem-card {
-  /* Solid background so they're not transparent */
-  background: rgba(15, 15, 25, 0.9);  /* Dark background */
-  border-radius: 16px;
-  padding: calc(var(--spacing-unit) * 0.9);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Gradient border for EACH card using ::after */
-.nonduality-wrapper .problem-grid .problem-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 215, 0, 0.4) 0%,
-    rgba(255, 215, 0, 0.2) 50%,
-    transparent 100%
-  );
-  -webkit-mask: 
+  mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
   z-index: 2;
 }
 
-/* Light effect for FIRST card (Existential Dread) */
-.nonduality-wrapper .problem-grid .problem-card:nth-child(1)::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: url('');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: screen;
-}
-
-/* Light effect for SECOND card (Thought Loops) */
-.nonduality-wrapper .problem-grid .problem-card:nth-child(2)::before {
-  content: '';
-  position: absolute;
-  top: -30%;
-  right: -30%;
-  width: 150%;
-  height: 150%;
-  background-image: url('images/ ');  /* Different image */
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.25;
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: screen;
-  animation: rotate 20s linear infinite;
-}
-
-/* Light effect for THIRD card (Lost Identity) */
-.nonduality-wrapper .problem-grid .problem-card:nth-child(3)::before {
-  content: '';
-  position: absolute;
-  bottom: -40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 180%;
-  height: 180%;
-  background-image: url('images/');  /* Different image */
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: overlay;
-}
-
-/* Ensure content stays above both effects */
-.nonduality-wrapper .problem-grid .problem-card > * {
-  position: relative;
-  z-index: 3;
-}
-
-/* Add light effect overlay */
-.nonduality-wrapper .problem-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;        /* Position above card */
-  left: -50%;       /* Position to the left */
-  width: 200%;      /* Make it bigger than card */
-  height: 200%;     
-  background-image: url('images/');  /* Your light effect */
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.3;     /* Adjust for subtlety */
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: screen;  /* Makes it glow! */
-}
-
-/* Ensure content stays above the effect */
 .nonduality-wrapper .problem-card > * {
   position: relative;
   z-index: 3;
 }
 
-/* Icon styling */
-.problem-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.nonduality-wrapper .problem-icon {
+  font-size: 42px;
+  margin-bottom: var(--spacing-unit);
+  filter: grayscale(20%);
 }
 
-/* Title styling */
-.problem-title {
-  color: #2d3748;
-  font-size: 1.4rem;
-  margin: 0 0 12px 0;
+.nonduality-wrapper .problem-title {
+  font-size: 22px;
   font-weight: 600;
-  letter-spacing: -0.5px;
+  margin-bottom: var(--spacing-unit);
+  color: var(--text-primary);
 }
 
-/* Text styling */
-.problem-text {
-  color: #4a5568;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0;
-  font-weight: 400;
+.nonduality-wrapper .problem-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Optional: Decorative accent */
-.problem-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
-}
-
-/* CSS Variables for consistent spacing */
+/* CSS Variables - simplified palette */
 :root {
-  --spacing-unit: 25px;
+  --spacing-unit: 16px;
   --paragraph-lg: 20px;
   --paragraph-md: 18px;
-  --gold: #ffd700;
-  --gold-light: rgba(255, 215, 0, 0.2);
-  --dark-bg: #0a0a0a;
-  --darker-bg: #080808;
-  --purple-bg: #0d0818;
-  --divider-offset: 13px; /* Adjustable divider position offset */
+  --bg-primary: #0A0A0A;
+  --bg-elevated: #0F0F0F;
+  --text-primary: #FFFFFF;
+  --accent-gold: #FFD700;
+  --grid-gap: 24px;
+  --card-padding: 24px;
 }
 
 /* Base styles */
 .nonduality-wrapper {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
-  color: #ffffff;
-  background: #0a0a0a;
+  color: var(--text-primary);
+  background: var(--bg-primary);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -267,26 +141,26 @@
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .nonduality-wrapper h1 {
   font-size: clamp(50px, 5.5vw, 42px);
   margin-bottom: calc(var(--spacing-unit) * 1.5);
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.1;
 }
 
 .nonduality-wrapper h2 {
   font-size: clamp(36px, 4.5vw, 48px);
   margin-bottom: calc(var(--spacing-unit) * 1.25);
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .nonduality-wrapper h3 {
   font-size: clamp(24px, 3.5vw, 32px);
   margin-bottom: var(--spacing-unit);
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Paragraph styles */
@@ -300,45 +174,60 @@
 
 /* Sentence-by-sentence text styles */
 .nonduality-wrapper .sentence-text {
-  max-width: 700px;
+  max-width: 800px;
   margin-left: 0;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 0.5); /* space between sentences */
 }
 
 .nonduality-wrapper .sentence-line {
-  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  display: block;
+  margin-bottom: 0; /* gap handled by parent */
   line-height: 1.6;
   font-size: var(--paragraph-lg);
   color: rgba(255, 255, 255, 0.95);
   font-weight: 400;
+  padding: 2px 0;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
-/* Section divider with glow */
+/* Perfect section divider */
 .nonduality-wrapper .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 217, 0, 0.486), 
-    rgba(255, 217, 0, 0.45), 
-    rgba(255, 215, 0, 0.2), 
-    transparent
-  );
-  margin: calc(var(--spacing-unit) * 0.5) 0;
+  width: 100vw;
+  max-width: 1200px;
+  margin: 0px auto;
   position: relative;
-  transform: translateY(var(--divider-offset));
+  display: block;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.2) 20%,
+    rgba(255, 215, 0, 0.4) 35%,
+    rgba(255, 215, 0, 0.5) 50%,
+    rgba(255, 215, 0, 0.4) 65%,
+    rgba(255, 215, 0, 0.2) 80%,
+    transparent 100%
+  );
 }
 
 .nonduality-wrapper .section-divider::after {
   content: '';
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  height: 20px;
-  transform: translateY(-50%);
-  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 15px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  filter: blur(8px);
   pointer-events: none;
-  z-index: 2;
+  z-index: -1;
 }
 
 /* Navigation */
@@ -354,8 +243,8 @@
   height: 100px;
   border-radius: 65%;
   object-fit: cover;
-  border: 5px solid rgba(255, 215, 0, 0.12); /* Subtle gold border */
-  box-shadow: 0 0 12px 0 rgba(255, 215, 0, 0.10); /* Soft glow */
+  border: 5px solid rgba(255, 215, 0, 0.12);
+  box-shadow: 0 0 12px 0 rgba(255, 215, 0, 0.10);
   filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.08));
 }
 
@@ -399,15 +288,6 @@
 
 /* Highlight style */
 .nonduality-wrapper .highlight {
-  background: rgb(1, 98, 142);
-  border: 0px solid rgba(255, 215, 0, 0.4);
-  border-radius: 8px;
-  padding: 4px 14px;
-  font-weight: 700;
-  color: #ffffff;
-  border: none;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  /* Hide highlight but keep text visible */
   background: none !important;
   color: inherit !important;
   font-weight: inherit !important;
@@ -419,11 +299,11 @@
 
 /* Video wrapper */
 .nonduality-wrapper .video-wrapper {
-  max-width: 500px; /* Reduced width */
-  margin: calc(var(--spacing-unit) * 1.5) auto; /* Adjusted spacing */
-  border-radius: 12px; /* Slightly smaller border radius */
+  max-width: 500px;
+  margin: calc(var(--spacing-unit) * 1.5) auto;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8); /* Adjusted shadow */
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
   background: #000;
 }
 
@@ -438,7 +318,7 @@
 .nonduality-wrapper .features-grid {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: var(--grid-gap);
   margin: calc(var(--spacing-unit) * 2) 0;
   margin-top: -2%;
   flex-wrap: wrap;
@@ -459,7 +339,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #ffd700;
+  color: var(--accent-gold);
   font-weight: bold;
   font-size: 16px;
 }
@@ -472,9 +352,9 @@
 
 /* CTA Button */
 .nonduality-wrapper .cta-button {
-  --cta-scale: 0.8; /* Default scale - change this value to resize the button */
+  --cta-scale: 0.8;
   display: inline-block;
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
   color: #000;
   padding: calc(22px * var(--cta-scale)) calc(56px * var(--cta-scale));
   border-radius: calc(60px * var(--cta-scale));
@@ -484,10 +364,9 @@
   letter-spacing: 2.5px;
   text-decoration: none;
   margin: calc(var(--spacing-unit) * 1) 0;
-  margin-top: -20%; /* Example: 5% spacing to the first text */
+  margin-top: -20%;
   transition: all 0.3s ease;
   box-shadow: 0 calc(20px * var(--cta-scale)) calc(60px * var(--cta-scale)) rgba(255, 215, 0, 0.25);
-  /* Removed transform: scale() to prevent layout issues */
 }
 
 .nonduality-wrapper .cta-button:hover {
@@ -495,58 +374,34 @@
   box-shadow: 0 calc(25px * var(--cta-scale)) calc(70px * var(--cta-scale)) rgba(255, 215, 0, 0.35);
 }
 
-/* First Testimonials Section */
-.nonduality-wrapper .first-testimonials {
-  background: linear-gradient(180deg, #0f0f0f 0%, #0d0d0d 100%);
-  padding: 40px 40px 80px 40px;
-  position: relative;
-}
-
-/* Sections */
+/* Sections - unified padding and consistent spacing */
 .nonduality-wrapper .section {
-  padding: calc(var(--spacing-unit) * 3) 40px;
+  padding: 60px 0;
   position: relative;
 }
 
-/* Section backgrounds */
-.nonduality-wrapper .section-dark {
-  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
-}
-
+/* Section backgrounds - alternating for clear distinction */
+.nonduality-wrapper .section-dark,
 .nonduality-wrapper .section-darker {
-  background: linear-gradient(180deg, #080808 0%, #0c0c0c 100%);
+  background: #080808;
 }
 
-.nonduality-wrapper .section-purple {
-  background: linear-gradient(180deg, #ff0000 0%, #140428 50%, #0d0818 100%);
+.nonduality-wrapper .section-purple-dark,
+.nonduality-wrapper .section-problem {
+  background: #121212;
+}
+
+.nonduality-wrapper .first-testimonials {
+  background: #080808;
+  padding: 60px 0;
   position: relative;
-  overflow: hidden;
-}
-
-/* Add noise PNG to the purple section */
-.nonduality-wrapper .section-purple::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('images/noise-black1.png');
-  background-repeat: repeat;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.nonduality-wrapper .section-purple-dark {
-  background: linear-gradient(180deg, #0a0614 0%, #12021f 100%);
 }
 
 /* Testimonials */
 .nonduality-wrapper .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: var(--grid-gap);
   margin-top: 40px;
   max-width: 800px;
   margin-left: auto;
@@ -554,20 +409,20 @@
 }
 
 .nonduality-wrapper .testimonial-card {
-  background: #111; /* Solid, opaque background */
-  border: none;     /* Remove border */
+  background: var(--bg-elevated);
+  border: none;
   border-radius: 16px;
-  padding: 40px;
+  padding: var(--card-padding);
   text-align: center;
 }
 
 .nonduality-wrapper .testimonial-video {
-  background: #222; /* Slightly lighter solid background for video area */
-  border: none;     /* Remove border */
+  background: #222;
+  border: none;
   width: 100%;
   height: 280px;
   border-radius: 12px;
-  margin-bottom: 24px;
+  margin-bottom: var(--spacing-unit);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -576,54 +431,17 @@
 }
 
 .nonduality-wrapper .testimonial-name {
-  color: #ffd700;
+  color: var(--accent-gold);
   font-weight: 600;
   font-size: 18px;
-  margin-top: 16px;
-}
-
-/* Problem grid */
-.nonduality-wrapper .problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: calc(var(--spacing-unit) * 0.75);
-  margin-top: calc(var(--spacing-unit) * 1.5);
-  max-width: 1000px;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.nonduality-wrapper .problem-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  border-radius: 16px;
-  padding: calc(var(--spacing-unit) * 0.9);
-}
-
-.nonduality-wrapper .problem-icon {
-  font-size: 42px;
-  margin-bottom: calc(var(--spacing-unit) * 0.6);
-  filter: grayscale(20%);
-}
-
-.nonduality-wrapper .problem-title {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: calc(var(--spacing-unit) * 0.4);
-  color: #ffffff;
-}
-
-.nonduality-wrapper .problem-text {
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--spacing-unit);
 }
 
 /* Quote block */
 .nonduality-wrapper .quote-block {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 215, 0, 0.01) 100%);
   border-left: 3px solid rgba(255, 215, 0, 0.3);
-  padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.25);
+  padding: var(--card-padding);
   margin: calc(var(--spacing-unit) * 2) 0;
   font-size: 22px;
   font-style: normal;
@@ -643,7 +461,7 @@
 }
 
 .nonduality-wrapper .problem-list li {
-  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  margin-bottom: var(--spacing-unit);
   color: rgba(255, 255, 255, 0.85);
   position: relative;
   padding-left: 36px;
@@ -655,7 +473,7 @@
   content: "→";
   position: absolute;
   left: 0;
-  color: #ffd700;
+  color: var(--accent-gold);
   font-weight: bold;
   font-size: 24px;
   opacity: 0.7;
@@ -669,7 +487,7 @@
 }
 
 .nonduality-wrapper .benefits-list li {
-  margin-bottom: calc(var(--spacing-unit) * 1.25);
+  margin-bottom: var(--spacing-unit);
   color: rgba(255, 255, 255, 0.9);
   position: relative;
   padding-left: 36px;
@@ -681,7 +499,7 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: #ffd700;
+  color: var(--accent-gold);
   font-weight: bold;
   font-size: 24px;
   opacity: 0.9;
@@ -716,7 +534,7 @@
 .nonduality-wrapper .faq-section {
   background: linear-gradient(180deg, #f5e6d3 0%, #e8d7c3 100%);
   color: #333333;
-  padding: calc(var(--spacing-unit) * 3) 40px;
+  padding: 40px 0;
   position: relative;
   margin: 0;
 }
@@ -730,6 +548,7 @@
 .nonduality-wrapper .faq-container {
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 40px;
 }
 
 .nonduality-wrapper .faq-item {
@@ -742,7 +561,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc(var(--spacing-unit) * 1) 0;
+  padding: var(--spacing-unit) 0;
   transition: all 0.3s ease;
 }
 
@@ -781,14 +600,14 @@
 
 .nonduality-wrapper .faq-answer.active {
   max-height: 500px;
-  padding-bottom: calc(var(--spacing-unit) * 1);
+  padding-bottom: var(--spacing-unit);
 }
 
 .nonduality-wrapper .faq-answer p {
   color: #333333;
   font-size: 18px;
   line-height: 1.7;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-unit);
 }
 
 /* Final CTA Section */
@@ -797,11 +616,11 @@
   margin-top: calc(var(--spacing-unit) * 2);
 }
 
-/* Section with noise background */
+/* Section with noise background - simplified */
 .nonduality-wrapper .section-with-noise {
   position: relative;
   overflow: hidden;
-  background: #909090; /* <-- Set your desired background color here */
+  background: var(--bg-primary);
 }
 
 .nonduality-wrapper .section-with-noise::before {
@@ -813,14 +632,15 @@
   bottom: 0;
   background-image: url('images/noise-black1.png');
   background-repeat: repeat;
-  opacity: 0.3;
+  opacity: 0.03;
+  filter: grayscale(100%);
   pointer-events: none;
   z-index: 0;
 }
 
 /* Compact problem section */
 .nonduality-wrapper .section-problem {
-  padding: calc(var(--spacing-unit) * 1.5) 40px;
+  padding: 60px 0;
 }
 
 .nonduality-wrapper .section-problem h2 {
@@ -840,21 +660,21 @@
 
 .nonduality-wrapper .section-problem .problem-grid {
   margin-top: calc(var(--spacing-unit) * 0.8);
-  gap: calc(var(--spacing-unit) * 0.5);
+  gap: var(--grid-gap);
 }
 
 .nonduality-wrapper .section-problem .problem-card {
-  padding: calc(var(--spacing-unit) * 0.6);
+  padding: var(--card-padding);
 }
 
 .nonduality-wrapper .section-problem .problem-icon {
   font-size: 32px;
-  margin-bottom: calc(var(--spacing-unit) * 0.4);
+  margin-bottom: var(--spacing-unit);
 }
 
 .nonduality-wrapper .section-problem .problem-title {
   font-size: 18px;
-  margin-bottom: calc(var(--spacing-unit) * 0.3);
+  margin-bottom: var(--spacing-unit);
 }
 
 .nonduality-wrapper .section-problem .problem-text {
@@ -862,34 +682,25 @@
   line-height: 1.4;
 }
 
-/*
-  DIVIDER POSITION ADJUSTMENT FUNCTION:
-  
-  To adjust the yellow section divider position, change the --divider-offset value in :root.
-  
-  Examples:
-  --divider-offset: -5px;  // Moves divider up by 5px
-  --divider-offset: 10px;  // Moves divider down by 10px
-  --divider-offset: 0px;   // Default position
-  
-  You can also target specific dividers:
-  .section-divider.adjust-up { transform: translateY(-5px); }
-  .section-divider.adjust-down { transform: translateY(10px); }
-*/
-
-
 /* Responsive */
 @media (max-width: 768px) {
   :root {
-    --spacing-unit: 24px;
+    --spacing-unit: 16px;
     --paragraph-lg: 18px;
+    --grid-gap: 16px;
+    --card-padding: 20px;
   }
   
   .nonduality-wrapper .section {
-    padding: calc(var(--spacing-unit) * 2.5) 30px;
+    padding: 30px 0;
   }
   
+  .nonduality-wrapper .container,
   .nonduality-wrapper .aligned-container {
+    padding: 0 30px;
+  }
+  
+  .nonduality-wrapper .faq-container {
     padding: 0 30px;
   }
   
@@ -920,7 +731,7 @@
   
   .nonduality-wrapper .features-grid {
     flex-direction: column;
-    gap: 24px;
+    gap: var(--grid-gap);
   }
   
   .nonduality-wrapper .problem-grid {
@@ -932,10 +743,9 @@
   }
   
   .nonduality-wrapper .cta-button {
-    --cta-scale: 0.8; /* Maintain the same scale on mobile */
+    --cta-scale: 0.8;
     padding: calc(18px * var(--cta-scale)) calc(40px * var(--cta-scale));
     font-size: calc(14px * var(--cta-scale));
-    /* Removed transform: scale() to prevent conflicts */
   }
   
   .nonduality-wrapper .sentence-line {
@@ -943,17 +753,16 @@
     margin-bottom: calc(var(--spacing-unit) * 0.75);
   }
   
-  /* Compact problem section mobile adjustments */
   .nonduality-wrapper .section-problem {
-    padding: calc(var(--spacing-unit) * 1.2) 30px;
+    padding: 30px 0;
   }
   
   .nonduality-wrapper .section-problem .problem-grid {
     grid-template-columns: 1fr;
-    gap: calc(var(--spacing-unit) * 0.4);
+    gap: var(--grid-gap);
   }
   
   .nonduality-wrapper .section-problem .problem-card {
-    padding: calc(var(--spacing-unit) * 0.5);
+    padding: var(--card-padding);
   }
 }
