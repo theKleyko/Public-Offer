@@ -88,10 +88,21 @@
   z-index: 3;
 }
 
+
+/* Problem icon image with uniform size control */
 .nonduality-wrapper .problem-icon {
-  font-size: 42px;
   margin-bottom: var(--spacing-unit);
   filter: grayscale(20%);
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.problem-icon-img {
+  width: var(--problem-icon-size) !important;
+  height: var(--problem-icon-size) !important;
+  display: block;
+  object-fit: contain;
 }
 
 .nonduality-wrapper .problem-title {
@@ -118,6 +129,7 @@
   --accent-gold: #FFD700;
   --grid-gap: 24px;
   --card-padding: 24px;
+  --problem-icon-size: 24px;
 }
 
 /* Base styles */
@@ -639,9 +651,30 @@
   z-index: 0;
 }
 
+/* Override noise background for sections that also have yellow glow */
+.nonduality-wrapper .section-problem.section-with-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/yellow-glow-backround.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  mix-blend-mode: screen;
+  opacity: 0.8;
+  filter: none;
+  pointer-events: none;
+  z-index: 20;
+}
+
 /* Compact problem section */
 .nonduality-wrapper .section-problem {
   padding: 60px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .nonduality-wrapper .section-problem h2 {
