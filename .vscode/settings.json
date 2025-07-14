@@ -1,0 +1,16 @@
+{
+    // Disable automatic git fetching
+    "git.autofetch": false,
+    "git.autofetchPeriod": 0,
+    
+    // Disable other automatic git operations
+    "git.autorefresh": false,
+    "git.enableSmartCommit": false,
+    "git.confirmSync": true,
+    
+    // Optional: Disable git decorations if you want less git integration
+    "git.decorations.enabled": true,
+    
+    // Show git status in status bar but don't auto-fetch
+    "git.enableStatusBarSync": false
+}
