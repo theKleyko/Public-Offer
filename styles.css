@@ -103,7 +103,7 @@
   font-weight: 100;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: #00d0ff;
+  color: #ffffff;
   margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
@@ -560,7 +560,7 @@
 .nonduality-wrapper .problem-text {
   font-size: 15px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255, 255, 255);
 }
 
 /* Problem list */
