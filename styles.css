@@ -44,11 +44,11 @@
   --header-color: #ffffff;
 
   /* --- Spacing after every header ----------------------- */
-  --header-gap: .30em;
+  --header-gap: .4em;
   
   /* --- Dual Header Spacing Controls --------------------- */
-  --dual-header-gap: 60px; /* Increased space between main title and subtitle */
-  --dual-header-bottom-margin: calc(var(--spacing-unit) * 1.5); /* Space after subtitle */
+  --dual-header-gap: 150px; /* Increased space between main title and subtitle */
+  --dual-header-bottom-margin: calc(var(--spacing-unit) * 1); /* Space after subtitle */
 }
 
 /* ============================================
@@ -469,10 +469,6 @@
   padding: 40px 0;
   position: relative;
   z-index: 1;
-}
-
-.nonduality-wrapper .section-problem h2 {
-  margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
 .nonduality-wrapper .section-problem .sentence-text {
