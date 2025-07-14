@@ -36,7 +36,7 @@
 
 .nonduality-wrapper {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
+  line-height: 2;
   color: var(--text-primary);
   background: var(--bg-primary);
   overflow-x: hidden;
@@ -122,7 +122,7 @@
   font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(44px, 4vw, 10px);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 2;
   letter-spacing: -0.01em;
   color: #ffffff;
   text-align: center;
@@ -200,9 +200,9 @@
 
 /* Paragraphs */
 .nonduality-wrapper .paragraph {
-  font-size: 18px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 19px;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.925);
   margin-bottom: calc(var(--spacing-unit) * 0.75);
   font-weight: 300;
 }
@@ -384,20 +384,20 @@
 /* ============================================
    10. SECTIONS & BACKGROUNDS
    ============================================ */
+
 .nonduality-wrapper .section {
   padding: 40px 0;
   position: relative;
+  background: #000 !important;
 }
 
 /* Background variations */
-.nonduality-wrapper .section-dark,
-.nonduality-wrapper .section-darker {
-  background: #080808;
-}
 
+.nonduality-wrapper .section-dark,
+.nonduality-wrapper .section-darker,
 .nonduality-wrapper .section-purple-dark,
 .nonduality-wrapper .section-problem {
-  background: #121212;
+  background: #000 !important;
 }
 
 /* Noise background overlay */
