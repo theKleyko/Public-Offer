@@ -7,7 +7,7 @@
    --------------------------------------------------------- */
 :root{
   /* Spacing System */
-  --spacing-unit: 12px;
+  --spacing-unit: 14px;
   --grid-gap: 20px;
   --card-padding: 20px;
   
@@ -222,7 +222,7 @@
   margin-bottom: 0;
   line-height: 1.5;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.892);
   font-weight: 400;
   padding: 1px 0;
   white-space: normal;
