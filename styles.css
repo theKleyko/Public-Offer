@@ -47,7 +47,7 @@
   --header-gap: .30em;
   
   /* --- Dual Header Spacing Controls --------------------- */
-  --dual-header-gap: 8px; /* Space between main title and subtitle */
+  --dual-header-gap: 60px; /* Increased space between main title and subtitle */
   --dual-header-bottom-margin: calc(var(--spacing-unit) * 1.5); /* Space after subtitle */
 }
 
@@ -202,7 +202,7 @@
 
 /* Sentence-by-sentence text - More compact */
 .nonduality-wrapper .sentence-text {
-  max-width: 800px;
+  max-width: 950px;
   margin-left: 0;
   margin-right: auto;
   display: flex;
