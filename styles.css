@@ -90,7 +90,7 @@
 /* Hero Section Headers */
 .nonduality-wrapper .hero-title {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(calc(52px * var(--hero-scale)), calc(4vw * var(--hero-scale)), calc(62px * var(--hero-scale)));
+  font-size: clamp(calc(52px * var(--hero-scale)), calc(4vw * var(--hero-scale)), calc(72px * var(--hero-scale)));
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
