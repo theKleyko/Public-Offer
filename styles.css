@@ -1192,16 +1192,16 @@ background: linear-gradient(
 .nonduality-wrapper .faq-section {
   background: linear-gradient(180deg, #f5e6d3 0%, #e8d7c3 100%);
   color: var(--text-dark);
-  padding: calc(30px * var(--site-scale)) 0;
+  padding: calc(60px * var(--site-scale)) 0;
   position: relative;
   margin: 0;
 }
 
 .nonduality-wrapper .faq-container {
-  max-width: calc(900px * var(--site-scale));
+  max-width: calc(1000px * var(--site-scale));
   margin: 0 auto;
   padding: 0 calc(40px * var(--site-scale));
-  margin-bottom: calc(10px * var(--site-scale));
+  margin-bottom: calc(20px * var(--site-scale));
 }
 
 .nonduality-wrapper .faq-main-title {
@@ -1211,12 +1211,15 @@ background: linear-gradient(
   line-height: var(--header-line-height);
   color: var(--text-dark);
   text-align: center;
-  margin-bottom: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 4);
 }
 
 .nonduality-wrapper .faq-item {
-  border-bottom: 1px solid #333333;
-  margin-bottom: 0;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.3);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  border-radius: calc(8px * var(--site-scale));
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: calc(var(--spacing-unit) * 1);
 }
 
 .nonduality-wrapper .faq-question {
@@ -1224,13 +1227,17 @@ background: linear-gradient(
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc(var(--spacing-unit) * 0.75) 0;
-  transition: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  transition: background-color 0.2s ease;
+}
+
+.nonduality-wrapper .faq-question:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nonduality-wrapper .faq-question-title {
   font-family: var(--subheader-font);
-  font-size: calc(20px * var(--site-scale));
+  font-size: calc(22px * var(--site-scale));
   font-weight: var(--weight-semibold);
   line-height: 1.3;
   letter-spacing: var(--subheader-letter-spacing);
@@ -1240,39 +1247,43 @@ background: linear-gradient(
 }
 
 .nonduality-wrapper .faq-icon {
-  width: calc(28px * var(--site-scale));
-  height: calc(28px * var(--site-scale));
+  width: calc(32px * var(--site-scale));
+  height: calc(32px * var(--site-scale));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(20px * var(--site-scale));
+  font-size: calc(24px * var(--site-scale));
   color: var(--text-dark);
-  transition: none;
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-left: calc(var(--spacing-unit) * 1);
 }
 
 .nonduality-wrapper .faq-item.active .faq-icon {
   transform: rotate(45deg);
   color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .nonduality-wrapper .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease;
 }
 
 .nonduality-wrapper .faq-answer.active {
-  max-height: calc(500px * var(--site-scale));
-  padding-bottom: calc(var(--spacing-unit) * 0.75);
+  max-height: calc(600px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2);
 }
 
 .nonduality-wrapper .faq-answer p {
   font-family: var(--body-font);
   font-weight: var(--body-weight);
   color: var(--text-dark);
-  font-size: calc(16px * var(--site-scale));
-  line-height: 1.6;
-  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.7;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
 .nonduality-wrapper .call-details {
@@ -1315,6 +1326,26 @@ background: linear-gradient(
   
   .nonduality-wrapper .faq-container {
     padding: 0 calc(25px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .faq-section {
+    padding: calc(40px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .faq-main-title {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+  
+  .nonduality-wrapper .faq-question {
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 1.5);
+  }
+  
+  .nonduality-wrapper .faq-question-title {
+    font-size: calc(18px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .faq-answer p {
+    font-size: calc(16px * var(--site-scale));
   }
   
   .nonduality-wrapper .navigation {
