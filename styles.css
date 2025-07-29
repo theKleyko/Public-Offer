@@ -273,6 +273,21 @@
   z-index: 1;
 }
 
+/* Background layer 1 variation */
+.nonduality-wrapper .bg-layer-1-version1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: var(--bg-layer-1-blend);
+  background-size: auto;
+  background-position: center;
+  background-repeat: repeat;
+  z-index: 1;
+}
+
 .nonduality-wrapper .bg-layer-2 {
   position: absolute;
   top: 0;
@@ -649,7 +664,7 @@
 .nonduality-wrapper .feature-item {
   display: flex;
   align-items: center;
-  gap: calc(10px * var(--hero-scale));
+  gap: calc(6px * var(--hero-scale));
 }
 
 .nonduality-wrapper .feature-icon {
@@ -664,6 +679,7 @@
   color: var(--accent-gold);
   font-weight: bold;
   font-size: calc(16px * var(--hero-scale));
+  margin-left: 20px;
 }
 
 .nonduality-wrapper .feature-text {
@@ -899,6 +915,84 @@ background: linear-gradient(
   margin-right: auto !important;
 }
 
+/* ============================================
+   MENTORSHIP SECTION - Separate from Benefits
+   ============================================ */
+/* Mentorship grid - single row, two columns */
+.nonduality-wrapper .mentorship-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--grid-gap) * 1.2);
+  margin-top: calc(var(--spacing-unit) * 2);
+  max-width: calc(1200px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mentorship cards - left-aligned text, no icons */
+.nonduality-wrapper .mentorship-card {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(138, 97, 255, 0.2);
+  border-radius: calc(20px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 2.5);
+  position: relative;
+  box-shadow: var(--benefit-card-glow);
+  transition: none;
+  min-height: auto;
+}
+
+/* Mentorship card titles - left aligned */
+.nonduality-wrapper .mentorship-card .card-title,
+.nonduality-wrapper .mentorship-card h3 {
+  font-family: var(--subheader-font);
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-heading);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Mentorship card text - left aligned */
+.nonduality-wrapper .mentorship-card-text,
+.nonduality-wrapper .mentorship-card p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: calc(16px * var(--site-scale));
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Subtle gradient overlay for mentorship cards */
+.nonduality-wrapper .mentorship-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(138, 97, 255, 0.1) 0%, transparent 70%);
+  border-radius: calc(20px * var(--site-scale));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure mentorship content stays above overlay */
+.nonduality-wrapper .mentorship-card .card-title,
+.nonduality-wrapper .mentorship-card-text,
+.nonduality-wrapper .mentorship-card h3,
+.nonduality-wrapper .mentorship-card p {
+  position: relative;
+  z-index: 2;
+}
+
 /* Lists */
 .nonduality-wrapper .problem-list {
   list-style: disc inside;
@@ -1070,11 +1164,11 @@ background: linear-gradient(
   letter-spacing: var(--accent-letter-spacing);
   --cta-scale: calc(1.0 * var(--hero-scale));
   display: inline-block;
-  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
+  background: linear-gradient(135deg, var(--accent-gold) 100%, #ffed4e 80%);
   color: #000;
-  padding: calc(18px * var(--cta-scale)) calc(48px * var(--cta-scale));
+  padding: calc(20px * var(--cta-scale)) calc(70px * var(--cta-scale));
   border-radius: calc(60px * var(--cta-scale));
-  font-size: calc(var(--accent-size) * var(--cta-scale));
+  font-size: calc(19px * var(--cta-scale));
   text-transform: uppercase;
   text-decoration: none;
   margin: calc(var(--spacing-unit) * 0.75 * var(--hero-scale)) 0;
@@ -1271,6 +1365,16 @@ background: linear-gradient(
   .nonduality-wrapper .hero-testimonials,
   .nonduality-wrapper .main-testimonials {
     grid-template-columns: 1fr;
+  }
+  
+  .nonduality-wrapper .mentorship-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--grid-gap) * 0.8);
+  }
+  
+  .nonduality-wrapper .mentorship-card {
+    min-height: auto;
+    padding: calc(var(--spacing-unit) * 2);
   }
   
   .nonduality-wrapper .cta-button {
