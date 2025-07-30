@@ -831,21 +831,21 @@ background: linear-gradient(
   margin-right: auto;
 }
 
-/* New gradient benefit cards */
+/* New gradient benefit cards - COMPACT VERSION */
 .nonduality-wrapper .benefit-card {
   background: rgb(0, 0, 0);
-  background: radial-gradient(135deg, rgb(124, 83, 235) 0%, rgb(56, 2, 95) 50%, rgb(95, 3, 171) 100%) !important;
-  border: 1px solid rgba(138, 97, 255, 0.2);
+  background: linear-gradient(circular, rgb(66, 36, 136) 0%, rgb(37, 12, 82) 50%, rgb(53, 16, 147) 100%) !important;
+  border: 1px solid rgba(193, 224, 15, 0.3);
   border-radius: calc(20px * var(--site-scale));
-  padding: calc(var(--spacing-unit) * 2.5);
+  padding: calc(var(--spacing-unit) * 1.75);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   position: relative;
   box-shadow: var(--benefit-card-glow);
   transition: none; /* Remove hover effects */
-  min-height: calc(200px * var(--site-scale));
+  min-height: calc(160px * var(--site-scale));
   justify-content: flex-start;
 }
 
@@ -855,22 +855,23 @@ background: linear-gradient(
   box-shadow: var(--benefit-card-glow);
 }
 
-/* Centered icon styling */
+/* Centered icon styling - COMPACT VERSION */
 .nonduality-wrapper .benefit-card-icon {
   position: static; /* Remove absolute positioning */
-  font-size: calc(36px * var(--site-scale));
-  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  font-size: calc(20px * var(--site-scale));
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   opacity: 1;
   filter: none;
-  background: rgba(138, 97, 255, 0.1);
+  background: none;
   border-radius: 50%;
-  width: calc(65px * var(--site-scale));
-  height: calc(65px * var(--site-scale));
+  width: calc(40px * var(--site-scale));
+  height: calc(40px * var(--site-scale));
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(138, 97, 255, 0.3);
+  border: none;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 /* Card text styling */
@@ -882,7 +883,7 @@ background: linear-gradient(
   color: var(--text-primary);
   margin: 0;
   padding-top: 0; /* Remove top padding since icon is no longer absolute */
-  text-align: center !important;
+  text-align: left !important;
 }
 
 /* Subtle gradient overlay for extra mystical effect - DISABLED */
@@ -897,14 +898,20 @@ background: linear-gradient(
   z-index: 2;
 }
 
-/* Force benefit card content to be centered - override any global alignment rules */
+/* Force benefit card content to be left-aligned - override any global alignment rules */
 .nonduality-wrapper .benefit-card .card-title,
 .nonduality-wrapper .benefit-card .benefit-card-text,
 .nonduality-wrapper .benefit-card h3,
 .nonduality-wrapper .benefit-card p {
-  text-align: center !important;
-  margin-left: auto !important;
+  text-align: left !important;
+  margin-left: 0 !important;
   margin-right: auto !important;
+}
+
+/* Hide benefit card titles */
+.nonduality-wrapper .benefit-card .card-title,
+.nonduality-wrapper .benefit-card h3 {
+  display: none;
 }
 
 /* ============================================
@@ -1393,15 +1400,17 @@ background: linear-gradient(
   }
   
   .nonduality-wrapper .benefit-card {
-    min-height: calc(180px * var(--site-scale));
-    padding: calc(var(--spacing-unit) * 2);
+    min-height: calc(140px * var(--site-scale));
+    padding: calc(var(--spacing-unit) * 1.5);
   }
   
   .nonduality-wrapper .benefit-card-icon {
-    width: calc(55px * var(--site-scale));
-    height: calc(55px * var(--site-scale));
-    font-size: calc(30px * var(--site-scale));
-    margin-bottom: calc(var(--spacing-unit) * 1);
+    width: calc(35px * var(--site-scale));
+    height: calc(35px * var(--site-scale));
+    font-size: calc(18px * var(--site-scale));
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    background: none;
+    border: none;
   }
   
   .nonduality-wrapper .hero-testimonials,
