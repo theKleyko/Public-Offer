@@ -833,7 +833,8 @@ background: linear-gradient(
 
 /* New gradient benefit cards */
 .nonduality-wrapper .benefit-card {
-  background:  radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  background: rgb(0, 0, 0);
+  background: radial-gradient(135deg, rgb(124, 83, 235) 0%, rgb(56, 2, 95) 50%, rgb(95, 3, 171) 100%) !important;
   border: 1px solid rgba(138, 97, 255, 0.2);
   border-radius: calc(20px * var(--site-scale));
   padding: calc(var(--spacing-unit) * 2.5);
@@ -884,18 +885,9 @@ background: linear-gradient(
   text-align: center !important;
 }
 
-/* Subtle gradient overlay for extra mystical effect */
+/* Subtle gradient overlay for extra mystical effect - DISABLED */
 .nonduality-wrapper .benefit-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(138, 97, 255, 0.1) 0%, transparent 70%);
-  border-radius: calc(20px * var(--site-scale));
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 /* Ensure content stays above overlay */
