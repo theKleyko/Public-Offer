@@ -819,14 +819,14 @@ background: linear-gradient(
 /* ============================================
    13. BENEFITS SECTION
    ============================================ */
-/* Updated Benefits Section with Purple-Blue Gradient */
+/* Updated Benefits Section with 3x3 Grid */
 .nonduality-wrapper .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: calc(var(--grid-gap) * 1.2);
   margin-top: calc(var(--spacing-unit) * 2);
-  max-width: calc(1000px * var(--site-scale));
+  max-width: calc(1200px * var(--site-scale));
   margin-left: auto;
   margin-right: auto;
 }
@@ -1094,8 +1094,9 @@ background: linear-gradient(
 }
 
 .nonduality-wrapper .main-testimonials {
-  grid-template-columns: repeat(auto-fit, minmax(calc(250px * var(--site-scale)), 1fr));
-  max-width: calc(1000px * var(--site-scale));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  max-width: calc(800px * var(--site-scale));
   margin-left: auto;
   margin-right: auto;
   margin-top: calc(var(--spacing-unit) * 2);
@@ -1110,6 +1111,24 @@ background: linear-gradient(
   padding: calc(var(--card-padding) * 0.9);
   text-align: center;
   margin-bottom: 0;
+}
+
+/* Standalone testimonial screenshot */
+.nonduality-wrapper .standalone-testimonial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(var(--spacing-unit) * 2) auto;
+  max-width: calc(600px * var(--site-scale));
+  padding: calc(20px * var(--site-scale));
+}
+
+.nonduality-wrapper .testimonial-screenshot-standalone {
+  width: calc(500px * var(--site-scale));
+  height: auto;
+  max-width: 100%;
+  border-radius: calc(8px * var(--site-scale));
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .nonduality-wrapper .testimonial-video {
