@@ -157,9 +157,7 @@
   --problem-card-glow-color-2: rgba(138, 97, 255, 0.1);
   
   /* Benefit Cards Glow */
-  --benefit-card-glow: 
-    0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) var(--benefit-card-glow-color-1),
-    0 0 calc(60px * var(--site-scale)) var(--benefit-card-glow-color-2);
+  --benefit-card-glow: none; /* No glow for benefit cards */
   --benefit-card-glow-color-1: rgba(45, 27, 105, 0.3);
   --benefit-card-glow-color-2: rgba(138, 97, 255, 0.1);
   
@@ -824,7 +822,7 @@ background: linear-gradient(
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: calc(var(--grid-gap) * 1.2);
+  gap: calc(var(--grid-gap) * 0.8);
   margin-top: calc(var(--spacing-unit) * 2);
   max-width: calc(1200px * var(--site-scale));
   margin-left: auto;
@@ -833,9 +831,9 @@ background: linear-gradient(
 
 /* New gradient benefit cards - COMPACT VERSION */
 .nonduality-wrapper .benefit-card {
-  background: rgb(0, 0, 0);
+  background: rgb(12, 13, 18);
   background: linear-gradient(circular, rgb(66, 36, 136) 0%, rgb(37, 12, 82) 50%, rgb(53, 16, 147) 100%) !important;
-  border: 1px solid rgba(193, 224, 15, 0.3);
+  border: 1px solid rgba(255, 217, 0, 0.336);
   border-radius: calc(20px * var(--site-scale));
   padding: calc(var(--spacing-unit) * 1.75);
   display: flex;
@@ -1193,6 +1191,7 @@ background: linear-gradient(
   margin-top: 0%;
   transition: none;
   box-shadow: 0 calc(15px * var(--cta-scale)) calc(40px * var(--cta-scale)) rgba(255, 215, 0, 0.2);
+  margin-top: 5px;
 }
 
 .nonduality-wrapper .final-cta {
