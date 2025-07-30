@@ -1119,12 +1119,12 @@ background: linear-gradient(
   justify-content: center;
   align-items: center;
   margin: calc(var(--spacing-unit) * 2) auto;
-  max-width: calc(600px * var(--site-scale));
+  max-width: calc(700px * var(--site-scale));
   padding: calc(20px * var(--site-scale));
 }
 
 .nonduality-wrapper .testimonial-screenshot-standalone {
-  width: calc(500px * var(--site-scale));
+  width: calc(600px * var(--site-scale));
   height: auto;
   max-width: 100%;
   border-radius: calc(8px * var(--site-scale));
