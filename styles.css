@@ -811,7 +811,7 @@ background: linear-gradient(
 .nonduality-wrapper .problem-text {
   font-family: var(--body-font);
   font-weight: var(--body-weight);
-  font-size: calc(15px * var(--site-scale));
+  font-size: calc(16px * var(--site-scale));
   line-height: 1.5;
   color: var(--text-primary);
 }
