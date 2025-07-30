@@ -25,6 +25,24 @@
   }
 }
 
+/* Right-aligned text block for specific content sections */
+.right-aligned-block {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: calc(var(--spacing-unit) * 3);
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin-top: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+@media (max-width: 768px) {
+  .right-aligned-block {
+    max-width: 100%;
+    margin-left: 0;
+    padding: calc(var(--spacing-unit) * 1);
+  }
+}
+
 /* =========================================================
    NONDUALITY THEME – LAYER-BASED DESIGN SYSTEM
    ========================================================= */
