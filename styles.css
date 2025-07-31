@@ -318,6 +318,21 @@
   z-index: 2;
 }
 
+/* Background layer 3 - Customizable positioning layer */
+.nonduality-wrapper .bg-layer-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95%;
+  height: 100%;
+  opacity: 1.0;
+  mix-blend-mode: normal;
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  z-index: 3;
+}
+
 /* SECTION-SPECIFIC BACKGROUND LAYERS */
 
 /* Problem Section Backgrounds */
@@ -1088,6 +1103,91 @@ background: linear-gradient(
   /* No backdrop-filter */
   box-shadow: var(--compact-card-glow);
   text-align: center;
+}
+
+/* ============================================
+   LEFT-RIGHT SPLIT BOXES - Add this to your CSS file
+   ============================================ */
+
+/* Left-extending box */
+.nonduality-wrapper .split-box-left {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(138, 97, 255, 0.2);
+  border-radius: 0 calc(16px * var(--site-scale)) calc(16px * var(--site-scale)) 0;
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin: calc(var(--spacing-unit) * 4) 0;
+  margin-left: calc(-50vw + 50%);
+  padding-left: max(calc(50vw - 50%), calc(var(--spacing-unit) * 2)); /* Extends padding to screen edge */
+  width: 100%; /* Increase this to extend more to the right */
+  box-shadow: var(--compact-card-glow);
+  position: relative;
+}
+
+/* Inner content wrapper for left box - controls text position */
+.nonduality-wrapper .split-box-left-content {
+  max-width: 600px; /* Adjust this to control text width */
+  margin-left: 0; /* Adjust this to move text right */
+  margin-right: auto;
+}
+
+/* Right-extending box */
+.nonduality-wrapper .split-box-right {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(138, 97, 255, 0.2);
+  border-radius: calc(16px * var(--site-scale)) 0 0 calc(16px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin: calc(var(--spacing-unit) * 2) 0;
+  margin-left: 30%; /* Adjust this to control where box starts from left */
+  margin-right: calc(-50vw + 50%);
+  padding-right: max(calc(50vw - 50%), calc(var(--spacing-unit) * 2)); /* Extends padding to screen edge */
+  box-shadow: var(--compact-card-glow);
+  position: relative;
+}
+
+/* Inner content wrapper for right box - controls text position */
+.nonduality-wrapper .split-box-right-content {
+  max-width: 600px; /* Adjust this to control text width */
+  margin-left: auto;
+  margin-right: 0; /* Adjust this to move text left */
+}
+
+/* Text styling inside split boxes */
+.nonduality-wrapper .split-box-left p,
+.nonduality-wrapper .split-box-right p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+.nonduality-wrapper .split-box-left ul,
+.nonduality-wrapper .split-box-right ul {
+  list-style: disc;
+  padding-left: calc(20px * var(--site-scale));
+  margin: calc(var(--spacing-unit) * 0.5) 0;
+}
+
+.nonduality-wrapper .split-box-left li,
+.nonduality-wrapper .split-box-right li {
+  font-family: var(--body-font);
+  font-weight: var(--weight-semibold);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  color: var(--text-primary);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nonduality-wrapper .split-box-left,
+  .nonduality-wrapper .split-box-right {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: calc(16px * var(--site-scale));
+  }
 }
 
 /* ============================================
