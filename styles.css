@@ -323,12 +323,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 95%;
+  bottom: ;
+  width: 100%;
   height: 100%;
   opacity: 1.0;
   mix-blend-mode: normal;
-  background-size: contain;
-  background-position: right;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   z-index: 3;
 }
@@ -1103,6 +1104,56 @@ background: linear-gradient(
   /* No backdrop-filter */
   box-shadow: var(--compact-card-glow);
   text-align: center;
+}
+
+/* ============================================
+   MOVABLE CONTENT SECTIONS - For repositioning content blocks
+   ============================================ */
+
+/* Paradox section content positioning */
+.nonduality-wrapper .paradox-content {
+  transform: translateX(0); /* Change this to move left/right: -200px moves left, 200px moves right */
+  transform: translateY(0); /* Change this to move up/down: -100px moves up, 100px moves down */
+  max-width: 700px; /* Control content width */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding-left: 0; /* Add left padding if needed */
+  padding-right: 0; /* Add right padding if needed */
+  text-align: left; /* Control text alignment: left, center, right */
+}
+
+/* Alternative positioning classes for quick switching */
+.nonduality-wrapper .paradox-content.move-left {
+  transform: translateX(-150px);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .paradox-content.move-right {
+  transform: translateX(150px);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.nonduality-wrapper .paradox-content.move-up {
+  transform: translateY(-50px);
+}
+
+.nonduality-wrapper .paradox-content.move-down {
+  transform: translateY(50px);
+}
+
+/* Combine transforms for diagonal movement */
+.nonduality-wrapper .paradox-content.move-up-left {
+  transform: translate(-150px, -50px);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .paradox-content.move-down-right {
+  transform: translate(150px, 50px);
+  margin-left: auto;
+  margin-right: 0;
 }
 
 /* ============================================
