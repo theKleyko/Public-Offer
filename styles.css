@@ -949,10 +949,11 @@ background: linear-gradient(
 /* ============================================
    MENTORSHIP SECTION - Separate from Benefits
    ============================================ */
-/* Mentorship grid - single row, two columns */
+/* Mentorship grid - single column, centered */
 .nonduality-wrapper .mentorship-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: calc(var(--grid-gap) * 1.2);
   margin-top: calc(var(--spacing-unit) * 2);
   max-width: calc(1200px * var(--site-scale));
@@ -970,6 +971,8 @@ background: linear-gradient(
   box-shadow: var(--benefit-card-glow);
   transition: none;
   min-height: auto;
+  width: calc(580px * var(--site-scale)); /* Fixed width to maintain original size */
+  max-width: 100%; /* Responsive fallback */
 }
 
 /* Mentorship card titles - left aligned */
@@ -1158,7 +1161,7 @@ background: linear-gradient(
 
 /* Paradox section image styling */
 .nonduality-wrapper .paradox-image-container {
-  text-align: left;
+  text-align: center;
   margin: calc(var(--spacing-unit) * 2) 0;
   padding: calc(var(--spacing-unit) * 1) 0;
 }
