@@ -1268,6 +1268,20 @@ background: linear-gradient(
   }
 }
 
+/* 2K+ screen adjustments - fix the viewport calculations to give more text space */
+@media (min-width: 1921px) {
+  .nonduality-wrapper .split-box-left {
+    margin-left: calc(-40vw + 50%); /* Reduce viewport extension */
+    padding-left: max(calc(40vw - 50%), calc(var(--spacing-unit) * 2)); /* Match the reduced extension */
+  }
+  
+  .nonduality-wrapper .split-box-right {
+    margin-left: 25%; /* Reduce starting position */
+    margin-right: calc(-40vw + 50%); /* Reduce viewport extension */
+    padding-right: max(calc(40vw - 50%), calc(var(--spacing-unit) * 2)); /* Match the reduced extension */
+  }
+}
+
 /* ============================================
    15. TESTIMONIALS
    ============================================ */
