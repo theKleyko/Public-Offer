@@ -1,0 +1,1647 @@
+/* About section flex layout for image on right */
+.about-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin: 20px 0;
+}
+.about-text {
+  flex: 1;
+}
+.about-img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+@media (max-width: 800px) {
+  .about-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-img {
+    max-width: 90vw;
+    margin-top: 20px;
+  }
+}
+
+/* Right-aligned text block for specific content sections */
+.right-aligned-block {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: calc(var(--spacing-unit) * 3);
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin-top: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+@media (max-width: 768px) {
+  .right-aligned-block {
+    max-width: 100%;
+    margin-left: 0;
+    padding: calc(var(--spacing-unit) * 1);
+  }
+}
+
+/* =========================================================
+   NONDUALITY THEME – LAYER-BASED DESIGN SYSTEM
+   ========================================================= */
+
+/* 1. GLOBAL VARIABLES 
+   --------------------------------------------------------- */
+:root{
+  /* ============================================
+     FONT FAMILIES
+     ============================================ */
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Poppins', system-ui, sans-serif;
+  --font-secondary: 'Inter', system-ui, sans-serif;
+
+  /* ============================================
+     FONT WEIGHTS
+     ============================================ */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 600;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ============================================
+     TYPOGRAPHY SCALE
+     ============================================ */
+  --hero-font: var(--font-accent);
+  --hero-weight: var(--weight-normal);
+  --hero-size: clamp(calc(52px * var(--hero-scale)), calc(4vw * var(--hero-scale)), calc(72px * var(--hero-scale)));
+  --hero-line-height: 1.1;
+  --hero-letter-spacing: -0.03em;
+
+  --header-font: var(--font-secondary);
+  --header-weight: var(--weight-semibold);
+  --header-size: clamp(calc(42px * var(--site-scale)), calc(2.5vw * var(--site-scale)), calc(42px * var(--site-scale)));
+  --header-line-height: 1.2;
+  --header-letter-spacing: -0.03em;
+
+  --subheader-font: var(--font-accent);
+  --subheader-weight: var(--weight-normal);
+  --subheader-size: clamp(calc(18px * var(--site-scale)), calc(1.5vw * var(--site-scale)), calc(22px * var(--site-scale)));
+  --subheader-line-height: 1.2;
+  --subheader-letter-spacing: -0.01em;
+
+  --body-font: var(--font-primary);
+  --body-weight: var(--weight-normal);
+  --body-size: calc(20px * var(--site-scale));
+  --body-line-height: 1.9;
+  --body-letter-spacing: 0;
+
+  --accent-font: var(--font-secondary);
+  --accent-weight: var(--weight-medium);
+  --accent-size: calc(15px * var(--site-scale));
+  --accent-line-height: 1.3;
+  --accent-letter-spacing: 1px;
+
+  /* ============================================
+     LAYER SYSTEM VARIABLES - Easy Experimentation!
+     ============================================ */
+  /* Global Background Layer Controls (fallback) */
+  --bg-layer-1-opacity: 0.8;
+  --bg-layer-1-blend: normal; /* try: multiply, screen, overlay */
+  --bg-layer-2-opacity: 0.2;
+  --bg-layer-2-blend: normal;
+  --bg-overlay-opacity: 0.2; /* 0 = no overlay, 1 = full black */
+
+  /* SECTION-SPECIFIC BACKGROUND CONTROLS */
+  /* Problem Section (after hero) */
+  --problem-bg-color: #000814; /* Very dark blue */
+  --problem-bg-layer-1-opacity: 0.8;
+  --problem-bg-layer-1-blend: normal;
+  --problem-bg-layer-2-opacity: 0.2;
+  --problem-bg-layer-2-blend: normal;
+  --problem-bg-overlay-opacity: 0.2;
+
+  /* Paradox Section */
+  --paradox-bg-color: #000000; /* Pure black */
+  --paradox-bg-layer-1-opacity: 0.3;
+  --paradox-bg-layer-1-blend: normal;
+  --paradox-bg-layer-2-opacity: 0.2;
+  --paradox-bg-layer-2-blend: normal;
+  --paradox-bg-overlay-opacity: 0.7;
+
+  /* Other Sections */
+  --other-bg-color: #000000; /* Pure black */
+  --other-bg-layer-1-opacity: 0.3;
+  --other-bg-layer-1-blend: normal;
+  --other-bg-layer-2-opacity: 0.2;
+  --other-bg-layer-2-blend: normal;
+  --other-bg-overlay-opacity: 0.7;
+
+  /* ============================================
+     OTHER STYLING VARIABLES
+     ============================================ */
+  --spacing-unit: calc(12px * var(--site-scale));
+  --grid-gap: calc(20px * var(--site-scale));
+  --card-padding: calc(20px * var(--site-scale));
+  --paragraph-lg: calc(18px * var(--site-scale));
+  --paragraph-md: calc(16px * var(--site-scale));
+  
+  /* ============================================
+     TEXT COLOR SYSTEM - Enhanced Hierarchy
+     ============================================ */
+  --text-heading: #ffffff;      /* Pure white for headings & emphasis */
+  --text-primary: #e9e9e9;      /* Soft off-white for main content */
+  --text-secondary: #e9e9e9;    /* Medium gray for supporting text */
+  --text-tertiary: #909090;     /* Light gray for de-emphasized text */
+  --text-accent: var(--accent-gold);       /* Gold accent from existing design */
+  --text-warning: #9f8383;      /* Soft red for warnings/errors */
+  --text-dark: #000000;         /* Pure black for text on light backgrounds */
+  
+  /* Specific Section Header Colors - For Granular Control */
+  --text-problem-section-title: #fffffff0;    /* Custom color for "When Reality Feels Wrong" */
+  --text-solution-section-title: var(--text-heading);  /* Next section keeps default */
+  --text-benefits-section-title: var(--text-heading);  /* Benefits section */
+  --text-testimonials-section-title: var(--text-heading); /* Testimonials section */
+
+  /* Color Palette - Now with SOLID colors for cards */
+  --bg-primary: #0A0A0A;
+  --bg-elevated: #0F0F0F; /* Solid black for cards */
+  --bg-card: #1a1a1a; /* Alternative solid card background */
+  --accent-gold: #FFD700;
+  
+  /* ============================================
+     CARD GLOW CONTROLS - Individual Adjustments
+     ============================================ */
+  /* Problem Cards Glow */
+  --problem-card-glow: none; /* No glow by default */
+  --problem-card-glow-color-1: rgba(45, 27, 105, 0.3);
+  --problem-card-glow-color-2: rgba(138, 97, 255, 0.1);
+  
+  /* Benefit Cards Glow */
+  --benefit-card-glow: none; /* No glow for benefit cards */
+  --benefit-card-glow-color-1: rgba(45, 27, 105, 0.3);
+  --benefit-card-glow-color-2: rgba(138, 97, 255, 0.1);
+  
+  /* Compact Cards Glow */
+  --compact-card-glow: 
+    0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) var(--compact-card-glow-color-1),
+    0 0 calc(60px * var(--site-scale)) var(--compact-card-glow-color-2);
+  --compact-card-glow-color-1: rgba(45, 27, 105, 0.3);
+  --compact-card-glow-color-2: rgba(138, 97, 255, 0.1);
+  
+  /* Quote Blocks Glow */
+  --quote-block-glow: 
+    0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) var(--quote-block-glow-color-1),
+    0 0 calc(60px * var(--site-scale)) var(--quote-block-glow-color-2);
+  --quote-block-glow-color-1: rgba(45, 27, 105, 0.3);
+  --quote-block-glow-color-2: rgba(138, 97, 255, 0.1);
+  
+  /* Component Sizes */
+  --problem-icon-size: calc(24px * var(--site-scale));
+  
+  /* Global Scales */
+  --site-scale: 1.0;
+  --hero-scale: calc(0.85 * var(--site-scale));
+}
+
+/* ============================================
+   2. RESET & BASE STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nonduality-wrapper {
+  font-family: var(--body-font);
+  line-height: var(--body-line-height);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  font-feature-settings: "liga" 0;
+}
+
+/* ============================================
+   3. LAYOUT CONTAINERS
+   ============================================ */
+.nonduality-wrapper .container,
+.nonduality-wrapper .aligned-container {
+  max-width: calc(1400px * var(--site-scale));
+  margin: 0 auto;
+  padding: 0 calc(40px * var(--site-scale));
+  position: relative;
+  z-index: 1;
+}
+
+.nonduality-wrapper .aligned-content {
+  max-width: calc(1000px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Text alignment rules */
+.nonduality-wrapper .aligned-content p:not(.text-center):not(.benefit-card-text),
+.nonduality-wrapper .aligned-content h1:not(.text-center),
+.nonduality-wrapper .aligned-content h2:not(.text-center),
+.nonduality-wrapper .aligned-content h3:not(.text-center):not(.card-title),
+.nonduality-wrapper .aligned-content .paragraph:not(.text-center),
+.nonduality-wrapper .aligned-content .quote-block:not(.text-center),
+.nonduality-wrapper .aligned-content ul:not(.text-center),
+.nonduality-wrapper .aligned-content ol:not(.text-center),
+.nonduality-wrapper .aligned-content .sentence-text:not(.text-center),
+.nonduality-wrapper .aligned-content .sentence-line:not(.text-center) {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* ============================================
+   4. LAYER SYSTEM - NEW STRUCTURE!
+   ============================================ */
+
+/* Background layers container */
+.nonduality-wrapper .bg-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Behind everything */
+}
+
+/* Individual background layers */
+
+/* Global background layers (fallback) */
+.nonduality-wrapper .bg-layer-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: var(--bg-layer-1-opacity);
+  mix-blend-mode: var(--bg-layer-1-blend);
+  background-size: auto;
+  background-position: center;
+  background-repeat: repeat;
+  z-index: 1;
+}
+
+/* Background layer 1 variation */
+.nonduality-wrapper .bg-layer-1-version1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: var(--bg-layer-1-blend);
+  background-size: auto;
+  background-position: center;
+  background-repeat: repeat;
+  z-index: 1;
+}
+
+.nonduality-wrapper .bg-layer-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: var(--bg-layer-2-opacity);
+  mix-blend-mode: var(--bg-layer-2-blend);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* Background layer 3 - Customizable positioning layer */
+.nonduality-wrapper .bg-layer-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: ;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  mix-blend-mode: normal;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 3;
+}
+
+/* SECTION-SPECIFIC BACKGROUND LAYERS */
+
+/* Problem Section Backgrounds */
+.nonduality-wrapper .section-problem {
+  background: var(--problem-bg-color);
+}
+
+.nonduality-wrapper .section-problem .bg-layer-1 {
+  opacity: var(--problem-bg-layer-1-opacity);
+  mix-blend-mode: var(--problem-bg-layer-1-blend);
+}
+
+.nonduality-wrapper .section-problem .bg-layer-2 {
+  opacity: var(--problem-bg-layer-2-opacity);
+  mix-blend-mode: var(--problem-bg-layer-2-blend);
+}
+
+.nonduality-wrapper .section-problem .bg-overlay {
+  background: rgba(0, 0, 0, var(--problem-bg-overlay-opacity));
+}
+
+/* Paradox Section Backgrounds */
+.nonduality-wrapper .section-purple-dark {
+  background: var(--paradox-bg-color);
+}
+
+.nonduality-wrapper .section-purple-dark .bg-layer-1 {
+  opacity: var(--paradox-bg-layer-1-opacity);
+  mix-blend-mode: var(--paradox-bg-layer-1-blend);
+}
+
+.nonduality-wrapper .section-purple-dark .bg-layer-2 {
+  opacity: var(--paradox-bg-layer-2-opacity);
+  mix-blend-mode: var(--paradox-bg-layer-2-blend);
+}
+
+.nonduality-wrapper .section-purple-dark .bg-overlay {
+  background: rgba(0, 0, 0, var(--paradox-bg-overlay-opacity));
+}
+
+/* Other Sections Backgrounds */
+.nonduality-wrapper .section-darker {
+  background: var(--other-bg-color);
+}
+
+.nonduality-wrapper .section-darker .bg-layer-1 {
+  opacity: var(--other-bg-layer-1-opacity);
+  mix-blend-mode: var(--other-bg-layer-1-blend);
+}
+
+.nonduality-wrapper .section-darker .bg-layer-2 {
+  opacity: var(--other-bg-layer-2-opacity);
+  mix-blend-mode: var(--other-bg-layer-2-blend);
+}
+
+.nonduality-wrapper .section-darker .bg-overlay {
+  background: rgba(0, 0, 0, var(--other-bg-overlay-opacity));
+}
+
+/* Dark overlay layer (optional) */
+.nonduality-wrapper .bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, var(--bg-overlay-opacity));
+  z-index: 3;
+}
+
+/* Content layer - always on top */
+.nonduality-wrapper .content-layer {
+  position: relative;
+  z-index: 10; /* Above all backgrounds */
+}
+
+/* Card decoration layer (for PNGs behind card text) */
+.nonduality-wrapper .card-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.1; /* Subtle by default */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Card content - always on top of decoration */
+.nonduality-wrapper .card-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+   5. TYPOGRAPHY - Headers
+   ============================================ */
+
+/* Hero Title */
+.nonduality-wrapper .hero-title {
+  font-family: var(--hero-font);
+  font-size: var(--hero-size);
+  font-weight: var(--hero-weight);
+  line-height: var(--hero-line-height);
+  letter-spacing: var(--hero-letter-spacing);
+  color: var(--text-heading);
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 1.5 * var(--hero-scale));
+}
+
+/* Section Headers */
+.nonduality-wrapper .section-main-title {
+  font-family: var(--header-font);
+  font-size: var(--header-size);
+  font-weight: var(--header-weight);
+  line-height: 2;
+  letter-spacing: var(--header-letter-spacing);
+  color: var(--text-heading);
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+/* Specific Section Header Styles - For Individual Control */
+.nonduality-wrapper .section-main-title.problem-section-title {
+  color: var(--text-problem-section-title);
+}
+
+.nonduality-wrapper .section-main-title.solution-section-title {
+  color: var(--text-solution-section-title);
+}
+
+.nonduality-wrapper .section-main-title.benefits-section-title {
+  color: var(--text-benefits-section-title);
+}
+
+.nonduality-wrapper .section-main-title.testimonials-section-title {
+  color: var(--text-testimonials-section-title);
+}
+
+.nonduality-wrapper .section-subtitle {
+  font-family: var(--subheader-font);
+  font-size: var(--subheader-size);
+  font-weight: var(--subheader-weight);
+  line-height: var(--subheader-line-height);
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-heading);
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Problem Section Headers */
+.nonduality-wrapper .problem-main-title {
+  font-family: var(--header-font);
+  font-size: clamp(28px, 2.5vw, 36px);
+  font-weight: var(--weight-light);
+  line-height: var(--header-line-height);
+  letter-spacing: var(--header-letter-spacing);
+  color: var(--text-heading);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+.nonduality-wrapper .problem-subtitle {
+  font-family: var(--subheader-font);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: var(--weight-medium);
+  line-height: var(--subheader-line-height);
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-secondary);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Other Headers */
+.nonduality-wrapper .content-header {
+  font-family: var(--subheader-font);
+  font-size: clamp(24px, 2vw, 28px);
+  font-weight: var(--subheader-weight);
+  line-height: var(--subheader-line-height);
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-heading);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.nonduality-wrapper .card-title {
+  font-family: var(--subheader-font);
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-heading);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  text-align: center !important;
+}
+
+/* ============================================
+   6. TYPOGRAPHY - Body Text
+   ============================================ */
+
+.nonduality-wrapper .paragraph {
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  font-weight: var(--body-weight);
+}
+
+.nonduality-wrapper .sentence-text {
+  max-width: calc(950px * var(--site-scale));
+  margin-left: 0;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 0.25);
+}
+
+.nonduality-wrapper .sentence-line {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  letter-spacing: var(--body-letter-spacing);
+  display: block;
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: calc(18px * var(--site-scale));
+  color: var(--text-primary);
+  padding: calc(1px * var(--site-scale)) 0;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+/* ============================================
+   7. UTILITY CLASSES
+   ============================================ */
+
+/* Spacing */
+.nonduality-wrapper .spacing-xs { margin-bottom: calc(var(--spacing-unit) * 0.25); }
+.nonduality-wrapper .spacing-sm { margin-bottom: calc(var(--spacing-unit) * 0.5); }
+.nonduality-wrapper .spacing-md { margin-bottom: calc(var(--spacing-unit) * 0.75); }
+.nonduality-wrapper .spacing-lg { margin-bottom: var(--spacing-unit); }
+.nonduality-wrapper .spacing-xl { margin-bottom: calc(var(--spacing-unit) * 1.5); }
+
+/* Text alignment */
+.nonduality-wrapper .text-center { text-align: center; }
+.nonduality-wrapper .text-left { text-align: left; }
+.nonduality-wrapper .text-right { text-align: right; }
+
+/* Highlight */
+.nonduality-wrapper .highlight {
+  background: none !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+  border: none !important;
+  text-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   8. NAVIGATION
+   ============================================ */
+.nonduality-wrapper .navigation {
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  z-index: 100; /* Always on top */
+}
+
+.nonduality-wrapper .nav-logo {
+  width: calc(80px * var(--site-scale));
+  height: calc(80px * var(--site-scale));
+  border-radius: 65%;
+  object-fit: cover;
+  border: calc(5px * var(--site-scale)) solid rgba(255, 215, 0, 0.12);
+  box-shadow: 0 0 calc(12px * var(--site-scale)) 0 rgba(255, 215, 0, 0.10);
+  filter: drop-shadow(0 0 calc(20px * var(--site-scale)) rgba(255, 215, 0, 0.08));
+}
+
+/* ============================================
+   9. HERO SECTION
+   ============================================ */
+.nonduality-wrapper .hero-section {
+  background: #000;
+  padding: calc(40px * var(--hero-scale)) 0 calc(60px * var(--hero-scale)) 0;
+  position: relative;
+  overflow: hidden;
+  margin-top: -30px;
+}
+
+.nonduality-wrapper .hero-content {
+  padding: 0px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Eyebrow badge */
+.nonduality-wrapper .eyebrow {
+  font-family: var(--accent-font);
+  font-weight: var(--accent-weight);
+  letter-spacing: var(--accent-letter-spacing);
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 215, 0, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: calc(40px * var(--hero-scale));
+  padding: calc(4px * var(--hero-scale)) calc(24px * var(--hero-scale));
+  margin-bottom: calc(var(--spacing-unit) * 1 * var(--hero-scale));
+  font-size: calc(15px * var(--hero-scale));
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.nonduality-wrapper .green-dot {
+  width: 6px;
+  height: 6px;
+  background: #00ff00;
+  border-radius: 50%;
+  margin-right: 10px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Video wrapper */
+.nonduality-wrapper .video-wrapper {
+  max-width: calc(640px * var(--hero-scale));
+  margin: calc(var(--spacing-unit) * 1.25 * var(--hero-scale)) auto;
+  border-radius: calc(12px * var(--hero-scale));
+  overflow: hidden;
+  box-shadow: 0 calc(20px * var(--hero-scale)) calc(60px * var(--hero-scale)) rgba(0, 0, 0, 0.8);
+  background: #000;
+}
+
+.nonduality-wrapper .video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
+/* ============================================
+   10. FEATURES SECTION
+   ============================================ */
+.nonduality-wrapper .features-grid {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--grid-gap) * 0.8 * var(--hero-scale));
+  margin: calc(var(--spacing-unit) * 1.5 * var(--hero-scale)) 0;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  flex-wrap: wrap;
+}
+
+.nonduality-wrapper .feature-item {
+  display: flex;
+  align-items: center;
+  gap: calc(6px * var(--hero-scale));
+}
+
+.nonduality-wrapper .feature-icon {
+  width: calc(28px * var(--hero-scale));
+  height: calc(28px * var(--hero-scale));
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-gold);
+  font-weight: bold;
+  font-size: calc(16px * var(--hero-scale));
+  margin-left: 20px;
+}
+
+.nonduality-wrapper .feature-text {
+  font-family: var(--accent-font);
+  font-size: calc(18px * var(--hero-scale));
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   11. SECTIONS - Base Styles
+   ============================================ */
+.nonduality-wrapper .section {
+  padding: calc(40px * var(--site-scale)) 0;
+  position: relative;
+  background: #000;
+}
+
+/* Section divider */
+.nonduality-wrapper .section-divider {
+  height: 1px;
+  width: 100vw;
+  margin: 0;
+  position: relative;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.2) 20%,
+    rgba(255, 215, 0, 0.4) 35%,
+    rgba(255, 215, 0, 0.5) 50%,
+    rgba(255, 215, 0, 0.4) 65%,
+    rgba(255, 215, 0, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.nonduality-wrapper .section-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 15px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================
+   12. PROBLEM SECTION - With New Structure
+   ============================================ */
+.nonduality-wrapper .section-problem {
+  padding: calc(40px * var(--site-scale)) 0;
+  position: relative;
+}
+
+/* Problem grid */
+.nonduality-wrapper .problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 280px));
+  justify-content: left;
+  gap: calc(var(--grid-gap) * 0.8);
+  margin-top: calc(var(--spacing-unit) * 1.25);
+  max-width: calc(1000px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Problem cards - NOW SOLID! */
+.nonduality-wrapper .problem-card {
+  background: linear-gradient(135deg, rgba(64, 54, 92, 0.2) 0%, rgba(0, 0, 0, 0.418) 50%, rgba(4, 1, 4, 0.9) 100%);
+  border: 1px solid rgba(190, 199, 16, 0.238);
+  border-radius: calc(16px * var(--site-scale));
+  padding: calc(var(--card-padding) * 0.9);
+  position: relative;
+  overflow: hidden;
+  box-shadow: none; /* Remove purple glow from problem cards */
+  /* No transparency, no backdrop-filter */
+}
+
+/* Problem card border effect */
+.nonduality-wrapper .problem-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: calc(16px * var(--site-scale));
+  padding: calc(1.5px * var(--site-scale));
+background: linear-gradient(
+    180deg,
+    rgba(153, 153, 153, 0.86) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Problem card content */
+.nonduality-wrapper .problem-icon {
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  filter: grayscale(20%);
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.problem-icon-img {
+  width: var(--problem-icon-size) !important;
+  height: var(--problem-icon-size) !important;
+  display: block;
+  object-fit: contain;
+}
+
+.nonduality-wrapper .problem-text {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: calc(16px * var(--site-scale));
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   13. BENEFITS SECTION
+   ============================================ */
+/* Updated Benefits Section with 3x3 Grid */
+.nonduality-wrapper .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: calc(var(--grid-gap) * 0.8);
+  margin-top: calc(var(--spacing-unit) * 2);
+  max-width: calc(1200px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* New gradient benefit cards - COMPACT VERSION */
+.nonduality-wrapper .benefit-card {
+  background: rgb(12, 13, 18);
+  background: linear-gradient(circular, rgb(66, 36, 136) 0%, rgb(37, 12, 82) 50%, rgb(53, 16, 147) 100%) !important;
+  border: 1px solid rgba(255, 217, 0, 0.336);
+  border-radius: calc(20px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 1.75);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  box-shadow: var(--benefit-card-glow);
+  transition: none; /* Remove hover effects */
+  min-height: calc(160px * var(--site-scale));
+  justify-content: flex-start;
+}
+
+/* Remove hover effects */
+.nonduality-wrapper .benefit-card:hover {
+  transform: none;
+  box-shadow: var(--benefit-card-glow);
+}
+
+/* Centered icon styling - COMPACT VERSION */
+.nonduality-wrapper .benefit-card-icon {
+  position: static; /* Remove absolute positioning */
+  font-size: calc(20px * var(--site-scale));
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  opacity: 1;
+  filter: none;
+  background: none;
+  border-radius: 50%;
+  width: calc(40px * var(--site-scale));
+  height: calc(40px * var(--site-scale));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* Card text styling */
+.nonduality-wrapper .benefit-card-text {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: calc(16px * var(--site-scale));
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+  padding-top: 0; /* Remove top padding since icon is no longer absolute */
+  text-align: left !important;
+}
+
+/* Subtle gradient overlay for extra mystical effect - DISABLED */
+.nonduality-wrapper .benefit-card::before {
+  display: none;
+}
+
+/* Ensure content stays above overlay */
+.nonduality-wrapper .benefit-card-icon,
+.nonduality-wrapper .benefit-card-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Force benefit card content to be left-aligned - override any global alignment rules */
+.nonduality-wrapper .benefit-card .card-title,
+.nonduality-wrapper .benefit-card .benefit-card-text,
+.nonduality-wrapper .benefit-card h3,
+.nonduality-wrapper .benefit-card p {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Hide benefit card titles */
+.nonduality-wrapper .benefit-card .card-title,
+.nonduality-wrapper .benefit-card h3 {
+  display: none;
+}
+
+/* ============================================
+   MENTORSHIP SECTION - Separate from Benefits
+   ============================================ */
+/* Mentorship grid - single column, centered */
+.nonduality-wrapper .mentorship-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--grid-gap) * 1.2);
+  margin-top: calc(var(--spacing-unit) * 2);
+  max-width: calc(1200px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mentorship cards - left-aligned text, no icons */
+.nonduality-wrapper .mentorship-card {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(138, 97, 255, 0.2);
+  border-radius: calc(20px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 2.5);
+  position: relative;
+  box-shadow: var(--benefit-card-glow);
+  transition: none;
+  min-height: auto;
+  width: calc(580px * var(--site-scale)); /* Fixed width to maintain original size */
+  max-width: 100%; /* Responsive fallback */
+}
+
+/* Mentorship card titles - left aligned */
+.nonduality-wrapper .mentorship-card .card-title,
+.nonduality-wrapper .mentorship-card h3 {
+  font-family: var(--subheader-font);
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-heading);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Mentorship card text - left aligned */
+.nonduality-wrapper .mentorship-card-text,
+.nonduality-wrapper .mentorship-card p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: calc(16px * var(--site-scale));
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Subtle gradient overlay for mentorship cards */
+.nonduality-wrapper .mentorship-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(138, 97, 255, 0.1) 0%, transparent 70%);
+  border-radius: calc(20px * var(--site-scale));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure mentorship content stays above overlay */
+.nonduality-wrapper .mentorship-card .card-title,
+.nonduality-wrapper .mentorship-card-text,
+.nonduality-wrapper .mentorship-card h3,
+.nonduality-wrapper .mentorship-card p {
+  position: relative;
+  z-index: 2;
+}
+
+/* Lists */
+.nonduality-wrapper .problem-list {
+  list-style: disc inside;
+  padding-left: 0;
+  margin: calc(var(--spacing-unit) * 1) 0;
+}
+
+.nonduality-wrapper .problem-list li {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  color: var(--text-secondary);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.5;
+  padding-left: 0;
+}
+
+.nonduality-wrapper .benefits-list {
+  list-style: none;
+  padding-left: 0;
+  margin: calc(var(--spacing-unit) * 1) 0;
+}
+
+.nonduality-wrapper .benefits-list li {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  color: var(--text-primary);
+  position: relative;
+  padding-left: calc(30px * var(--site-scale));
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.6;
+}
+
+.nonduality-wrapper .benefits-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-weight: bold;
+  font-size: calc(20px * var(--site-scale));
+  opacity: 0.9;
+}
+
+/* ============================================
+   14. COMPACT STYLES
+   ============================================ */
+.nonduality-wrapper .paragraph.compact {
+  margin-bottom: calc(var(--spacing-unit) * 0.15) !important;
+  line-height: 1.4 !important;
+}
+
+.nonduality-wrapper .compact-text {
+  margin: calc(var(--spacing-unit) * 1) 0;
+}
+
+.nonduality-wrapper .compact-line {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: inherit;
+  margin-bottom: calc(var(--spacing-unit) * 0.1);
+  display: block;
+}
+
+.nonduality-wrapper .compact-line:last-child {
+  margin-bottom: 0;
+}
+
+/* Compact card - NOW SOLID! */
+.nonduality-wrapper .compact-card {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(255, 217, 0, 0.336);
+  border-radius: calc(16px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 2);
+  margin: calc(var(--spacing-unit) * 2) 0;
+  /* No backdrop-filter */
+  box-shadow: var(--compact-card-glow);
+  text-align: center;
+}
+
+/* ============================================
+   MOVABLE CONTENT SECTIONS - For repositioning content blocks
+   ============================================ */
+
+/* Paradox section content positioning */
+.nonduality-wrapper .paradox-content {
+  transform: translateX(0); /* Change this to move left/right: -200px moves left, 200px moves right */
+  transform: translateY(0); /* Change this to move up/down: -100px moves up, 100px moves down */
+  max-width: 1000px; /* Control content width */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding-left: 0; /* Add left padding if needed */
+  padding-right: 0; /* Add right padding if needed */
+  text-align: left; /* Control text alignment: left, center, right */
+}
+
+/* Alternative positioning classes for quick switching */
+.nonduality-wrapper .paradox-content.move-left {
+  transform: translateX(-150px);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .paradox-content.move-right {
+  transform: translateX(150px);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.nonduality-wrapper .paradox-content.move-up {
+  transform: translateY(-50px);
+}
+
+.nonduality-wrapper .paradox-content.move-down {
+  transform: translateY(50px);
+}
+
+/* Combine transforms for diagonal movement */
+.nonduality-wrapper .paradox-content.move-up-left {
+  transform: translate(-150px, -50px);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .paradox-content.move-down-right {
+  transform: translate(150px, 50px);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Paradox section image styling */
+.nonduality-wrapper .paradox-image-container {
+  text-align: center;
+  margin: calc(var(--spacing-unit) * 2) 0;
+  padding: calc(var(--spacing-unit) * 1) 0;
+}
+
+.nonduality-wrapper .paradox-image {
+  max-width: 100%;
+  width: calc(400px * var(--site-scale));
+  height: auto;
+  border-radius: calc(12px * var(--site-scale));
+  box-shadow: 0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+/* Mobile responsive for paradox image */
+@media (max-width: 768px) {
+  .nonduality-wrapper .paradox-image {
+    width: calc(90vw);
+    max-width: calc(400px * var(--site-scale));
+  }
+}
+
+/* =========================================================
+   FIXED SPLIT BOXES - With Edge Attachment for All Screens
+   ========================================================= */
+
+/* Left-extending box - fixed for 2K screens */
+.nonduality-wrapper .split-box-left {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(255, 217, 0, 0.336);
+  border-radius: 0 calc(16px * var(--site-scale)) calc(16px * var(--site-scale)) 0;
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin: calc(var(--spacing-unit) * 4) 0;
+  margin-left: calc(50% - 50vw);
+  padding-left: calc(50vw - 50%);
+  width: calc(100vw - (100vw - 100%));
+  box-sizing: border-box;
+  box-shadow: var(--compact-card-glow);
+  position: relative;
+}
+
+/* Inner content wrapper for left box - maintains text positioning */
+.nonduality-wrapper .split-box-left-content {
+  max-width: 650px; /* Adjust as needed for your design */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Right-extending box - fixed for 2K screens */
+.nonduality-wrapper .split-box-right {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(255, 217, 0, 0.336);
+  border-radius: calc(16px * var(--site-scale)) 0 0 calc(16px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin: calc(var(--spacing-unit) * 2) 0;
+  margin-left: 30%; /* Adjust this to control where box starts from left */
+  margin-right: calc(50% - 50vw);
+  padding-right: calc(50vw - 50%);
+  width: calc(100vw - (100vw - 100%));
+  box-sizing: border-box;
+  box-shadow: var(--compact-card-glow);
+  position: relative;
+}
+
+/* Inner content wrapper for right box - maintains text positioning */
+.nonduality-wrapper .split-box-right-content {
+  max-width: 650px; /* Adjust as needed for your design */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Text styling inside split boxes */
+.nonduality-wrapper .split-box-left p,
+.nonduality-wrapper .split-box-right p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+.nonduality-wrapper .split-box-left ul,
+.nonduality-wrapper .split-box-right ul {
+  list-style: disc;
+  padding-left: calc(20px * var(--site-scale));
+  margin: calc(var(--spacing-unit) * 0.5) 0;
+}
+
+.nonduality-wrapper .split-box-left li,
+.nonduality-wrapper .split-box-right li {
+  font-family: var(--body-font);
+  font-weight: var(--weight-semibold);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  color: var(--text-primary);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nonduality-wrapper .split-box-left,
+  .nonduality-wrapper .split-box-right {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: calc(16px * var(--site-scale));
+  }
+}
+
+/* ============================================
+   15. TESTIMONIALS
+   ============================================ */
+.nonduality-wrapper .testimonials-grid {
+  display: grid;
+  gap: calc(var(--grid-gap) * 0.8);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .hero-testimonials {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: calc(800px * var(--site-scale));
+  margin-top: calc(30px * var(--site-scale));
+  margin-bottom: calc(10px * var(--site-scale));
+  padding: calc(20px * var(--site-scale)) 0;
+}
+
+.nonduality-wrapper .main-testimonials {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  max-width: calc(800px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  padding: calc(15px * var(--site-scale)) 0;
+}
+
+.nonduality-wrapper .testimonial-card {
+  background: var(--bg-elevated);
+  border: none;
+  border-radius: calc(16px * var(--site-scale));
+  padding: calc(var(--card-padding) * 0.9);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Standalone testimonial screenshot */
+.nonduality-wrapper .standalone-testimonial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(var(--spacing-unit) * 2) auto;
+  max-width: calc(700px * var(--site-scale));
+  padding: calc(20px * var(--site-scale));
+}
+
+.nonduality-wrapper .testimonial-screenshot-standalone {
+  width: calc(600px * var(--site-scale));
+  height: auto;
+  max-width: 100%;
+  border-radius: calc(8px * var(--site-scale));
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.nonduality-wrapper .testimonial-video {
+  background: #222;
+  border: none;
+  width: 100%;
+  height: calc(240px * var(--site-scale));
+  border-radius: calc(12px * var(--site-scale));
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: calc(14px * var(--site-scale));
+}
+
+.nonduality-wrapper .testimonial-name {
+  font-family: var(--accent-font);
+  font-size: calc(16px * var(--site-scale));
+  font-weight: var(--weight-semibold);
+  color: var(--accent-gold);
+  margin-top: calc(var(--spacing-unit) * 0.5);
+}
+
+/* ============================================
+   16. QUOTE BLOCK
+   ============================================ */
+.nonduality-wrapper .quote-block {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(138, 97, 255, 0.2);
+  border-left: none;
+  padding: calc(var(--spacing-unit) * 1.5);
+  margin: calc(var(--spacing-unit) * 1.5) 0;
+  font-size: calc(20px * var(--site-scale));
+  font-style: normal;
+  color: var(--text-primary);
+  text-align: left;
+  position: relative;
+  line-height: 1.6;
+  border-radius: calc(16px * var(--site-scale));
+  box-shadow: var(--quote-block-glow);
+}
+
+/* ============================================
+   17. CTA BUTTON
+   ============================================ */
+.nonduality-wrapper .cta-button {
+  font-family: var(--accent-font);
+  font-weight: var(--accent-weight);
+  letter-spacing: var(--accent-letter-spacing);
+  --cta-scale: calc(1.0 * var(--hero-scale));
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-gold) 100%, #ffed4e 80%);
+  color: #000;
+  padding: calc(20px * var(--cta-scale)) calc(70px * var(--cta-scale));
+  border-radius: calc(60px * var(--cta-scale));
+  font-size: calc(19px * var(--cta-scale));
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: calc(var(--spacing-unit) * 0.75 * var(--hero-scale)) 0;
+  margin-top: 0%;
+  transition: none;
+  box-shadow: 0 calc(15px * var(--cta-scale)) calc(40px * var(--cta-scale)) rgba(255, 215, 0, 0.2);
+  margin-top: 5px;
+}
+
+.nonduality-wrapper .final-cta {
+  text-align: center;
+  margin-top: calc(var(--spacing-unit) * 1.5);
+}
+
+.nonduality-wrapper .hero-section .cta-button {
+  margin-bottom: calc(var(--spacing-unit) * 2 * var(--hero-scale));
+}
+
+/* ============================================
+   18. FAQ SECTION
+   ============================================ */
+.nonduality-wrapper .faq-section {
+  background: linear-gradient(180deg, #f5e6d3 0%, #e8d7c3 100%);
+  color: var(--text-dark);
+  padding: calc(60px * var(--site-scale)) 0;
+  position: relative;
+  margin: 0;
+}
+
+.nonduality-wrapper .faq-container {
+  max-width: calc(1000px * var(--site-scale));
+  margin: 0 auto;
+  padding: 0 calc(40px * var(--site-scale));
+  margin-bottom: calc(20px * var(--site-scale));
+}
+
+.nonduality-wrapper .faq-main-title {
+  font-family: var(--header-font);
+  font-size: var(--header-size);
+  font-weight: var(--header-weight);
+  line-height: var(--header-line-height);
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.nonduality-wrapper .faq-item {
+  border-bottom: 2px solid rgba(51, 51, 51, 0.3);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  border-radius: calc(8px * var(--site-scale));
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.nonduality-wrapper .faq-question {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  transition: background-color 0.2s ease;
+}
+
+.nonduality-wrapper .faq-question:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nonduality-wrapper .faq-question-title {
+  font-family: var(--subheader-font);
+  font-size: calc(22px * var(--site-scale));
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-dark);
+  margin: 0;
+  flex: 1;
+}
+
+.nonduality-wrapper .faq-icon {
+  width: calc(32px * var(--site-scale));
+  height: calc(32px * var(--site-scale));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(24px * var(--site-scale));
+  color: var(--text-dark);
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-left: calc(var(--spacing-unit) * 1);
+}
+
+.nonduality-wrapper .faq-item.active .faq-icon {
+  transform: rotate(45deg);
+  color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nonduality-wrapper .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.nonduality-wrapper .faq-answer.active {
+  max-height: calc(600px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2);
+}
+
+.nonduality-wrapper .faq-answer p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  color: var(--text-dark);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.7;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+.nonduality-wrapper .call-details {
+  margin: calc(30px * var(--site-scale)) 0;
+  background: rgba(0,0,0,0.2);
+  padding: calc(24px * var(--site-scale));
+  border-radius: calc(12px * var(--site-scale));
+}
+
+.nonduality-wrapper .call-details h3 {
+  text-align: center;
+  margin-bottom: calc(16px * var(--site-scale));
+}
+
+/* ============================================
+   19. RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px){
+  :root{
+    --spacing-unit: calc(10px * var(--site-scale));
+    --paragraph-lg: calc(16px * var(--site-scale));
+    --grid-gap: calc(14px * var(--site-scale));
+    --card-padding: calc(16px * var(--site-scale));
+    
+    --hero-size: clamp(calc(32px * var(--site-scale)), calc(6vw * var(--site-scale)), calc(42px * var(--site-scale)));
+    --header-size: clamp(calc(24px * var(--site-scale)), calc(5vw * var(--site-scale)), calc(32px * var(--site-scale)));
+    --subheader-size: clamp(calc(16px * var(--site-scale)), calc(3vw * var(--site-scale)), calc(20px * var(--site-scale)));
+    --body-size: calc(16px * var(--site-scale));
+    --accent-size: calc(13px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .section {
+    padding: calc(25px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .container,
+  .nonduality-wrapper .aligned-container {
+    padding: 0 calc(25px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .faq-container {
+    padding: 0 calc(25px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .faq-section {
+    padding: calc(40px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .faq-main-title {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+  
+  .nonduality-wrapper .faq-question {
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 1.5);
+  }
+  
+  .nonduality-wrapper .faq-question-title {
+    font-size: calc(18px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .faq-answer p {
+    font-size: calc(16px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .navigation {
+    padding: calc(18px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .nav-logo {
+    width: calc(65px * var(--site-scale));
+    height: calc(65px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .hero-content {
+    padding: calc(30px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .sentence-line {
+    font-size: calc(16px * var(--site-scale));
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+  }
+  
+  .nonduality-wrapper .features-grid {
+    flex-direction: column;
+    gap: calc(var(--grid-gap) * 0.8);
+  }
+  
+  .nonduality-wrapper .problem-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nonduality-wrapper .benefits-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: calc(var(--grid-gap) * 0.8);
+  }
+  
+  .nonduality-wrapper .benefit-card {
+    min-height: calc(140px * var(--site-scale));
+    padding: calc(var(--spacing-unit) * 1.5);
+  }
+  
+  .nonduality-wrapper .benefit-card-icon {
+    width: calc(35px * var(--site-scale));
+    height: calc(35px * var(--site-scale));
+    font-size: calc(18px * var(--site-scale));
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    background: none;
+    border: none;
+  }
+  
+  .nonduality-wrapper .hero-testimonials,
+  .nonduality-wrapper .main-testimonials {
+    grid-template-columns: 1fr;
+  }
+  
+  .nonduality-wrapper .mentorship-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--grid-gap) * 0.8);
+  }
+  
+  .nonduality-wrapper .mentorship-card {
+    min-height: auto;
+    padding: calc(var(--spacing-unit) * 2);
+  }
+  
+  .nonduality-wrapper .cta-button {
+    --cta-scale: calc(0.7 * var(--site-scale));
+    padding: calc(16px * var(--cta-scale)) calc(36px * var(--cta-scale));
+    font-size: calc(13px * var(--cta-scale));
+  }
+  
+  .nonduality-wrapper .section-problem {
+    padding: calc(25px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .section-problem .problem-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--grid-gap) * 0.8);
+  }
+  
+  .nonduality-wrapper .section-problem .problem-card {
+    padding: calc(var(--card-padding) * 0.9);
+  }
+}
