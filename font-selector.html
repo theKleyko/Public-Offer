@@ -1,0 +1,12 @@
+<select id="fontSelect">
+  <option value="'Inter', sans-serif">Inter</option>
+  <option value="'Playfair Display', serif">Playfair Display</option>
+  <option value="Arial, sans-serif">Arial</option>
+  <option value="'Times New Roman', serif">Times New Roman</option>
+</select>
+
+<script>
+  document.getElementById('fontSelect').addEventListener('change', function() {
+    document.body.style.fontFamily = this.value;
+  });
+</script>
