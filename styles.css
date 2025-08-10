@@ -25,6 +25,24 @@
   }
 }
 
+/* Right-aligned text block for specific content sections */
+.right-aligned-block {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: calc(var(--spacing-unit) * 3);
+  padding: calc(var(--spacing-unit) * 2.5);
+  margin-top: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+@media (max-width: 768px) {
+  .right-aligned-block {
+    max-width: 100%;
+    margin-left: 0;
+    padding: calc(var(--spacing-unit) * 1);
+  }
+}
+
 /* =========================================================
    NONDUALITY THEME – LAYER-BASED DESIGN SYSTEM
    ========================================================= */
@@ -157,9 +175,7 @@
   --problem-card-glow-color-2: rgba(138, 97, 255, 0.1);
   
   /* Benefit Cards Glow */
-  --benefit-card-glow: 
-    0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) var(--benefit-card-glow-color-1),
-    0 0 calc(60px * var(--site-scale)) var(--benefit-card-glow-color-2);
+  --benefit-card-glow: none; /* No glow for benefit cards */
   --benefit-card-glow-color-1: rgba(45, 27, 105, 0.3);
   --benefit-card-glow-color-2: rgba(138, 97, 255, 0.1);
   
@@ -273,6 +289,21 @@
   z-index: 1;
 }
 
+/* Background layer 1 variation */
+.nonduality-wrapper .bg-layer-1-version1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: var(--bg-layer-1-blend);
+  background-size: auto;
+  background-position: center;
+  background-repeat: repeat;
+  z-index: 1;
+}
+
 .nonduality-wrapper .bg-layer-2 {
   position: absolute;
   top: 0;
@@ -285,6 +316,22 @@
   background-position: center;
   background-repeat: no-repeat;
   z-index: 2;
+}
+
+/* Background layer 3 - Customizable positioning layer */
+.nonduality-wrapper .bg-layer-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: ;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  mix-blend-mode: normal;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 3;
 }
 
 /* SECTION-SPECIFIC BACKGROUND LAYERS */
@@ -434,7 +481,7 @@
   font-weight: var(--subheader-weight);
   line-height: var(--subheader-line-height);
   letter-spacing: var(--subheader-letter-spacing);
-  color: var(--text-secondary);
+  color: var(--text-heading);
   text-align: center;
   margin-bottom: calc(var(--spacing-unit) * 2);
 }
@@ -649,7 +696,7 @@
 .nonduality-wrapper .feature-item {
   display: flex;
   align-items: center;
-  gap: calc(10px * var(--hero-scale));
+  gap: calc(6px * var(--hero-scale));
 }
 
 .nonduality-wrapper .feature-icon {
@@ -664,6 +711,7 @@
   color: var(--accent-gold);
   font-weight: bold;
   font-size: calc(16px * var(--hero-scale));
+  margin-left: 20px;
 }
 
 .nonduality-wrapper .feature-text {
@@ -795,7 +843,7 @@ background: linear-gradient(
 .nonduality-wrapper .problem-text {
   font-family: var(--body-font);
   font-weight: var(--body-weight);
-  font-size: calc(15px * var(--site-scale));
+  font-size: calc(16px * var(--site-scale));
   line-height: 1.5;
   color: var(--text-primary);
 }
@@ -803,32 +851,33 @@ background: linear-gradient(
 /* ============================================
    13. BENEFITS SECTION
    ============================================ */
-/* Updated Benefits Section with Purple-Blue Gradient */
+/* Updated Benefits Section with 3x3 Grid */
 .nonduality-wrapper .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: calc(var(--grid-gap) * 1.2);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: calc(var(--grid-gap) * 0.8);
   margin-top: calc(var(--spacing-unit) * 2);
-  max-width: calc(1000px * var(--site-scale));
+  max-width: calc(1200px * var(--site-scale));
   margin-left: auto;
   margin-right: auto;
 }
 
-/* New gradient benefit cards */
+/* New gradient benefit cards - COMPACT VERSION */
 .nonduality-wrapper .benefit-card {
-  background:  radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
-  border: 1px solid rgba(138, 97, 255, 0.2);
+  background: rgb(12, 13, 18);
+  background: linear-gradient(circular, rgb(66, 36, 136) 0%, rgb(37, 12, 82) 50%, rgb(53, 16, 147) 100%) !important;
+  border: 1px solid rgba(255, 217, 0, 0.336);
   border-radius: calc(20px * var(--site-scale));
-  padding: calc(var(--spacing-unit) * 2.5);
+  padding: calc(var(--spacing-unit) * 1.75);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   position: relative;
   box-shadow: var(--benefit-card-glow);
   transition: none; /* Remove hover effects */
-  min-height: calc(200px * var(--site-scale));
+  min-height: calc(160px * var(--site-scale));
   justify-content: flex-start;
 }
 
@@ -838,22 +887,23 @@ background: linear-gradient(
   box-shadow: var(--benefit-card-glow);
 }
 
-/* Centered icon styling */
+/* Centered icon styling - COMPACT VERSION */
 .nonduality-wrapper .benefit-card-icon {
   position: static; /* Remove absolute positioning */
-  font-size: calc(36px * var(--site-scale));
-  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  font-size: calc(20px * var(--site-scale));
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
   opacity: 1;
   filter: none;
-  background: rgba(138, 97, 255, 0.1);
+  background: none;
   border-radius: 50%;
-  width: calc(65px * var(--site-scale));
-  height: calc(65px * var(--site-scale));
+  width: calc(40px * var(--site-scale));
+  height: calc(40px * var(--site-scale));
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(138, 97, 255, 0.3);
+  border: none;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 /* Card text styling */
@@ -865,11 +915,100 @@ background: linear-gradient(
   color: var(--text-primary);
   margin: 0;
   padding-top: 0; /* Remove top padding since icon is no longer absolute */
-  text-align: center !important;
+  text-align: left !important;
 }
 
-/* Subtle gradient overlay for extra mystical effect */
+/* Subtle gradient overlay for extra mystical effect - DISABLED */
 .nonduality-wrapper .benefit-card::before {
+  display: none;
+}
+
+/* Ensure content stays above overlay */
+.nonduality-wrapper .benefit-card-icon,
+.nonduality-wrapper .benefit-card-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Force benefit card content to be left-aligned - override any global alignment rules */
+.nonduality-wrapper .benefit-card .card-title,
+.nonduality-wrapper .benefit-card .benefit-card-text,
+.nonduality-wrapper .benefit-card h3,
+.nonduality-wrapper .benefit-card p {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Hide benefit card titles */
+.nonduality-wrapper .benefit-card .card-title,
+.nonduality-wrapper .benefit-card h3 {
+  display: none;
+}
+
+/* ============================================
+   MENTORSHIP SECTION - Separate from Benefits
+   ============================================ */
+/* Mentorship grid - single column, centered */
+.nonduality-wrapper .mentorship-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--grid-gap) * 1.2);
+  margin-top: calc(var(--spacing-unit) * 2);
+  max-width: calc(1200px * var(--site-scale));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mentorship cards - left-aligned text, no icons */
+.nonduality-wrapper .mentorship-card {
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: calc(20px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 2.5);
+  position: relative;
+  box-shadow: 
+    0 0 calc(12px * var(--site-scale)) 0 rgba(255, 215, 0, 0.15),
+    0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) rgba(255, 215, 0, 0.1),
+    0 0 calc(60px * var(--site-scale)) rgba(255, 215, 0, 0.05);
+  transition: none;
+  min-height: auto;
+  width: calc(580px * var(--site-scale)); /* Fixed width to maintain original size */
+  max-width: 100%; /* Responsive fallback */
+}
+
+/* Mentorship card titles - left aligned */
+.nonduality-wrapper .mentorship-card .card-title,
+.nonduality-wrapper .mentorship-card h3 {
+  font-family: var(--subheader-font);
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--subheader-letter-spacing);
+  color: var(--text-heading);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Mentorship card text - left aligned */
+.nonduality-wrapper .mentorship-card-text,
+.nonduality-wrapper .mentorship-card p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: calc(16px * var(--site-scale));
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Subtle gradient overlay for mentorship cards */
+.nonduality-wrapper .mentorship-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -882,21 +1021,13 @@ background: linear-gradient(
   z-index: 1;
 }
 
-/* Ensure content stays above overlay */
-.nonduality-wrapper .benefit-card-icon,
-.nonduality-wrapper .benefit-card-text {
+/* Ensure mentorship content stays above overlay */
+.nonduality-wrapper .mentorship-card .card-title,
+.nonduality-wrapper .mentorship-card-text,
+.nonduality-wrapper .mentorship-card h3,
+.nonduality-wrapper .mentorship-card p {
   position: relative;
   z-index: 2;
-}
-
-/* Force benefit card content to be centered - override any global alignment rules */
-.nonduality-wrapper .benefit-card .card-title,
-.nonduality-wrapper .benefit-card .benefit-card-text,
-.nonduality-wrapper .benefit-card h3,
-.nonduality-wrapper .benefit-card p {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 
 /* Lists */
@@ -972,7 +1103,7 @@ background: linear-gradient(
 /* Compact card - NOW SOLID! */
 .nonduality-wrapper .compact-card {
   background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
-  border: 1px solid rgba(138, 97, 255, 0.2);
+  border: 1px solid rgba(255, 217, 0, 0.336);
   border-radius: calc(16px * var(--site-scale));
   padding: calc(var(--spacing-unit) * 2);
   margin: calc(var(--spacing-unit) * 2) 0;
@@ -982,13 +1113,308 @@ background: linear-gradient(
 }
 
 /* ============================================
+   MOVABLE CONTENT SECTIONS - For repositioning content blocks
+   ============================================ */
+
+/* Paradox section content positioning */
+.nonduality-wrapper .paradox-content {
+  transform: translateX(0); /* Change this to move left/right: -200px moves left, 200px moves right */
+  transform: translateY(0); /* Change this to move up/down: -100px moves up, 100px moves down */
+  max-width: 1000px; /* Control content width */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding-left: 0; /* Add left padding if needed */
+  padding-right: 0; /* Add right padding if needed */
+  text-align: left; /* Control text alignment: left, center, right */
+}
+
+/* Alternative positioning classes for quick switching */
+.nonduality-wrapper .paradox-content.move-left {
+  transform: translateX(-150px);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .paradox-content.move-right {
+  transform: translateX(150px);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.nonduality-wrapper .paradox-content.move-up {
+  transform: translateY(-50px);
+}
+
+.nonduality-wrapper .paradox-content.move-down {
+  transform: translateY(50px);
+}
+
+/* Combine transforms for diagonal movement */
+.nonduality-wrapper .paradox-content.move-up-left {
+  transform: translate(-150px, -50px);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nonduality-wrapper .paradox-content.move-down-right {
+  transform: translate(150px, 50px);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Paradox section image styling */
+.nonduality-wrapper .paradox-image-container {
+  text-align: center;
+  margin: calc(var(--spacing-unit) * 2) 0;
+  padding: calc(var(--spacing-unit) * 1) 0;
+}
+
+.nonduality-wrapper .paradox-image {
+  max-width: 100%;
+  width: calc(400px * var(--site-scale));
+  height: auto;
+  border-radius: calc(12px * var(--site-scale));
+  box-shadow: 0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+/* Mobile responsive for paradox image */
+@media (max-width: 768px) {
+  .nonduality-wrapper .paradox-image {
+    width: calc(90vw);
+    max-width: calc(400px * var(--site-scale));
+  }
+}
+
+/* =========================================================
+   FIXED SPLIT BOXES - With Edge Attachment for All Screens
+   ========================================================= */
+
+/* Split box containers */
+.nonduality-wrapper .split-box-left,
+.nonduality-wrapper .split-box-right {
+  position: relative;
+  margin: calc(var(--spacing-unit) * 4) 0;
+  padding: calc(var(--spacing-unit) * 2.5) 0;
+  z-index: 2;
+}
+
+/* Background elements that extend to edges */
+.nonduality-wrapper .split-box-left::before,
+.nonduality-wrapper .split-box-right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(255, 217, 0, 0.336);
+  box-shadow: var(--compact-card-glow);
+  z-index: 1;
+}
+
+/* Left box background - extends to left edge */
+.nonduality-wrapper .split-box-left::before {
+  left: calc(50% - 50vw);
+  right: 30%;
+  border-radius: 0 calc(16px * var(--site-scale)) calc(16px * var(--site-scale)) 0;
+}
+
+/* Right box background - extends to right edge */
+.nonduality-wrapper .split-box-right::before {
+  left: 30%;
+  right: calc(50% - 50vw);
+  border-radius: calc(16px * var(--site-scale)) 0 0 calc(16px * var(--site-scale));
+}
+
+/* Content positioning - maintains text readability */
+.nonduality-wrapper .split-box-left > *,
+.nonduality-wrapper .split-box-right > * {
+  position: relative;
+  z-index: 3;
+  max-width: 650px;
+  padding: 0 calc(var(--spacing-unit) * 2);
+}
+
+/* Left content positioning */
+.nonduality-wrapper .split-box-left > * {
+  margin-left: 15%;
+  margin-right: auto;
+}
+
+/* Right content positioning */
+.nonduality-wrapper .split-box-right > * {
+  margin-left: auto;
+  margin-right: 15%;
+}
+
+/* Special handling for lists within split boxes */
+.nonduality-wrapper .split-box-left .problem-list,
+.nonduality-wrapper .split-box-right .problem-list {
+  max-width: 650px;
+  padding: 0 calc(var(--spacing-unit) * 2);
+  position: relative;
+  z-index: 3;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure right box lists are properly positioned */
+.nonduality-wrapper .split-box-right .problem-list {
+  margin-left: auto;
+  margin-right: 15%;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (min-width: 1921px) {
+  /* 2K+ screen adjustments - move content further from edges */
+  .nonduality-wrapper .split-box-left > * {
+    margin-left: 25%;
+  }
+  
+  .nonduality-wrapper .split-box-right > * {
+    margin-right: 25%;
+  }
+  
+  .nonduality-wrapper .split-box-right .problem-list {
+    margin-right: 25%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .nonduality-wrapper .split-box-left > *,
+  .nonduality-wrapper .split-box-right > * {
+    max-width: 550px;
+  }
+  
+  .nonduality-wrapper .split-box-left .problem-list,
+  .nonduality-wrapper .split-box-right .problem-list {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nonduality-wrapper .split-box-left > * {
+    margin-left: 10%;
+  }
+  
+  .nonduality-wrapper .split-box-right > * {
+    margin-right: 10%;
+  }
+  
+  .nonduality-wrapper .split-box-right .problem-list {
+    margin-right: 10%;
+  }
+}
+
+/* Text styling inside split boxes */
+.nonduality-wrapper .split-box-left p,
+.nonduality-wrapper .split-box-right p {
+  font-family: var(--body-font);
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+/* Specific text alignment for split boxes */
+.nonduality-wrapper .split-box-left p {
+  text-align: left;
+}
+
+.nonduality-wrapper .split-box-right p {
+  text-align: left; /* Changed from right */
+}
+
+.nonduality-wrapper .split-box-left ul,
+.nonduality-wrapper .split-box-right ul {
+  list-style: disc;
+  padding-left: calc(20px * var(--site-scale));
+  margin: calc(var(--spacing-unit) * 0.5) 0;
+}
+
+/* Specific alignment for split box lists */
+.nonduality-wrapper .split-box-left ul {
+  text-align: left;
+}
+
+.nonduality-wrapper .split-box-right ul {
+  text-align: left; /* Changed from right */
+  list-style-position: outside; /* Changed from inside */
+  padding-left: 20px; /* Add this for bullet points */
+}
+
+.nonduality-wrapper .split-box-left li,
+.nonduality-wrapper .split-box-right li {
+  font-family: var(--body-font);
+  font-weight: var(--weight-semibold);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  color: var(--text-primary);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.5;
+}
+
+/* Specific alignment for split box list items */
+.nonduality-wrapper .split-box-left li {
+  text-align: left;
+}
+
+.nonduality-wrapper .split-box-right li {
+  text-align: left; /* Changed from right */
+}
+
+/* Fixed positioning for split-box content */
+.nonduality-wrapper .split-box-content {
+  position: relative;
+  max-width: 650px;
+  padding: 0 40px;
+}
+
+/* Left box content positioned from left edge */
+.nonduality-wrapper .split-box-left .split-box-content {
+  margin-left: 150px;
+  margin-right: auto;
+}
+
+/* Right box content positioned from right edge */
+.nonduality-wrapper .split-box-right .split-box-content {
+  margin-left: auto;
+  margin-right: 150px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nonduality-wrapper .split-box-left::before,
+  .nonduality-wrapper .split-box-right::before {
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: calc(16px * var(--site-scale)) !important;
+  }
+  
+  .nonduality-wrapper .split-box-left > *,
+  .nonduality-wrapper .split-box-right > * {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 calc(var(--spacing-unit) * 1.5) !important;
+  }
+  
+  .nonduality-wrapper .split-box-left .split-box-content,
+  .nonduality-wrapper .split-box-right .split-box-content {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+}
+
+/* ============================================
    15. TESTIMONIALS
    ============================================ */
 .nonduality-wrapper .testimonials-grid {
   display: grid;
-  gap: calc(var(--grid-gap) * 0.8);
+  gap: calc(var(--grid-gap) * 3.5);
   margin-left: auto;
   margin-right: auto;
+  padding: calc(var(--spacing-unit) * 3);
 }
 
 .nonduality-wrapper .hero-testimonials {
@@ -1000,29 +1426,49 @@ background: linear-gradient(
 }
 
 .nonduality-wrapper .main-testimonials {
-  grid-template-columns: repeat(auto-fit, minmax(calc(250px * var(--site-scale)), 1fr));
-  max-width: calc(1000px * var(--site-scale));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  max-width: calc(1200px * var(--site-scale));
   margin-left: auto;
   margin-right: auto;
-  margin-top: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 2);
   margin-bottom: calc(var(--spacing-unit) * 1);
-  padding: calc(15px * var(--site-scale)) 0;
+  padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 1.5);
 }
 
 .nonduality-wrapper .testimonial-card {
-  background: var(--bg-elevated);
+  background: none;
   border: none;
-  border-radius: calc(16px * var(--site-scale));
-  padding: calc(var(--card-padding) * 0.9);
+  border-radius: 0;
+  padding: calc(var(--spacing-unit) * 1);
   text-align: center;
   margin-bottom: 0;
+}
+
+/* Standalone testimonial screenshot */
+.nonduality-wrapper .standalone-testimonial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(var(--spacing-unit) * 2) auto;
+  max-width: calc(700px * var(--site-scale));
+  padding: calc(20px * var(--site-scale));
+}
+
+.nonduality-wrapper .testimonial-screenshot-standalone {
+  width: calc(600px * var(--site-scale));
+  height: auto;
+  max-width: 100%;
+  border-radius: calc(8px * var(--site-scale));
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .nonduality-wrapper .testimonial-video {
   background: #222;
   border: none;
   width: 100%;
-  height: calc(240px * var(--site-scale));
+  height: calc(320px * var(--site-scale));
   border-radius: calc(12px * var(--site-scale));
   margin-bottom: calc(var(--spacing-unit) * 0.75);
   display: flex;
@@ -1070,17 +1516,18 @@ background: linear-gradient(
   letter-spacing: var(--accent-letter-spacing);
   --cta-scale: calc(1.0 * var(--hero-scale));
   display: inline-block;
-  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
+  background: linear-gradient(135deg, var(--accent-gold) 100%, #ffed4e 80%);
   color: #000;
-  padding: calc(18px * var(--cta-scale)) calc(48px * var(--cta-scale));
+  padding: calc(20px * var(--cta-scale)) calc(70px * var(--cta-scale));
   border-radius: calc(60px * var(--cta-scale));
-  font-size: calc(var(--accent-size) * var(--cta-scale));
+  font-size: calc(19px * var(--cta-scale));
   text-transform: uppercase;
   text-decoration: none;
   margin: calc(var(--spacing-unit) * 0.75 * var(--hero-scale)) 0;
   margin-top: 0%;
   transition: none;
   box-shadow: 0 calc(15px * var(--cta-scale)) calc(40px * var(--cta-scale)) rgba(255, 215, 0, 0.2);
+  margin-top: 5px;
 }
 
 .nonduality-wrapper .final-cta {
@@ -1098,16 +1545,16 @@ background: linear-gradient(
 .nonduality-wrapper .faq-section {
   background: linear-gradient(180deg, #f5e6d3 0%, #e8d7c3 100%);
   color: var(--text-dark);
-  padding: calc(30px * var(--site-scale)) 0;
+  padding: calc(60px * var(--site-scale)) 0;
   position: relative;
   margin: 0;
 }
 
 .nonduality-wrapper .faq-container {
-  max-width: calc(900px * var(--site-scale));
+  max-width: calc(1000px * var(--site-scale));
   margin: 0 auto;
   padding: 0 calc(40px * var(--site-scale));
-  margin-bottom: calc(10px * var(--site-scale));
+  margin-bottom: calc(20px * var(--site-scale));
 }
 
 .nonduality-wrapper .faq-main-title {
@@ -1117,12 +1564,15 @@ background: linear-gradient(
   line-height: var(--header-line-height);
   color: var(--text-dark);
   text-align: center;
-  margin-bottom: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 4);
 }
 
 .nonduality-wrapper .faq-item {
-  border-bottom: 1px solid #333333;
-  margin-bottom: 0;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.3);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  border-radius: calc(8px * var(--site-scale));
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: calc(var(--spacing-unit) * 1);
 }
 
 .nonduality-wrapper .faq-question {
@@ -1130,13 +1580,17 @@ background: linear-gradient(
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc(var(--spacing-unit) * 0.75) 0;
-  transition: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  transition: background-color 0.2s ease;
+}
+
+.nonduality-wrapper .faq-question:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nonduality-wrapper .faq-question-title {
   font-family: var(--subheader-font);
-  font-size: calc(20px * var(--site-scale));
+  font-size: calc(22px * var(--site-scale));
   font-weight: var(--weight-semibold);
   line-height: 1.3;
   letter-spacing: var(--subheader-letter-spacing);
@@ -1146,39 +1600,43 @@ background: linear-gradient(
 }
 
 .nonduality-wrapper .faq-icon {
-  width: calc(28px * var(--site-scale));
-  height: calc(28px * var(--site-scale));
+  width: calc(32px * var(--site-scale));
+  height: calc(32px * var(--site-scale));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(20px * var(--site-scale));
+  font-size: calc(24px * var(--site-scale));
   color: var(--text-dark);
-  transition: none;
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-left: calc(var(--spacing-unit) * 1);
 }
 
 .nonduality-wrapper .faq-item.active .faq-icon {
   transform: rotate(45deg);
   color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .nonduality-wrapper .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease;
 }
 
 .nonduality-wrapper .faq-answer.active {
-  max-height: calc(500px * var(--site-scale));
-  padding-bottom: calc(var(--spacing-unit) * 0.75);
+  max-height: calc(600px * var(--site-scale));
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2);
 }
 
 .nonduality-wrapper .faq-answer p {
   font-family: var(--body-font);
   font-weight: var(--body-weight);
   color: var(--text-dark);
-  font-size: calc(16px * var(--site-scale));
-  line-height: 1.6;
-  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  font-size: calc(18px * var(--site-scale));
+  line-height: 1.7;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
 .nonduality-wrapper .call-details {
@@ -1223,6 +1681,26 @@ background: linear-gradient(
     padding: 0 calc(25px * var(--site-scale));
   }
   
+  .nonduality-wrapper .faq-section {
+    padding: calc(40px * var(--site-scale)) 0;
+  }
+  
+  .nonduality-wrapper .faq-main-title {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+  
+  .nonduality-wrapper .faq-question {
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 1.5);
+  }
+  
+  .nonduality-wrapper .faq-question-title {
+    font-size: calc(18px * var(--site-scale));
+  }
+  
+  .nonduality-wrapper .faq-answer p {
+    font-size: calc(16px * var(--site-scale));
+  }
+  
   .nonduality-wrapper .navigation {
     padding: calc(18px * var(--site-scale)) 0;
   }
@@ -1257,20 +1735,32 @@ background: linear-gradient(
   }
   
   .nonduality-wrapper .benefit-card {
-    min-height: calc(180px * var(--site-scale));
-    padding: calc(var(--spacing-unit) * 2);
+    min-height: calc(140px * var(--site-scale));
+    padding: calc(var(--spacing-unit) * 1.5);
   }
   
   .nonduality-wrapper .benefit-card-icon {
-    width: calc(55px * var(--site-scale));
-    height: calc(55px * var(--site-scale));
-    font-size: calc(30px * var(--site-scale));
-    margin-bottom: calc(var(--spacing-unit) * 1);
+    width: calc(35px * var(--site-scale));
+    height: calc(35px * var(--site-scale));
+    font-size: calc(18px * var(--site-scale));
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    background: none;
+    border: none;
   }
   
   .nonduality-wrapper .hero-testimonials,
   .nonduality-wrapper .main-testimonials {
     grid-template-columns: 1fr;
+  }
+  
+  .nonduality-wrapper .mentorship-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--grid-gap) * 0.8);
+  }
+  
+  .nonduality-wrapper .mentorship-card {
+    min-height: auto;
+    padding: calc(var(--spacing-unit) * 2);
   }
   
   .nonduality-wrapper .cta-button {
@@ -1291,4 +1781,41 @@ background: linear-gradient(
   .nonduality-wrapper .section-problem .problem-card {
     padding: calc(var(--card-padding) * 0.9);
   }
+}
+
+/* Update the split-box-right text positioning rule */
+.nonduality-wrapper .split-box-right .split-box-text-container {
+    position: relative;
+    z-index: 3;
+    max-width: 650px; /* Increased from 550px for longer lines */
+    margin-left: 35%; /* Moved left from 45% */
+    margin-right: 5%; /* Reduced from 10% to give more space */
+    padding: 0 calc(var(--spacing-unit) * 2);
+    transform: translateX(0px); /* Fine-tune position */
+}
+
+/* Update text alignment from right to left */
+.nonduality-wrapper .split-box-right p {
+    text-align: left; /* Changed from right */
+}
+
+.nonduality-wrapper .split-box-right ul {
+    text-align: left; /* Changed from right */
+    list-style-position: outside; /* Changed from inside */
+    padding-left: 20px; /* Add this for bullet points */
+}
+
+.nonduality-wrapper .split-box-right li {
+    text-align: left; /* Changed from right */
+}
+
+/* Update the responsive media query for mobile */
+@media (max-width: 768px) {
+    .nonduality-wrapper .split-box-right .split-box-text-container {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 20px !important;
+        transform: none !important;
+    }
 }

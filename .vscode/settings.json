@@ -12,5 +12,6 @@
     "git.decorations.enabled": true,
     
     // Show git status in status bar but don't auto-fetch
-    "git.enableStatusBarSync": false
+    "git.enableStatusBarSync": false,
+    "liveServer.settings.port": 5501
 }
