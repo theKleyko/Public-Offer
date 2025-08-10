@@ -964,11 +964,14 @@ background: linear-gradient(
 /* Mentorship cards - left-aligned text, no icons */
 .nonduality-wrapper .mentorship-card {
   background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
-  border: 1px solid rgba(138, 97, 255, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: calc(20px * var(--site-scale));
   padding: calc(var(--spacing-unit) * 2.5);
   position: relative;
-  box-shadow: var(--benefit-card-glow);
+  box-shadow: 
+    0 0 calc(12px * var(--site-scale)) 0 rgba(255, 215, 0, 0.15),
+    0 calc(8px * var(--site-scale)) calc(32px * var(--site-scale)) rgba(255, 215, 0, 0.1),
+    0 0 calc(60px * var(--site-scale)) rgba(255, 215, 0, 0.05);
   transition: none;
   min-height: auto;
   width: calc(580px * var(--site-scale)); /* Fixed width to maintain original size */
@@ -1183,50 +1186,124 @@ background: linear-gradient(
   }
 }
 
-/* ============================================
-   LEFT-RIGHT SPLIT BOXES - Add this to your CSS file
-   ============================================ */
+/* =========================================================
+   FIXED SPLIT BOXES - With Edge Attachment for All Screens
+   ========================================================= */
 
-/* Left-extending box */
-.nonduality-wrapper .split-box-left {
-  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
-  border: 1px solid rgba(255, 217, 0, 0.336);
-  border-radius: 0 calc(16px * var(--site-scale)) calc(16px * var(--site-scale)) 0;
-  padding: calc(var(--spacing-unit) * 2.5);
-  margin: calc(var(--spacing-unit) * 4) 0;
-  margin-left: calc(-50vw + 50%);
-  padding-left: max(calc(50vw - 50%), calc(var(--spacing-unit) * 2)); /* Extends padding to screen edge */
-  width: 100%; /* Increase this to extend more to the right */
-  box-shadow: var(--compact-card-glow);
+/* Split box containers */
+.nonduality-wrapper .split-box-left,
+.nonduality-wrapper .split-box-right {
   position: relative;
+  margin: calc(var(--spacing-unit) * 4) 0;
+  padding: calc(var(--spacing-unit) * 2.5) 0;
+  z-index: 2;
 }
 
-/* Inner content wrapper for left box - controls text position */
-.nonduality-wrapper .split-box-left-content {
-  max-width: 600px; /* Adjust this to control text width */
-  margin-left: 0; /* Adjust this to move text right */
+/* Background elements that extend to edges */
+.nonduality-wrapper .split-box-left::before,
+.nonduality-wrapper .split-box-right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  border: 1px solid rgba(255, 217, 0, 0.336);
+  box-shadow: var(--compact-card-glow);
+  z-index: 1;
+}
+
+/* Left box background - extends to left edge */
+.nonduality-wrapper .split-box-left::before {
+  left: calc(50% - 50vw);
+  right: 30%;
+  border-radius: 0 calc(16px * var(--site-scale)) calc(16px * var(--site-scale)) 0;
+}
+
+/* Right box background - extends to right edge */
+.nonduality-wrapper .split-box-right::before {
+  left: 30%;
+  right: calc(50% - 50vw);
+  border-radius: calc(16px * var(--site-scale)) 0 0 calc(16px * var(--site-scale));
+}
+
+/* Content positioning - maintains text readability */
+.nonduality-wrapper .split-box-left > *,
+.nonduality-wrapper .split-box-right > * {
+  position: relative;
+  z-index: 3;
+  max-width: 650px;
+  padding: 0 calc(var(--spacing-unit) * 2);
+}
+
+/* Left content positioning */
+.nonduality-wrapper .split-box-left > * {
+  margin-left: 15%;
   margin-right: auto;
 }
 
-/* Right-extending box */
-.nonduality-wrapper .split-box-right {
-  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
-  border: 1px solid rgba(255, 217, 0, 0.336);
-  border-radius: calc(16px * var(--site-scale)) 0 0 calc(16px * var(--site-scale));
-  padding: calc(var(--spacing-unit) * 2.5);
-  margin: calc(var(--spacing-unit) * 2) 0;
-  margin-left: 30%; /* Adjust this to control where box starts from left */
-  margin-right: calc(-50vw + 50%);
-  padding-right: max(calc(50vw - 50%), calc(var(--spacing-unit) * 2)); /* Extends padding to screen edge */
-  box-shadow: var(--compact-card-glow);
-  position: relative;
+/* Right content positioning */
+.nonduality-wrapper .split-box-right > * {
+  margin-left: auto;
+  margin-right: 15%;
 }
 
-/* Inner content wrapper for right box - controls text position */
-.nonduality-wrapper .split-box-right-content {
-  max-width: 600px; /* Adjust this to control text width */
+/* Special handling for lists within split boxes */
+.nonduality-wrapper .split-box-left .problem-list,
+.nonduality-wrapper .split-box-right .problem-list {
+  max-width: 650px;
+  padding: 0 calc(var(--spacing-unit) * 2);
+  position: relative;
+  z-index: 3;
   margin-left: auto;
-  margin-right: 0; /* Adjust this to move text left */
+  margin-right: auto;
+}
+
+/* Ensure right box lists are properly positioned */
+.nonduality-wrapper .split-box-right .problem-list {
+  margin-left: auto;
+  margin-right: 15%;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (min-width: 1921px) {
+  /* 2K+ screen adjustments - move content further from edges */
+  .nonduality-wrapper .split-box-left > * {
+    margin-left: 25%;
+  }
+  
+  .nonduality-wrapper .split-box-right > * {
+    margin-right: 25%;
+  }
+  
+  .nonduality-wrapper .split-box-right .problem-list {
+    margin-right: 25%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .nonduality-wrapper .split-box-left > *,
+  .nonduality-wrapper .split-box-right > * {
+    max-width: 550px;
+  }
+  
+  .nonduality-wrapper .split-box-left .problem-list,
+  .nonduality-wrapper .split-box-right .problem-list {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nonduality-wrapper .split-box-left > * {
+    margin-left: 10%;
+  }
+  
+  .nonduality-wrapper .split-box-right > * {
+    margin-right: 10%;
+  }
+  
+  .nonduality-wrapper .split-box-right .problem-list {
+    margin-right: 10%;
+  }
 }
 
 /* Text styling inside split boxes */
@@ -1240,11 +1317,31 @@ background: linear-gradient(
   margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
+/* Specific text alignment for split boxes */
+.nonduality-wrapper .split-box-left p {
+  text-align: left;
+}
+
+.nonduality-wrapper .split-box-right p {
+  text-align: left; /* Changed from right */
+}
+
 .nonduality-wrapper .split-box-left ul,
 .nonduality-wrapper .split-box-right ul {
   list-style: disc;
   padding-left: calc(20px * var(--site-scale));
   margin: calc(var(--spacing-unit) * 0.5) 0;
+}
+
+/* Specific alignment for split box lists */
+.nonduality-wrapper .split-box-left ul {
+  text-align: left;
+}
+
+.nonduality-wrapper .split-box-right ul {
+  text-align: left; /* Changed from right */
+  list-style-position: outside; /* Changed from inside */
+  padding-left: 20px; /* Add this for bullet points */
 }
 
 .nonduality-wrapper .split-box-left li,
@@ -1257,28 +1354,55 @@ background: linear-gradient(
   line-height: 1.5;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .nonduality-wrapper .split-box-left,
-  .nonduality-wrapper .split-box-right {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    border-radius: calc(16px * var(--site-scale));
-  }
+/* Specific alignment for split box list items */
+.nonduality-wrapper .split-box-left li {
+  text-align: left;
 }
 
-/* 2K+ screen adjustments - fix the viewport calculations to give more text space */
-@media (min-width: 1921px) {
-  .nonduality-wrapper .split-box-left {
-    margin-left: calc(-40vw + 50%); /* Reduce viewport extension */
-    padding-left: max(calc(40vw - 50%), calc(var(--spacing-unit) * 2)); /* Match the reduced extension */
+.nonduality-wrapper .split-box-right li {
+  text-align: left; /* Changed from right */
+}
+
+/* Fixed positioning for split-box content */
+.nonduality-wrapper .split-box-content {
+  position: relative;
+  max-width: 650px;
+  padding: 0 40px;
+}
+
+/* Left box content positioned from left edge */
+.nonduality-wrapper .split-box-left .split-box-content {
+  margin-left: 150px;
+  margin-right: auto;
+}
+
+/* Right box content positioned from right edge */
+.nonduality-wrapper .split-box-right .split-box-content {
+  margin-left: auto;
+  margin-right: 150px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nonduality-wrapper .split-box-left::before,
+  .nonduality-wrapper .split-box-right::before {
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: calc(16px * var(--site-scale)) !important;
   }
   
-  .nonduality-wrapper .split-box-right {
-    margin-left: 25%; /* Reduce starting position */
-    margin-right: calc(-40vw + 50%); /* Reduce viewport extension */
-    padding-right: max(calc(40vw - 50%), calc(var(--spacing-unit) * 2)); /* Match the reduced extension */
+  .nonduality-wrapper .split-box-left > *,
+  .nonduality-wrapper .split-box-right > * {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 calc(var(--spacing-unit) * 1.5) !important;
+  }
+  
+  .nonduality-wrapper .split-box-left .split-box-content,
+  .nonduality-wrapper .split-box-right .split-box-content {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
   }
 }
 
@@ -1287,9 +1411,10 @@ background: linear-gradient(
    ============================================ */
 .nonduality-wrapper .testimonials-grid {
   display: grid;
-  gap: calc(var(--grid-gap) * 0.8);
+  gap: calc(var(--grid-gap) * 3.5);
   margin-left: auto;
   margin-right: auto;
+  padding: calc(var(--spacing-unit) * 3);
 }
 
 .nonduality-wrapper .hero-testimonials {
@@ -1303,19 +1428,20 @@ background: linear-gradient(
 .nonduality-wrapper .main-testimonials {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  max-width: calc(800px * var(--site-scale));
+  max-width: calc(1200px * var(--site-scale));
   margin-left: auto;
   margin-right: auto;
-  margin-top: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 2);
   margin-bottom: calc(var(--spacing-unit) * 1);
-  padding: calc(15px * var(--site-scale)) 0;
+  padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 1.5);
 }
 
 .nonduality-wrapper .testimonial-card {
-  background: var(--bg-elevated);
+  background: none;
   border: none;
-  border-radius: calc(16px * var(--site-scale));
-  padding: calc(var(--card-padding) * 0.9);
+  border-radius: 0;
+  padding: calc(var(--spacing-unit) * 1);
   text-align: center;
   margin-bottom: 0;
 }
@@ -1342,7 +1468,7 @@ background: linear-gradient(
   background: #222;
   border: none;
   width: 100%;
-  height: calc(240px * var(--site-scale));
+  height: calc(320px * var(--site-scale));
   border-radius: calc(12px * var(--site-scale));
   margin-bottom: calc(var(--spacing-unit) * 0.75);
   display: flex;
@@ -1655,4 +1781,41 @@ background: linear-gradient(
   .nonduality-wrapper .section-problem .problem-card {
     padding: calc(var(--card-padding) * 0.9);
   }
+}
+
+/* Update the split-box-right text positioning rule */
+.nonduality-wrapper .split-box-right .split-box-text-container {
+    position: relative;
+    z-index: 3;
+    max-width: 650px; /* Increased from 550px for longer lines */
+    margin-left: 35%; /* Moved left from 45% */
+    margin-right: 5%; /* Reduced from 10% to give more space */
+    padding: 0 calc(var(--spacing-unit) * 2);
+    transform: translateX(0px); /* Fine-tune position */
+}
+
+/* Update text alignment from right to left */
+.nonduality-wrapper .split-box-right p {
+    text-align: left; /* Changed from right */
+}
+
+.nonduality-wrapper .split-box-right ul {
+    text-align: left; /* Changed from right */
+    list-style-position: outside; /* Changed from inside */
+    padding-left: 20px; /* Add this for bullet points */
+}
+
+.nonduality-wrapper .split-box-right li {
+    text-align: left; /* Changed from right */
+}
+
+/* Update the responsive media query for mobile */
+@media (max-width: 768px) {
+    .nonduality-wrapper .split-box-right .split-box-text-container {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 20px !important;
+        transform: none !important;
+    }
 }
