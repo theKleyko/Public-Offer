@@ -94,7 +94,7 @@
   --body-letter-spacing: 0;
 
   --accent-font: var(--font-secondary);
-  --accent-weight: var(--weight-medium);
+  --accent-weight: var(--weight-normal);
   --accent-size: calc(15px * var(--site-scale));
   --accent-line-height: 1.3;
   --accent-letter-spacing: 1px;
@@ -701,7 +701,7 @@
   justify-content: center;
   gap: calc(var(--grid-gap) * 0.8 * var(--hero-scale));
   margin: calc(var(--spacing-unit) * 1.5 * var(--hero-scale)) 0;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-bottom: 3%;
   flex-wrap: wrap;
 }
@@ -1516,6 +1516,7 @@ background: linear-gradient(
 /* ============================================
    17. CTA BUTTON
    ============================================ */
+
 .nonduality-wrapper .cta-button {
   font-family: var(--accent-font);
   font-weight: var(--accent-weight);
@@ -1532,17 +1533,13 @@ background: linear-gradient(
   margin: calc(var(--spacing-unit) * 0.75 * var(--hero-scale)) 0;
   margin-top: 0%;
   transition: none;
-  box-shadow: 0 calc(15px * var(--cta-scale)) calc(40px * var(--cta-scale)) rgba(255, 215, 0, 0.2);
+  
+  /* Clean shadow for depth - just like the example */
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.2),  /* The key shadow underneath */
+    0 calc(15px * var(--cta-scale)) calc(40px * var(--cta-scale)) rgba(255, 215, 0, 0.15); /* Keep your glow but softer */
+  
   margin-top: 5px;
-}
-
-.nonduality-wrapper .final-cta {
-  text-align: center;
-  margin-top: calc(var(--spacing-unit) * 1.5);
-}
-
-.nonduality-wrapper .hero-section .cta-button {
-  margin-bottom: calc(var(--spacing-unit) * 2 * var(--hero-scale));
 }
 
 /* ============================================
