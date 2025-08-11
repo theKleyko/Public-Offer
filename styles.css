@@ -800,7 +800,7 @@
 
 /* Problem cards - NOW SOLID! */
 .nonduality-wrapper .problem-card {
-  background: linear-gradient(135deg, rgba(64, 54, 92, 0.2) 0%, rgba(0, 0, 0, 0.418) 50%, rgba(4, 1, 4, 0.9) 100%);
+  background: #080707;
   border: 1px solid rgba(190, 199, 16, 0.238);
   border-radius: calc(16px * var(--site-scale));
   padding: calc(var(--card-padding) * 0.9);
@@ -822,8 +822,8 @@
   padding: calc(1.5px * var(--site-scale));
 background: linear-gradient(
     180deg,
-    rgba(153, 153, 153, 0.86) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 215, 0, 0.3) 0%,
+    rgba(255, 215, 0, 0.3) 50%,
     transparent 100%
 );
   -webkit-mask: 
