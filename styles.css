@@ -374,6 +374,19 @@
   background: rgba(0, 0, 0, var(--paradox-bg-overlay-opacity));
 }
 
+/* Mentorship Section - No special background */
+
+/* Lived Understanding Section - Shallow Clouds Galaxy Background */
+.nonduality-wrapper .section-darker .bg-layer-1-version1 {
+  background-image: url('images/shallow-clouds-in-the-galaxy-background-1.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.4 !important;
+}
+
+/* Solution Section - No special background */
+
 /* Other Sections Backgrounds */
 .nonduality-wrapper .section-darker {
   background: var(--other-bg-color);
@@ -963,7 +976,7 @@ background: linear-gradient(
 
 /* Mentorship cards - left-aligned text, no icons */
 .nonduality-wrapper .mentorship-card {
-  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  background: radial-gradient(135deg, rgba(124, 83, 235, 1) 0%, rgba(56, 2, 95, 1) 50%, rgba(95, 3, 171, 1) 100%);
   border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: calc(20px * var(--site-scale));
   padding: calc(var(--spacing-unit) * 2.5);
@@ -1007,16 +1020,9 @@ background: linear-gradient(
   margin-right: auto !important;
 }
 
-/* Subtle gradient overlay for mentorship cards */
+/* Solid overlay for mentorship cards - no transparency */
 .nonduality-wrapper .mentorship-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(138, 97, 255, 0.1) 0%, transparent 70%);
-  border-radius: calc(20px * var(--site-scale));
+  display: none;
   pointer-events: none;
   z-index: 1;
 }
@@ -1102,7 +1108,7 @@ background: linear-gradient(
 
 /* Compact card - NOW SOLID! */
 .nonduality-wrapper .compact-card {
-  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  background: radial-gradient(135deg, rgba(124, 83, 235, 1) 0%, rgba(56, 2, 95, 1) 50%, rgba(95, 3, 171, 1) 100%);
   border: 1px solid rgba(255, 217, 0, 0.336);
   border-radius: calc(16px * var(--site-scale));
   padding: calc(var(--spacing-unit) * 2);
@@ -1206,7 +1212,7 @@ background: linear-gradient(
   position: absolute;
   top: 0;
   height: 100%;
-  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  background: radial-gradient(135deg, rgba(124, 83, 235, 1) 0%, rgba(56, 2, 95, 1) 50%, rgba(95, 3, 171, 1) 100%);
   border: 1px solid rgba(255, 217, 0, 0.336);
   box-shadow: var(--compact-card-glow);
   z-index: 1;
@@ -1492,7 +1498,7 @@ background: linear-gradient(
 .nonduality-wrapper .quote-block {
   font-family: var(--body-font);
   font-weight: var(--body-weight);
-  background: radial-gradient(135deg, rgba(124, 83, 235, 0.2) 0%, rgba(56, 2, 95, 0.8) 50%, rgba(95, 3, 171, 0.9) 100%);
+  background: radial-gradient(135deg, rgba(124, 83, 235, 1) 0%, rgba(56, 2, 95, 1) 50%, rgba(95, 3, 171, 1) 100%);
   border: 1px solid rgba(138, 97, 255, 0.2);
   border-left: none;
   padding: calc(var(--spacing-unit) * 1.5);
