@@ -657,7 +657,7 @@
   border-radius: calc(40px * var(--hero-scale));
   padding: calc(4px * var(--hero-scale)) calc(24px * var(--hero-scale));
   margin-bottom: calc(var(--spacing-unit) * 1 * var(--hero-scale));
-  font-size: calc(15px * var(--hero-scale));
+  font-size: 13px; /* Was calc(15px * var(--hero-scale)) */
   color: var(--accent-gold);
   text-transform: uppercase;
 }
@@ -729,7 +729,7 @@
 
 .nonduality-wrapper .feature-text {
   font-family: var(--accent-font);
-  font-size: calc(18px * var(--hero-scale));
+  font-size: 15px; /* Was calc(18px * var(--hero-scale)) */
   font-weight: var(--weight-medium);
   color: var(--text-secondary);
 }
@@ -1527,7 +1527,7 @@ background: linear-gradient(
   color: #000;
   padding: calc(20px * var(--cta-scale)) calc(70px * var(--cta-scale));
   border-radius: calc(60px * var(--cta-scale));
-  font-size: calc(19px * var(--cta-scale));
+  font-size: 16px !important; /* Was calc(19px * var(--cta-scale)) - Force override */
   text-transform: uppercase;
   text-decoration: none;
   margin: calc(var(--spacing-unit) * 0.75 * var(--hero-scale)) 0;
@@ -1769,7 +1769,7 @@ background: linear-gradient(
   .nonduality-wrapper .cta-button {
     --cta-scale: calc(0.7 * var(--site-scale));
     padding: calc(16px * var(--cta-scale)) calc(36px * var(--cta-scale));
-    font-size: calc(13px * var(--cta-scale));
+    font-size: 11px !important; /* Was calc(13px * var(--cta-scale)) - Force override */
   }
   
   .nonduality-wrapper .section-problem {
