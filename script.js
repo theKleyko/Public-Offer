@@ -1,3 +1,8 @@
+// Remove URL fragments on page load
+if (window.location.hash && window.location.hash === '#book') {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+}
+
 // FAQ toggle function
 function toggleFaqNonduality(element) {
     const faqItem = element.parentElement;
