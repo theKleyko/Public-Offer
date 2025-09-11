@@ -9,7 +9,14 @@
       "Bash(git remote add:*)",
       "Bash(git commit:*)",
       "Bash(git restore:*)",
-      "Bash(gh repo edit:*)"
+      "Bash(gh repo edit:*)",
+      "Bash(git clone:*)",
+      "Bash(cat:*)",
+      "Bash(uv:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(PYTHONPATH=. python example/simple.py)",
+      "Bash(git fetch:*)"
     ],
     "deny": []
   }
