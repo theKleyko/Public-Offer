@@ -622,7 +622,7 @@
   height: calc(80px * var(--site-scale));
   border-radius: 65%;
   object-fit: cover;
-  border: calc(5px * var(--site-scale)) solid rgba(255, 215, 0, 0.12);
+  border: calc(2px * var(--site-scale)) solid rgba(255, 215, 0, 0.12);
   box-shadow: 0 0 calc(12px * var(--site-scale)) 0 rgba(255, 215, 0, 0.10);
   filter: drop-shadow(0 0 calc(20px * var(--site-scale)) rgba(255, 215, 0, 0.08));
 }
@@ -656,7 +656,7 @@
   border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: calc(40px * var(--hero-scale));
   padding: calc(4px * var(--hero-scale)) calc(24px * var(--hero-scale));
-  margin-bottom: calc(var(--spacing-unit) * 1 * var(--hero-scale));
+  margin-bottom: calc(var(--spacing-unit) * 2.5 * var(--hero-scale));
   font-size: 13px; /* Was calc(15px * var(--hero-scale)) */
   color: var(--accent-gold);
   text-transform: uppercase;
@@ -729,7 +729,7 @@
 
 .nonduality-wrapper .feature-text {
   font-family: var(--accent-font);
-  font-size: 15px; /* Was calc(18px * var(--hero-scale)) */
+  font-size: calc(18px * var(--hero-scale));
   font-weight: var(--weight-medium);
   color: var(--text-secondary);
 }
