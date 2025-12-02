@@ -723,13 +723,13 @@
   flex-shrink: 0;
   color: var(--accent-gold);
   font-weight: bold;
-  font-size: calc(16px * var(--hero-scale));
+  font-size: calc(17px * var(--hero-scale));
   margin-left: 20px;
 }
 
 .nonduality-wrapper .feature-text {
   font-family: var(--accent-font);
-  font-size: calc(18px * var(--hero-scale));
+  font-size: calc(19px * var(--hero-scale));
   font-weight: var(--weight-medium);
   color: var(--text-secondary);
 }

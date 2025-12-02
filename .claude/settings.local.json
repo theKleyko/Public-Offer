@@ -16,7 +16,10 @@
       "Bash(pip install:*)",
       "Bash(python:*)",
       "Bash(PYTHONPATH=. python example/simple.py)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "Bash(git config:*)",
+      "Bash(git rm:*)",
+      "Bash(claude doctor)"
     ],
     "deny": []
   }
