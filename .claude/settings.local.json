@@ -19,7 +19,9 @@
       "Bash(git fetch:*)",
       "Bash(git config:*)",
       "Bash(git rm:*)",
-      "Bash(claude doctor)"
+      "Bash(claude doctor)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)"
     ],
     "deny": []
   }
