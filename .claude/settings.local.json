@@ -21,7 +21,9 @@
       "Bash(git rm:*)",
       "Bash(claude doctor)",
       "Bash(git pull:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(ls:*)",
+      "Bash(git ls-tree:*)"
     ],
     "deny": []
   }
