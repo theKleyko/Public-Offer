@@ -1,0 +1,573 @@
+/* ==========================================================================
+   protocol.css — the Kleyko document register, illuminated
+   Source of truth: ego-architecture-protocol.pdf (Helvetica, black on white,
+   hairline boxes, numbered phases, one seal). This file is that document's
+   register evolved to carry the brand the way illumination entered a
+   manuscript:
+
+     VIOLET IS AN INK.   It writes: links, the six phase rubrics, the door
+                         numerals, the phase constellation in the margin,
+                         the quotation rule beside a client's words, focus
+                         rings. It never fills a panel, never tints a
+                         section, never draws a structural rule at rest.
+     GOLD IS A GROUND,   or a hair of light: the reader's own highlighter
+                         (::selection), the button under the hand, one
+                         gilded rule before the seal, the faint halo behind
+                         the seal, the zenith point above the wordmark, and
+                         the scaffolding of the prototype slots.
+     BLACK REMAINS       the only structural color. Every hairline that
+                         holds the document together is black.
+
+   No webfonts: the PDF itself uses unembedded Helvetica, so the system
+   stack IS the authentic type. Character comes from size, weight,
+   letterspacing, and case — never from new font families. No third-party
+   requests of any kind. Nothing moves unless motion is permitted, and then
+   only ink crossfades. The whole page survives a monochrome laser printer
+   unchanged: in print the tokens themselves re-ink (violet to black, gold
+   grounds to nothing), see @media print at the end.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* paper and the black inks (unchanged from the prototype) */
+  --ink: #000000;
+  --body-ink: #141414;
+  --muted: #6e6e6e;           /* 5.1:1 on paper — metadata only */
+  --caption-ink: #333333;
+  --paper: #ffffff;
+
+  /* violet: the second ink */
+  --violet-ink: #4c01ff;      /* 7.6:1 on paper — safe at body size */
+  --violet-deep: #2e0099;     /* the ink pressed harder (hover) */
+  --violet-thread: rgba(76, 1, 255, 0.18);  /* the constellation thread */
+
+  /* gold: grounds and hairs of light — never body text ink */
+  --gold-ground: #ffd700;     /* the highlighter: ::selection, .btn:hover */
+  --gold-rule: #c9a227;       /* the gilded rule, the zenith point */
+  --gold-halo: rgba(201, 162, 39, 0.18);    /* light gathered at the seal */
+  --gold-ink: #8a6d1b;        /* 4.9:1 — annotation ink, the warmed numeral */
+  --gold-annotation-line: #b8860b;          /* dashed scaffolding lines */
+
+  --link: var(--violet-ink);
+  --hairline: 1.5px solid var(--ink);
+  --measure: 43rem;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--body-ink);
+  background: var(--paper);
+}
+
+img { max-width: 100%; }
+
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 3.5rem 1.4rem 4rem;
+}
+
+/* --- paper grain (near-threshold; the page is printed matter) -------------
+   Inline SVG turbulence, ~600 bytes, no request. At 4.5% opacity it is felt
+   as tooth, not seen as texture; it also dithers the cover glow so the
+   gradient cannot band. Dropped entirely in print. */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+}
+
+/* --- the cover's light (index only, body.cover) ---------------------------
+   One breath of violet behind the wordmark, at the threshold of visibility:
+   a deep core inside a wider wash, so the light reads night-violet, not
+   lavender. If a visitor can say why the page feels lit, this is too
+   strong. */
+
+body.cover {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(
+      ellipse 22rem 12rem at 50% 0,
+      rgba(46, 0, 153, 0.05),
+      rgba(46, 0, 153, 0) 70%
+    ),
+    radial-gradient(
+      ellipse 40rem 22rem at 50% 1.5rem,
+      rgba(76, 1, 255, 0.05),
+      rgba(76, 1, 255, 0) 70%
+    );
+  background-repeat: no-repeat;
+}
+
+/* the cover is a cover page: a bound document's cover occupies its full
+   sheet, so on tall viewports the doors sit as contents and the seal and
+   footer settle toward the foot. Pure layout, no motion. */
+body.cover .page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+body.cover .doors { margin-bottom: auto; }
+
+/* --- the reader's highlighter --------------------------------------------- */
+
+::selection {
+  background: var(--gold-ground);
+  color: #000;
+}
+
+/* --- focus: the interactive ink, ringed ----------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--violet-ink);
+  outline-offset: 3px;
+}
+
+/* --- document header ------------------------------------------------------ */
+
+.crumb {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+.crumb a { color: var(--muted); text-decoration: none; }
+.crumb a:hover { color: var(--violet-ink); text-decoration: underline; }
+
+h1 {
+  font-size: clamp(1.9rem, 6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-indent: 0.04em;      /* recenters tracked caps */
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+/* the cover wordmark: same ink, wider set — a masthead, not a heading */
+h1.wordmark {
+  margin-top: 2.5rem;
+  font-size: clamp(1.8rem, 6vw, 2.3rem);
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+}
+
+/* the zenith point: a punctuation-sized gold star above the wordmark — a
+   printer's ornament, the cover's one visible brand mark. No glow: on
+   white paper, light is drawn, not emitted. */
+h1.wordmark::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold-rule);
+  margin: 0 auto 1.2rem;
+}
+
+.doc-subtitle {
+  text-align: center;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.doc-subtitle-small {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--body-ink);
+  margin-bottom: 3rem;
+}
+
+/* --- sections -------------------------------------------------------------
+   Two heading castes, as in the PDF: title case explains, ALL CAPS
+   administers. The apparatus caste is set smaller and tracked wide, so the
+   machinery reads as protocol stamps while the prose headings keep the
+   room. Hierarchy is still weight + case + whitespace; color never ranks. */
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 2.75rem 0 0.9rem;
+}
+
+h2.apparatus {
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  margin: 3.25rem 0 1rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.6rem 0 0.4rem;
+}
+
+/* the rubric: the phase lead-in ("Phase 01:") written in the second ink.
+   Rubrication is the oldest move in the manuscript tradition — the lead-in
+   carries the color, the words of the title stay black. Same size, same
+   weight; only the ink changes. */
+.rubric { color: var(--violet-ink); }
+
+/* the constellation: each phase gets a violet point in the left margin,
+   the points joined by a near-threshold thread — the cover's cosmos
+   echoed inside the clinical document as ink, not sky. Exists only where
+   the margin exists; see @media screen and (min-width: 64rem). */
+section.phase { position: relative; }
+
+p { margin: 0 0 0.85rem; }
+
+ul { margin: 0 0 0.85rem; padding-left: 1.3rem; }
+li { margin-bottom: 0.55rem; }
+
+strong { color: var(--ink); }
+
+/* --- links: the one saturated ink the genre already licenses --------------- */
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+a:hover { color: var(--violet-deep); }
+
+/* --- the logistics box (the PDF's hairline box — stays black) -------------- */
+
+.logistics {
+  border: var(--hairline);
+  padding: 0.95rem 1.35rem;
+  max-width: 22rem;
+  margin: 0 0 2.25rem;
+}
+.logistics p { margin: 0.15rem 0; }
+
+/* --- testimonial figures --------------------------------------------------
+   The caption carries a 2px violet rule in the left margin of the text: a
+   documentary quotation mark — another voice is speaking. The words stay
+   ink. The placeholder is scaffolding, so it speaks the scaffolding
+   register: dashed gold, annotation ink, the faintest warm ground. Real
+   video will replace it and carry no color at all. */
+
+figure.testimonial { margin: 1.75rem 0; }
+
+figure.testimonial video,
+figure.testimonial .video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #f4f4f4;
+}
+figure.testimonial .video-placeholder {
+  border: 1px dashed var(--gold-annotation-line);
+  background: #fdfbf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-ink);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+}
+figure.testimonial figcaption {
+  font-size: 0.95rem;
+  color: var(--caption-ink);
+  margin-top: 0.5rem;
+  border-left: 2px solid var(--violet-ink);
+  padding-left: 0.8rem;
+}
+
+/* --- call to action -------------------------------------------------------
+   The single button stays black at rest: black is structure, and booking
+   is part of the document's structure. Under the hand the highlighter
+   slides beneath it — gold ground, black ink, the one live gold moment on
+   the working page beyond ::selection. */
+
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.7rem;
+  text-decoration: none;
+  border-radius: 2px;
+  margin: 0.4rem 0 1rem;
+}
+.btn:hover { background: var(--gold-ground); color: #000; }
+
+/* --- index doors (a table of contents, not a hero) ------------------------
+   Each door is numbered in the second ink: small marginalia numerals,
+   01 / 02 / 03, set above the title at narrow widths and hung in the left
+   margin when the paper is wide enough. At rest the doors are black-on-
+   white. Under the hand, two small things: the threshold hairline inks
+   violet and the numeral warms to gold — the two held-back brand inks
+   meeting, and nothing else changes. */
+
+.doors {
+  margin-top: 3.25rem;
+  counter-reset: door;
+}
+a.door {
+  display: block;
+  position: relative;
+  counter-increment: door;
+  border-top: 1px solid var(--ink);
+  padding: 1.5rem 0.25rem 1.6rem;
+  text-decoration: none;
+  color: var(--body-ink);
+}
+.doors a.door:last-of-type { border-bottom: 1px solid var(--ink); }
+
+a.door::before {
+  content: counter(door, decimal-leading-zero);
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+  color: var(--violet-ink);
+  margin-bottom: 0.4rem;
+}
+
+a.door .door-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+a.door .door-line { margin: 0; color: var(--caption-ink); }
+
+a.door:hover,
+a.door:focus-visible {
+  border-top-color: var(--violet-ink);
+  background: #fcfbff;              /* paper, lit from behind */
+}
+a.door:hover::before,
+a.door:focus-visible::before {
+  color: var(--gold-ink);
+}
+
+/* --- the wide margin (numerals and constellation hang once it exists) ----- */
+
+@media screen and (min-width: 64rem) {
+  a.door::before {
+    position: absolute;
+    left: -3.6rem;
+    top: 2rem;               /* optically on the title's baseline */
+    margin: 0;
+  }
+
+  section.phase::before {    /* the marginal point */
+    content: "";
+    position: absolute;
+    left: -2.85rem;
+    top: 0.68rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--violet-ink);
+    z-index: 1;
+  }
+  section.phase::after {     /* the thread to the next point */
+    content: "";
+    position: absolute;
+    left: calc(-2.85rem + 2px);
+    top: 0.85rem;
+    bottom: -2.45rem;        /* spans the gap to the next phase's point */
+    width: 1px;
+    background: var(--violet-thread);
+  }
+  section.phase:last-of-type::after { content: none; }
+}
+
+/* --- document end: rule, seal, colophon -----------------------------------
+   The text ends in a short gilded rule, then the seal. The seal keeps its
+   black plate (it is the PDF's own object) but sits on a faint gold
+   ground — the one place light gathers. The footer stays gray: metadata
+   ends the document quietly. */
+
+hr.seal-rule {
+  border: 0;
+  width: 3rem;
+  height: 1px;
+  background: var(--gold-rule);
+  margin: 4rem auto 0;
+}
+
+.cat-end {
+  display: block;
+  width: 92px;
+  height: auto;
+  box-sizing: content-box;
+  padding: 26px;
+  margin: 0.9rem auto 0;
+  background: radial-gradient(
+    closest-side,
+    var(--gold-halo),
+    rgba(201, 162, 39, 0) 74%
+  );
+}
+
+footer.docfoot {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+footer.docfoot a { color: var(--muted); }
+footer.docfoot a:hover { color: var(--violet-ink); }
+footer.docfoot p { margin: 0.3rem 0; }
+
+/* --- prototype slots (Marco's words pending; strip .slot at finalization) --
+   The scaffolding gold folds into the brand's yellow family: gold as
+   annotation, the editor's pencil. It disappears when the words land. */
+
+.slot {
+  outline: 1px dashed var(--gold-annotation-line);
+  outline-offset: 3px;
+}
+
+#slot-counter {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--gold-ink);
+  background: var(--paper);
+  border: 1px dashed var(--gold-annotation-line);
+  padding: 0.2rem 0.5rem;
+  z-index: 10;
+}
+
+/* --- motion: none. Hover ink-changes may crossfade, and only if allowed --- */
+
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  .btn,
+  a.door,
+  a.door::before,
+  .crumb a,
+  footer.docfoot a {
+    transition: color 120ms ease, background-color 120ms ease,
+                border-color 120ms ease;
+  }
+}
+
+/* --- small paper (390px must be a good page, not a survived one) ---------- */
+
+@media (max-width: 30rem) {
+  .page { padding: 2.75rem 1.25rem 3.5rem; }
+  .crumb { margin-bottom: 2.25rem; }
+  h1.wordmark { letter-spacing: 0.16em; text-indent: 0.16em; }
+  h2 { margin-top: 2.4rem; }
+  a.door { padding: 1.3rem 0.15rem 1.4rem; }
+  .logistics { max-width: none; }
+  #slot-counter { right: 0.5rem; bottom: 0.5rem; }
+}
+
+/* --- print: the document survives a monochrome laser printer --------------
+   The tokens themselves re-ink, once, here: violet inks to black, gold
+   grounds to nothing, scaffolding grays out. Selectors below handle only
+   what tokens cannot: grain, glow, layout, URL disclosure, break rules.
+   What comes out of the tray is the protocol PDF's sibling. */
+
+/* --- self-hosted testimonial videos (21 Sep 2026): the file's own aspect --- */
+figure.testimonial video { aspect-ratio: auto; height: auto; }
+figure.testimonial figcaption.plain { border-left: 0; padding-left: 0; }
+
+/* --- layout test, testimonials.html (21 Sep 2026): ?cols=2 / ?cols=3 -------
+   Remove with the switch script in the page once Marco has decided. */
+body.cols-2 .page { max-width: 54rem; }
+body.cols-3 .page { max-width: 68rem; }
+body.cols-2 .videos, body.cols-3 .videos { display: grid; gap: 1.6rem 1.4rem; margin: 1.75rem 0; }
+body.cols-2 .videos { grid-template-columns: repeat(2, 1fr); }
+body.cols-3 .videos { grid-template-columns: repeat(3, 1fr); }
+body.cols-2 .videos figure.testimonial, body.cols-3 .videos figure.testimonial { margin: 0; }
+body.cols-2 .videos figcaption, body.cols-3 .videos figcaption { font-size: 0.9rem; }
+/* collapse so that no player drops much under 400 px wide */
+@media (max-width: 66rem) { body.cols-3 .videos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 54rem) { body.cols-2 .videos, body.cols-3 .videos { grid-template-columns: 1fr; } }
+
+@media print {
+  :root {
+    --violet-ink: #000;
+    --violet-deep: #000;
+    --violet-thread: transparent;
+    --gold-ground: transparent;
+    --gold-rule: #000;
+    --gold-halo: transparent;
+    --gold-ink: #555;
+    --gold-annotation-line: #999;
+    --muted: #555;
+  }
+
+  body { font-size: 11pt; letter-spacing: 0; }
+  body::before { display: none; }
+  body, body.cover { background: #fff; }
+  body.cover .page { min-height: 0; display: block; }
+
+  .crumb, #slot-counter { display: none; }
+  .slot { outline: none; }
+
+  a { color: #000; text-decoration: underline; }
+
+  .btn {
+    background: none;
+    color: #000;
+    border: 1.5px solid #000;
+    border-radius: 0;
+  }
+
+  p a[href^="https://"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    font-weight: 400;
+    color: #333;
+  }
+  a.door[href^="https://"]::after {
+    content: attr(href);
+    display: block;
+    font-size: 0.85em;
+    color: #333;
+    margin-top: 0.3rem;
+  }
+
+  figure.testimonial .video-placeholder { background: #fff; color: #555; }
+
+  h2, h3 { break-after: avoid; }
+  figure.testimonial, .logistics, section.phase { break-inside: avoid; }
+
+  .page { max-width: none; padding: 0; }
+}
+
+@page { margin: 2cm; }
+
+/* --- 11 Sep 2026: the €550 page ---------------------------------------------
+   The logistics box grew two lines (the duration line, the 'withouts') and
+   two jump links, so it widens a little; small print is muted ink, never a
+   new color. The questions section is prose, set like the phases. */
+
+.logistics { max-width: 26rem; }
+.fine { font-size: 0.9rem; color: var(--muted); }
+.fine a { color: var(--violet-ink); }
+section.qa h3 { margin-top: 1.5rem; }
+section.qa p { margin-bottom: 0.6rem; }
+.provenance { font-size: 0.95rem; color: var(--caption-ink); margin-bottom: 1.5rem; }
+
