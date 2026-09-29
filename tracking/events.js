@@ -14,7 +14,7 @@
   const sent = new Set();
   window.KleykoMeasurement = Object.freeze({mode: preview ? 'preview' : live ? 'plausible' : 'off', events});
   if ((!preview && !live) || !['/audit', '/testimonials'].includes(page)) return;
-  const campaign = window.KleykoLinks.fromURL(location.href);
+  const campaign = window.KleykoLinks.fromURL(location.href) || window.KleykoLinks.fromShort(location.href);
   const cleanURL = new URL(page, 'https://' + config.domain);
   if (campaign) cleanURL.search = new URLSearchParams(campaign).toString();
   // Only known referral origins, never search terms, article paths or arbitrary URLs.

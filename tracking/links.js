@@ -4,7 +4,8 @@
   const placements = { youtube: ['description', 'pinned_comment', 'profile'], substack: ['article', 'email', 'profile'] };
   function campaign(source, content, placement) {
     if (!placements[source]?.includes(placement)) throw Error('Choose a supported source and placement.');
-    if (source === 'youtube' && !/^[A-Za-z0-9_-]{11}$/.test(content)) throw Error('Use the 11-character YouTube video ID.');
+    // A YouTube video is named by its 11-character ID or by its number in upload order (1 to 999999, 29 Sep 2026).
+    if (source === 'youtube' && !/^[A-Za-z0-9_-]{11}$/.test(content) && !/^[1-9][0-9]{0,5}$/.test(content)) throw Error('Use the 11-character YouTube video ID or the video number.');
     if (source === 'substack' && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(content)) throw Error('Use the public article slug, with lowercase letters, numbers and hyphens.');
     if (content.length > 100) throw Error('Content ID must be at most 100 characters.');
     return {
@@ -32,5 +33,10 @@
     u.hash = '';
     return u.href;
   }
-  root.KleykoLinks = Object.freeze({campaign, fromURL, build, placements});
+  // Description links carry only ?v=<video number or ID> so YouTube shows them in full (29 Sep 2026).
+  function fromShort(input) {
+    const v = new URL(input, 'https://thekleyko.com').searchParams.get('v');
+    try { return v ? campaign('youtube', v, 'description') : null; } catch { return null; }
+  }
+  root.KleykoLinks = Object.freeze({campaign, fromURL, fromShort, build, placements});
 })(typeof window === 'undefined' ? globalThis : window);
