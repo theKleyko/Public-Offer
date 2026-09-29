@@ -25,6 +25,9 @@
 <!-- GoatCounter (decision M5, off until Marco confirms):
 <script data-goatcounter="https://ACCOUNT.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 -->
+<script defer src="/tracking/config.js"></script>
+<script defer src="/tracking/links.js"></script>
+<script defer src="/tracking/events.js"></script>
 </head>
 <body>
 <script>
@@ -47,75 +50,75 @@
 
   <div class="videos">
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-andrew.jpg">
+    <video data-testimonial="audit_01" controls preload="none" playsinline poster="images/testimonial-andrew.jpg">
       <source src="media/testimonial-andrew.mp4" type="video/mp4">
     </video>
     <figcaption>Andrew</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-dmitrii.jpg">
+    <video data-testimonial="audit_02" controls preload="none" playsinline poster="images/testimonial-dmitrii.jpg">
       <source src="media/testimonial-dmitrii.mp4" type="video/mp4">
     </video>
     <figcaption>Dmitrii. Two recordings, a few weeks apart.</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-joe.jpg">
+    <video data-testimonial="audit_03" controls preload="none" playsinline poster="images/testimonial-joe.jpg">
       <source src="media/testimonial-joe.mp4" type="video/mp4">
     </video>
     <figcaption>Joe</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-varua.jpg">
+    <video data-testimonial="audit_04" controls preload="none" playsinline poster="images/testimonial-varua.jpg">
       <source src="media/testimonial-varua.mp4" type="video/mp4">
     </video>
     <figcaption>Varua</figcaption>
   </figure>
   </div>
 
-  <p><a class="btn" href="https://book.stripe.com/cNi7sN7928TEbYP3jN0RG0f">Book your audit</a></p>
+  <p><a class="btn" data-measure="checkout_click" href="https://book.stripe.com/cNi7sN7928TEbYP3jN0RG0f">Book your audit</a></p>
 
   <h2>Before the audit</h2>
   <p>People I helped for free, before the ego audit.</p>
 
   <div class="videos">
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-alvaro.jpg">
+    <video data-testimonial="prior_01" controls preload="none" playsinline poster="images/testimonial-alvaro.jpg">
       <source src="media/testimonial-alvaro.mp4" type="video/mp4">
     </video>
     <figcaption>Alvaro</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-alex.jpg">
+    <video data-testimonial="prior_02" controls preload="none" playsinline poster="images/testimonial-alex.jpg">
       <source src="media/testimonial-alex.mp4" type="video/mp4">
     </video>
     <figcaption>Alex</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-drake.jpg">
+    <video data-testimonial="prior_03" controls preload="none" playsinline poster="images/testimonial-drake.jpg">
       <source src="media/testimonial-drake.mp4" type="video/mp4">
     </video>
     <figcaption>Drake</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-julian.jpg">
+    <video data-testimonial="prior_04" controls preload="none" playsinline poster="images/testimonial-julian.jpg">
       <source src="media/testimonial-julian.mp4" type="video/mp4">
     </video>
     <figcaption>Julian</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-imme.jpg">
+    <video data-testimonial="prior_05" controls preload="none" playsinline poster="images/testimonial-imme.jpg">
       <source src="media/testimonial-imme.mp4" type="video/mp4">
     </video>
     <figcaption>Imme</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-noe.jpg">
+    <video data-testimonial="prior_06" controls preload="none" playsinline poster="images/testimonial-noe.jpg">
       <source src="media/testimonial-noe.mp4" type="video/mp4">
     </video>
     <figcaption>Noe</figcaption>
   </figure>
   <figure class="testimonial">
-    <video controls preload="none" playsinline poster="images/testimonial-robert.jpg">
+    <video data-testimonial="prior_07" controls preload="none" playsinline poster="images/testimonial-robert.jpg">
       <source src="media/testimonial-robert.mp4" type="video/mp4">
     </video>
     <figcaption>Robert</figcaption>
@@ -123,17 +126,18 @@
   </div>
 
   <h2 class="apparatus" id="book">BOOK YOUR AUDIT</h2>
-  <p><a class="btn" href="https://book.stripe.com/cNi7sN7928TEbYP3jN0RG0f">Book your audit</a></p>
+  <p><a class="btn" data-measure="checkout_click" href="https://book.stripe.com/cNi7sN7928TEbYP3jN0RG0f">Book your audit</a></p>
   <p><strong>Questions before booking?</strong></p>
-  <p>Telegram: <a href="https://t.me/thekleyko">t.me/thekleyko</a><br>
-  Email: <a href="mailto:kleyko@thekleyko.com">kleyko@thekleyko.com</a></p>
+  <p>Telegram: <a data-measure="contact_telegram" href="https://t.me/thekleyko">t.me/thekleyko</a><br>
+  Email: <a data-measure="contact_email" href="mailto:kleyko@thekleyko.com">kleyko@thekleyko.com</a></p>
 
   <hr class="seal-rule">
   <img class="cat-end" src="images/cat-mark.png" alt="Kleyko">
 
   <footer class="docfoot">
-    <p>the.kleyko&nbsp;&nbsp;|&nbsp;&nbsp;Marco&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:kleyko@thekleyko.com">kleyko@thekleyko.com</a></p>
-    <p><a href="/aviso-legal">Aviso legal</a> &middot; <a href="/privacidad">Privacidad</a></p>
+    <p>the.kleyko&nbsp;&nbsp;|&nbsp;&nbsp;Marco&nbsp;&nbsp;|&nbsp;&nbsp;<a data-measure="contact_email" href="mailto:kleyko@thekleyko.com">kleyko@thekleyko.com</a></p>
+    <p><a href="/privacy">Privacy</a></p>
+    <!-- Add the Aviso legal link when that page is published (NIE and virtual-office address pending). -->
   </footer>
 
 </div>
