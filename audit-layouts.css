@@ -1,0 +1,428 @@
+/* The 29 September layouts of the Audit page, after Marco's review of the saved designs:
+   the page felt clumped where the PDF reads as three pages, the title was too loud, the PDF
+   link at the top was unnecessary, and LOGISTICS and the bold price should look like the PDF.
+
+   Active only when the head script in audit.html sets <html data-layout data-style data-theme>.
+   It then switches audit.css and audit-designs.css off, so this file is complete on its own.
+
+   data-style   paper | baseline | editorial | precision | original (the V10 PDF itself)
+   data-layout  sheets      three sheets, broken where the PDF's pages break
+   (Pages, Margin and Continuous were cut on 29 September; tag audit-layouts-study keeps them.)
+   data-theme   light | dark
+
+   Shared hierarchy, from the PDF: every section heading at one size (LOGISTICS, BOOK YOUR AUDIT
+   and TESTIMONIALS included), bold labels with plain values in the logistics box, list terms
+   inline, phases as one heading line, contraindications as fine print under a full rule. */
+
+/* ---------- Tokens ---------- */
+
+[data-layout] {
+  --sans: Helvetica, "Nimbus Sans", "Liberation Sans", Arial, sans-serif;
+  --serif: Georgia, "Times New Roman", "Liberation Serif", serif;
+  --mono: "Liberation Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+  --font: var(--sans);
+  --head: var(--sans);
+  --size: 1.0625rem;
+  --leading: 1.65;
+  --h1: 2.125rem;
+  --h2: 1.4rem;
+  --h3: 1.125rem;
+  --section: 2.6rem;
+  --sheet-w: 48rem;
+  --pad-top: 3.25rem;
+  --pad-x: 4rem;
+  --pad-bottom: 2.25rem;
+  --gutter: 1.5rem;
+  --gap: 1.75rem;
+  --select: #efdc85;
+}
+
+[data-layout][data-style="paper"][data-theme="light"] {
+  color-scheme: light;
+  --surround: #e8e6e0; --sheet: #fffdf8; --edge: #d5d0c6;
+  --ink: #24211e; --body: #302c28; --muted: #635d55; --accent: #67419a;
+  --link: #67419a; --rule: #24211e; --hair: #ddd7cc;
+  --button: #24211e; --button-ink: #fffdf8; --button-hover: #4b4540;
+  --shadow: 0 1px 2px #2a24160f, 0 6px 24px #2a241612;
+}
+[data-layout][data-style="paper"][data-theme="dark"] {
+  color-scheme: dark;
+  --surround: #121110; --sheet: #1f1d1a; --edge: #3a3631;
+  --ink: #f3eee6; --body: #e2dcd2; --muted: #aca497; --accent: #bca3ea;
+  --link: #bca3ea; --rule: #d3ccc1; --hair: #3a3631;
+  --button: #f3eee6; --button-ink: #1f1d1a; --button-hover: #bca3ea;
+  --shadow: 0 18px 60px #0007, 0 2px 8px #0005;
+}
+[data-layout][data-style="baseline"][data-theme="light"] {
+  color-scheme: light;
+  --surround: #e7e6ec; --sheet: #ffffff; --edge: #d7d4de;
+  --ink: #1d1b22; --body: #2c2932; --muted: #5f5b6a; --accent: #5a3db0;
+  --link: #5a3db0; --rule: #1d1b22; --hair: #e1dee7;
+  --button: #1d1b22; --button-ink: #ffffff; --button-hover: #5a3db0;
+  --shadow: 0 1px 2px #1d1b220f, 0 8px 28px #1d1b2214;
+}
+[data-layout][data-style="baseline"][data-theme="dark"] {
+  color-scheme: dark;
+  --surround: #101014; --sheet: #24232b; --edge: #494652;
+  --ink: #f4f1fa; --body: #e1dde9; --muted: #b5aec0; --accent: #c8b6ee;
+  --link: #c8b6ee; --rule: #a39cae; --hair: #403c48;
+  --button: #f4f1fa; --button-ink: #24232b; --button-hover: #c8b6ee;
+  --shadow: 0 18px 60px #0006, 0 2px 8px #0004;
+}
+[data-layout][data-style="editorial"][data-theme="light"] {
+  color-scheme: light;
+  --surround: #e8e2d6; --sheet: #fdfaf4; --edge: #d9cfbd;
+  --ink: #211a13; --body: #2b241c; --muted: #5a4f43; --accent: #7d5a19;
+  --link: #7a5718; --rule: #211a13; --hair: #e1d7c6;
+  --button: #2b241c; --button-ink: #fcf8f0; --button-hover: #85601d;
+  --shadow: 0 1px 2px #2b241c0f, 0 8px 28px #2b241c14;
+}
+[data-layout][data-style="editorial"][data-theme="dark"] {
+  color-scheme: dark;
+  --surround: #100f0d; --sheet: #292520; --edge: #53493c;
+  --ink: #f8f2e8; --body: #e4dccf; --muted: #bfb09b; --accent: #ddbd89;
+  --link: #ddbd89; --rule: #9a8870; --hair: #4a4034;
+  --button: #f6efe3; --button-ink: #292520; --button-hover: #ddbd89;
+  --shadow: 0 18px 60px #0006, 0 2px 8px #0004;
+}
+[data-layout][data-style="precision"][data-theme="light"] {
+  color-scheme: light;
+  --surround: #dde4eb; --sheet: #fbfcfe; --edge: #cbd5df;
+  --ink: #15202b; --body: #25313e; --muted: #536172; --accent: #285a8c;
+  --link: #285a8c; --rule: #15202b; --hair: #dde3ea;
+  --button: #15202b; --button-ink: #fbfcfe; --button-hover: #285a8c;
+  --shadow: 0 1px 2px #15202b0f, 0 8px 28px #15202b14;
+}
+[data-layout][data-style="precision"][data-theme="dark"] {
+  color-scheme: dark;
+  --surround: #0b1016; --sheet: #202831; --edge: #425263;
+  --ink: #eef5fc; --body: #dae3ec; --muted: #aabace; --accent: #a6c9ec;
+  --link: #a6c9ec; --rule: #8396aa; --hair: #3a4756;
+  --button: #eef5fc; --button-ink: #202831; --button-hover: #a6c9ec;
+  --shadow: 0 18px 60px #0006, 0 2px 8px #0004;
+}
+/* The PDF: black ink, browser-blue links. Dark is the site's dark paper (#161616). */
+[data-layout][data-style="original"][data-theme="light"] {
+  color-scheme: light;
+  --surround: #e2e2e2; --sheet: #ffffff; --edge: #cfcfcf;
+  --ink: #000000; --body: #000000; --muted: #757575; --accent: #000000;
+  --link: #0000ee; --rule: #000000; --hair: #000000;
+  --button: #000000; --button-ink: #ffffff; --button-hover: #333333;
+  --shadow: 0 1px 3px #0000001f, 0 6px 22px #00000014;
+}
+[data-layout][data-style="original"][data-theme="dark"] {
+  color-scheme: dark;
+  --surround: #0d0d0d; --sheet: #161616; --edge: #2e2e2e;
+  --ink: #f2f2f2; --body: #f2f2f2; --muted: #8c8c8c; --accent: #f2f2f2;
+  --link: #9fb2ff; --rule: #f2f2f2; --hair: #f2f2f2;
+  --button: #f2f2f2; --button-ink: #161616; --button-hover: #cfcfcf;
+  --shadow: 0 18px 60px #0008, 0 2px 8px #0005;
+}
+
+/* ---------- Page and sheets ---------- */
+
+[data-layout] *, [data-layout] *::before, [data-layout] *::after { box-sizing: border-box; }
+[data-layout] { -webkit-text-size-adjust: 100%; scroll-padding-top: 1.5rem; background: var(--surround); }
+[data-layout] body {
+  margin: 0;
+  background: var(--surround);
+  color: var(--body);
+  font-family: var(--font);
+  font-size: var(--size);
+  line-height: var(--leading);
+}
+[data-layout] .document { counter-reset: sheet; padding: var(--gutter) var(--gutter) calc(var(--gutter) * 2); }
+[data-layout] .sheet {
+  counter-increment: sheet;
+  position: relative;
+  max-width: var(--sheet-w);
+  margin: 0 auto;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  background: var(--sheet);
+  border: 1px solid var(--edge);
+  box-shadow: var(--shadow);
+}
+[data-layout] .sheet + .sheet { margin-top: var(--gap); }
+[data-layout] .sheet > :first-child { margin-top: 0; }
+/* Folio: the page number the PDF prints at the foot of each page. */
+[data-layout] .sheet::after {
+  content: counter(sheet) " / 3";
+  display: block;
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Type ---------- */
+
+[data-layout] .document-heading { margin: 0 0 2.25rem; text-align: center; }
+[data-layout] h1 {
+  margin: 0 0 .5rem;
+  color: var(--ink);
+  font: 700 var(--h1)/1.15 var(--head);
+  letter-spacing: .03em;
+}
+[data-layout] .sub { margin: 0 0 .2rem; color: var(--ink); font-family: var(--head); font-size: 1.125rem; font-style: italic; }
+[data-layout] .sub2 { margin: 0; color: var(--muted); font-size: .9375rem; }
+[data-layout] .document-download { display: none; }
+
+[data-layout] h2 {
+  margin: var(--section) 0 .75rem;
+  color: var(--ink);
+  font: 700 var(--h2)/1.3 var(--head);
+  letter-spacing: -.01em;
+}
+[data-layout] h2.caps { letter-spacing: .025em; }
+[data-layout] h3 { margin: 0 0 .3rem; color: var(--ink); font: 700 var(--h3)/1.4 var(--head); }
+[data-layout] p { margin: 0 0 .75rem; }
+[data-layout] strong { color: var(--ink); font-weight: 700; }
+[data-layout] a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+[data-layout] a:hover { color: var(--ink); }
+[data-layout] :focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+[data-layout] ::selection { background: var(--select); color: #161616; }
+
+[data-layout] .box { display: inline-block; max-width: 100%; margin: .15rem 0 0; padding: .85rem 1.6rem .85rem 1.25rem; border: 1px solid var(--rule); }
+[data-layout] .box p { margin: .2rem 0; }
+[data-layout] .box strong { display: inline-block; min-width: 4.75rem; }
+
+/* The PDF sets this sentence plain. */
+[data-layout] .definition strong { color: inherit; font: inherit; }
+[data-layout] ul { margin: .4rem 0 0; padding-left: 1.15rem; }
+[data-layout] li { margin: 0 0 .85rem; padding-left: .2rem; }
+[data-layout] li::marker { color: var(--accent); }
+[data-layout] .notfor { margin-top: 2.1rem; }
+[data-layout] .clarity { margin-top: .75rem; }
+[data-layout] h2.proto { margin-top: calc(var(--section) + .3rem); }
+
+[data-layout] .phase { margin-top: 1.35rem; }
+[data-layout] .phase-label { color: var(--accent); }
+[data-layout] .phase p { margin: 0; }
+
+[data-layout] .pay { margin: .55rem 0 1.5rem; }
+[data-layout] .booking-link {
+  display: inline-block;
+  min-height: 44px;
+  padding: .7rem 1.4rem;
+  background: var(--button);
+  border: 1px solid var(--button);
+  color: var(--button-ink);
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+}
+[data-layout] .booking-link:hover { background: var(--button-hover); border-color: var(--button-hover); color: var(--button-ink); }
+
+[data-layout] .client-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: .4rem; }
+[data-layout] figure { margin: 0; min-width: 0; }
+[data-layout] video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+[data-layout] figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; line-height: 1.45; }
+[data-layout] p.testi { margin-top: 1rem; }
+
+[data-layout] h2.contra { margin: 3rem 0 .6rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: 1.125rem; letter-spacing: 0; }
+[data-layout] .contra + div { font-size: .9375rem; line-height: 1.6; }
+
+[data-layout] .seal { display: block; width: 3.5rem; height: 3.5rem; margin: 2.5rem auto 0; }
+[data-layout] .document-footer { margin-top: 1.75rem; color: var(--muted); font-size: .8125rem; line-height: 1.6; text-align: center; }
+[data-layout] .document-footer p { margin: 0; }
+[data-layout] .document-footer span { margin: 0 .4em; }
+[data-layout] .document-footer a { color: inherit; }
+[data-layout] .document-footer .document-pdf { display: block; margin-top: .3rem; }
+
+[data-layout] .skip-link {
+  position: absolute; left: 1rem; top: 1rem; z-index: 2;
+  padding: .5rem .75rem;
+  background: var(--sheet); color: var(--link);
+  transform: translateY(-200%);
+}
+[data-layout] .skip-link:focus { transform: none; }
+
+/* ---------- Styles ---------- */
+
+/* Paper keeps the defaults above: Helvetica, warm sheet, muted phase numbers, violet links. */
+
+[data-style="baseline"] h1 { letter-spacing: .045em; }
+[data-style="baseline"] .sub2 { letter-spacing: .01em; }
+
+[data-style="editorial"] { --head: var(--serif); --leading: 1.7; --h1: 2.05rem; --h2: 1.55rem; --h3: 1.2rem; --sheet-w: 49rem; }
+/* 29 September: bold serif and darker ink after Marco found the first Editorial too thin and grey. */
+[data-style="editorial"] h1 { letter-spacing: .07em; }
+[data-style="editorial"] .sub { font-size: 1.2rem; }
+[data-style="editorial"] .sub2 { margin-top: .35rem; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+[data-style="editorial"] h2.caps { font-size: 1.4rem; letter-spacing: .06em; }
+[data-style="editorial"] h2.contra { font-size: 1.2rem; }
+[data-style="editorial"] p > strong,
+[data-style="editorial"] li strong,
+[data-style="editorial"] .box strong { font-family: var(--serif); font-size: 1.05em; }
+[data-style="editorial"] .phase-label { color: var(--accent); }
+[data-style="editorial"] .box { border-width: 1.5px; }
+[data-style="editorial"] .booking-link { letter-spacing: .03em; font-family: var(--serif); font-size: 1.05rem; }
+[data-style="editorial"] .sheet::after { font-family: var(--serif); letter-spacing: .06em; }
+
+[data-style="precision"] {
+  --font: "Helvetica Neue", Helvetica, "Nimbus Sans", "Liberation Sans", Arial, sans-serif;
+  --head: var(--font);
+  --size: 1rem; --h1: 2rem; --h2: 1.35rem; --h3: 1.0625rem;
+  --sheet-w: 52rem;
+}
+[data-style="precision"] .document-heading { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--accent); text-align: left; }
+[data-style="precision"] h1 { letter-spacing: -.03em; }
+[data-style="precision"] h1 span:first-child { font-weight: 400; }
+[data-style="precision"] .sub { font-style: normal; }
+[data-style="precision"] .sub2 { margin-top: .4rem; font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+[data-style="precision"] h2 { letter-spacing: -.02em; }
+[data-style="precision"] h2.caps { letter-spacing: .04em; }
+[data-style="precision"] .box { display: inline-grid; grid-template-columns: repeat(3, auto); padding: 0; }
+[data-style="precision"] .box p { margin: 0; padding: .75rem 1.75rem .8rem 1.1rem; }
+[data-style="precision"] .box p + p { border-left: 1px solid var(--hair); }
+[data-style="precision"] .box strong { display: block; min-width: 0; margin-bottom: .2rem; color: var(--muted); font: 400 .6875rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+[data-style="precision"] ul { margin-top: .9rem; padding: 0; list-style: none; border-bottom: 1px solid var(--hair); }
+[data-style="precision"] li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); column-gap: 1.25rem; margin: 0; padding: .85rem 0; border-top: 1px solid var(--hair); }
+[data-style="precision"] li strong { font-size: .95rem; }
+[data-style="precision"] .phase { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--hair); }
+[data-style="precision"] .phase-label { display: block; margin-bottom: .3rem; font: 400 .75rem/1.4 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+[data-style="precision"] .booking-link { background: transparent; border-color: var(--accent); color: var(--ink); }
+[data-style="precision"] .booking-link:hover { background: var(--ink); border-color: var(--ink); color: var(--sheet); }
+[data-style="precision"] .sheet::after { font-family: var(--mono); letter-spacing: .06em; }
+
+/* Paper variants for comparison (29 September), switched by data-variant from the head script.
+   list: Precision's ruled audience list in Paper's colours, so the five names scan down one column.
+   book: also a quiet second booking link under the logistics box, and an arrow on both buttons. */
+[data-variant~="list"] ul { margin-top: .9rem; padding: 0; list-style: none; border-bottom: 1px solid var(--hair); }
+[data-variant~="list"] li { display: grid; grid-template-columns: 12rem minmax(0, 1fr); column-gap: 1.5rem; margin: 0; padding: .9rem 0; border-top: 1px solid var(--hair); }
+[data-variant~="list"] li strong { font-size: 1rem; }
+[data-variant~="book"] .booking-link::after { content: " \2192"; }
+[data-variant~="book"] .pay-early { margin: 1.1rem 0 0; }
+[data-variant~="book"] .pay-early .booking-link { min-height: 40px; padding: .5rem 1.1rem; background: transparent; border-color: var(--ink); color: var(--ink); font-size: .9375rem; }
+[data-variant~="book"] .pay-early .booking-link:hover { background: var(--ink); color: var(--sheet); }
+
+/* Original: the V10 PDF's own measurements, written in points and scaled by --pt. */
+[data-style="original"] { --pt: 1.55px; --leading: 1.5; }
+[data-style="original"] body { font-size: calc(10.5 * var(--pt)); }
+[data-style="original"] .document-heading { margin-bottom: calc(18 * var(--pt)); }
+[data-style="original"] h1 { margin: 0 0 calc(6 * var(--pt)); font-size: min(calc(27 * var(--pt)), 7.4vw); letter-spacing: .02em; }
+[data-style="original"] .sub { margin: 0 0 calc(3 * var(--pt)); font-size: calc(12.5 * var(--pt)); font-weight: 700; }
+[data-style="original"] .sub2 { color: var(--ink); font-size: calc(10 * var(--pt)); }
+[data-style="original"] h2 { margin: calc(26 * var(--pt)) 0 calc(8 * var(--pt)); font-size: calc(15 * var(--pt)); line-height: 1.25; letter-spacing: 0; }
+[data-style="original"] h2.caps { font-size: calc(15.5 * var(--pt)); letter-spacing: .02em; }
+[data-style="original"] h3 { margin: calc(14 * var(--pt)) 0 calc(4 * var(--pt)); font-size: calc(12.5 * var(--pt)); line-height: 1.25; }
+[data-style="original"] p { margin: 0 0 calc(8 * var(--pt)); }
+[data-style="original"] a { text-decoration: none; }
+[data-style="original"] p.testi a { text-decoration: underline; }
+[data-style="original"] .box { margin: calc(2 * var(--pt)) 0 calc(4 * var(--pt)); padding: calc(10 * var(--pt)) calc(16 * var(--pt)) calc(10 * var(--pt)) calc(14 * var(--pt)); border-width: calc(1.2 * var(--pt)); }
+[data-style="original"] .box p { margin: calc(2 * var(--pt)) 0; }
+[data-style="original"] .box strong { display: inline; min-width: 0; }
+[data-style="original"] ul { margin: calc(4 * var(--pt)) 0 calc(8 * var(--pt)); padding-left: calc(14 * var(--pt)); }
+[data-style="original"] li { margin: 0 0 calc(12 * var(--pt)); padding-left: 0; }
+[data-style="original"] .notfor { margin-top: calc(40 * var(--pt)); }
+[data-style="original"] .clarity { margin-top: 0; }
+[data-style="original"] h2.proto { margin-top: calc(30 * var(--pt)); }
+[data-style="original"] .phase { margin: 0; }
+[data-style="original"] .phase h3 { margin-top: calc(14 * var(--pt)); }
+[data-style="original"] .phase-label { color: inherit; }
+[data-style="original"] .phase p { margin-bottom: calc(8 * var(--pt)); }
+[data-style="original"] .pay { margin: calc(4 * var(--pt)) 0 calc(12 * var(--pt)); }
+[data-style="original"] .booking-link { min-height: 0; padding: calc(7 * var(--pt)) calc(14 * var(--pt)); font-size: calc(10.5 * var(--pt)); }
+[data-style="original"] h2.testi { margin-top: calc(36 * var(--pt)); }
+[data-style="original"] .client-videos { gap: calc(12 * var(--pt)); margin-top: calc(4 * var(--pt)); }
+[data-style="original"] figcaption { margin-top: calc(4 * var(--pt)); font-size: calc(8.5 * var(--pt)); }
+[data-style="original"] p.testi { margin-top: calc(10 * var(--pt)); }
+[data-style="original"] h2.contra { margin: calc(40 * var(--pt)) 0 calc(5 * var(--pt)); padding-top: calc(12 * var(--pt)); border-top-width: calc(1.2 * var(--pt)); font-size: calc(12.5 * var(--pt)); }
+[data-style="original"] .contra + div { font-size: calc(9.5 * var(--pt)); line-height: 1.45; }
+[data-style="original"] .seal { width: calc(48 * var(--pt)); height: calc(48 * var(--pt)); margin-top: calc(22 * var(--pt)); }
+[data-style="original"] .document-footer { font-size: calc(8 * var(--pt)); }
+[data-style="original"] .document-footer .document-pdf { font-size: .875rem; }
+
+/* Original as sheets: A4 sheets, 18 mm margins, the PDF footer and page number. */
+[data-style="original"][data-layout="sheets"] .sheet {
+  width: calc(595.3 * var(--pt));
+  max-width: 100%;
+  min-height: calc(841.9 * var(--pt));
+  padding: calc(51 * var(--pt)) calc(51 * var(--pt)) calc(78 * var(--pt));
+}
+[data-style="original"][data-layout="sheets"] .sheet::before {
+  content: "the.kleyko   |   Marco   |   kleyko@thekleyko.com";
+  position: absolute; left: 0; right: 0; bottom: calc(26 * var(--pt));
+  color: var(--muted); font-size: calc(8 * var(--pt)); line-height: 1; text-align: center; white-space: pre;
+}
+[data-style="original"][data-layout="sheets"] .sheet::after {
+  content: counter(sheet);
+  position: absolute; right: calc(51 * var(--pt)); bottom: calc(26 * var(--pt));
+  margin: 0; font-size: calc(8 * var(--pt)); letter-spacing: 0; line-height: 1;
+}
+[data-style="original"][data-layout="sheets"] #sheet-3::before { content: none; }
+[data-style="original"][data-layout="sheets"] .document-footer {
+  position: absolute; left: 0; right: 0; bottom: calc(26 * var(--pt));
+  margin: 0; line-height: 1;
+}
+[data-style="original"][data-layout="sheets"] .document-footer span { margin: 0 calc(5 * var(--pt)); font-size: 0; }
+[data-style="original"][data-layout="sheets"] .document-footer span::before { content: "|"; font-size: calc(8 * var(--pt)); }
+/* The web adds a download link; it sits under the last sheet, outside the facsimile. */
+[data-style="original"][data-layout="sheets"] .document-footer .document-pdf {
+  position: absolute; left: 0; right: 0; top: calc(100% + 26 * var(--pt) + 1.25rem);
+  margin: 0;
+}
+[data-style="original"][data-layout="sheets"] .document-footer .document-pdf a { color: var(--muted); text-decoration: underline; }
+[data-style="original"][data-layout="sheets"] .document { padding-bottom: 4.5rem; }
+
+/* ---------- Layouts ---------- */
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 1000px) {
+  [data-style="original"][data-layout="sheets"] .sheet { width: auto; min-height: 0; }
+}
+@media (max-width: 760px) {
+  [data-layout] { --gutter: 1rem; --gap: 1rem; --pad-top: 2.75rem; --pad-x: 2rem; --pad-bottom: 2rem; }
+  [data-style="original"] { --pt: 1.5px; }
+  [data-style="original"][data-layout="sheets"] .sheet { padding: calc(32 * var(--pt)) calc(28 * var(--pt)) calc(70 * var(--pt)); }
+  [data-style="original"][data-layout="sheets"] .sheet::after { right: calc(28 * var(--pt)); }
+  [data-style="precision"] li { grid-template-columns: 9.5rem minmax(0, 1fr); }
+  [data-variant~="list"] li { grid-template-columns: 10rem minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  [data-layout] { --gutter: .5rem; --gap: .5rem; --pad-top: 2.25rem; --pad-x: 1.25rem; --pad-bottom: 1.75rem; --size: 1rem; --h1: 1.6rem; --h2: 1.3rem; --h3: 1.075rem; --section: 2.3rem; }
+  [data-style="editorial"] { --h1: 1.55rem; --h2: 1.45rem; --h3: 1.2rem; }
+  [data-style="precision"] { --h1: 1.7rem; --h2: 1.25rem; }
+  [data-style="original"] { --pt: 1.45px; }
+  [data-layout] .sub { font-size: 1.0625rem; }
+  [data-layout] .client-videos { grid-template-columns: 1fr; gap: 1.25rem; }
+  [data-layout] .sheet::after { margin-top: 2rem; }
+  [data-style="original"][data-layout="sheets"] .sheet { padding: calc(28 * var(--pt)) calc(16 * var(--pt)) calc(62 * var(--pt)); }
+  [data-style="original"][data-layout="sheets"] .sheet::after { right: calc(16 * var(--pt)); }
+  [data-style="original"][data-layout="sheets"] .sheet::before { content: "the.kleyko  |  Marco  |  kleyko@thekleyko.com"; }
+  [data-style="original"][data-layout="sheets"] .document-footer span { margin: 0 calc(2 * var(--pt)); }
+  [data-style="precision"] .box { display: grid; grid-template-columns: 1fr; }
+  [data-style="precision"] .box p { padding: .6rem 1rem; }
+  [data-style="precision"] .box p + p { border-left: 0; border-top: 1px solid var(--hair); }
+  [data-style="precision"] li { grid-template-columns: 1fr; row-gap: .2rem; }
+  [data-variant~="list"] li { grid-template-columns: 1fr; row-gap: .2rem; }
+}
+
+/* ---------- Print: black on white, one sheet per printed page ---------- */
+
+@media print {
+  html[data-layout][data-style][data-theme] {
+    color-scheme: light;
+    --surround: #fff; --sheet: #fff; --ink: #000; --body: #000; --muted: #444;
+    --accent: #000; --link: #000; --rule: #000; --hair: #bbb;
+  }
+  [data-layout] body { font-size: 10.5pt; line-height: 1.5; }
+  [data-style="original"] { --pt: 1pt; }
+  [data-layout] .document { max-width: none; padding: 0; }
+  [data-layout] .sheet {
+    display: block; width: auto; max-width: none; min-height: 0;
+    margin: 0; padding: 0; border: 0; box-shadow: none;
+  }
+  [data-layout] .sheet + .sheet { margin: 0; break-before: page; }
+  [data-layout] .sheet::before,
+  [data-layout] .sheet::after { content: none; }
+  [data-layout] .document-footer,
+  [data-layout] .document-footer .document-pdf { position: static; }
+  [data-layout] .skip-link, [data-layout] video, [data-layout] .document-pdf { display: none; }
+  [data-layout] .booking-link { min-height: 0; padding: 0; background: none; border: 0; color: #000; text-decoration: underline; }
+  [data-layout] .phase, [data-layout] figure, [data-layout] .box { break-inside: avoid; }
+  [data-layout] h2, [data-layout] h3 { break-after: avoid; }
+}
