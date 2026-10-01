@@ -4,7 +4,8 @@
    Same gates as events.js; the forward never waits for the count, and a blocked count still forwards.
    Usage, in the head of a page: config.js, then <script src="/tracking/forward.js"
    data-event="link_substack" data-to="https://..."></script>. ?tracking=preview on localhost
-   shows the would-be events instead of forwarding. */
+   shows the would-be events instead of forwarding. Counts go to the Plausible site config.linksDomain
+   (1 October 2026), so the thekleyko.com dashboard holds only the sales pages. */
 (function () {
   'use strict';
   var me = document.currentScript;
@@ -37,7 +38,7 @@
   } catch (e) { /* Unknown origin stays unknown. */ }
 
   var events = ['pageview', name].map(function (n) {
-    var event = {name: n, url: page.href, domain: config.domain};
+    var event = {name: n, url: page.href, domain: config.linksDomain || config.domain};
     if (referrer) event.referrer = referrer;
     return event;
   });
