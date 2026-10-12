@@ -73,7 +73,7 @@
   }
   setInterval(tick, 1000);
   document.addEventListener('visibilitychange', () => {previous = performance.now();});
-  const videoIds = new Set(['audit_01','audit_02','audit_03','audit_04','prior_01','prior_02','prior_03','prior_04','prior_05','prior_06','prior_07']);
+  const videoIds = new Set(['audit_01','audit_03','audit_04','audit_05','prior_01','prior_02','prior_03','prior_04','prior_05','prior_06','prior_07']);
   document.querySelectorAll('video[data-testimonial]').forEach(video => {
     const id = video.dataset.testimonial;
     if (!videoIds.has(id)) return;
