@@ -123,6 +123,10 @@
 
 [data-layout] *, [data-layout] *::before, [data-layout] *::after { box-sizing: border-box; }
 [data-layout] { -webkit-text-size-adjust: 100%; scroll-padding-top: 1.5rem; background: var(--surround); }
+/* Marco, 2 Nov 2026 ("125 is also my pick"): a larger default on desktops and laptops.
+   Everything is in rem, so text, spacing and the column grow together and browser zoom still
+   scales from here. Touch phones and tablets keep 100%. */
+@media not all and (pointer: coarse) { [data-layout] { font-size: 125%; } }
 [data-layout] body {
   margin: 0;
   background: var(--surround);
